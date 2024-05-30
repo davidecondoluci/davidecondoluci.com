@@ -1,27 +1,33 @@
 import React from "react";
 import "../App.css";
-import LayoutFixed from "../components/LayoutFixed";
+import Layout from "../components/Layout";
 import meImage from "../img/me.jpg";
 
 const About = () => {
   return (
-    <LayoutFixed>
-      <div className="flex flex-row h-screen items-center justify-center overflow-hidden">
+    <Layout>
+      <div className="flex flex-row h-screen items-start justify-center overflow-hidden">
         <div className="w-1/2 flex pr-8">
           <div className="overflow-hidden flex items-center justify-end">
-            <img src={meImage} alt="Me" className="w-1/2 rounded-lg" />
+            <img
+              src={meImage}
+              alt="Me"
+              className="container w-3/5 rounded-lg"
+            />
           </div>
         </div>
-        <div className="w-1/2 flex flex-col items-start justify-center space-y-4 pl-8 pr-32">
-          <h1 className="text-6xl font-serif font-bold text-left">About</h1>
-          <p className="text-base font-sans font-light text-left">
+        <div className="w-1/2 flex flex-col items-start justify-center pl-8 pr-32">
+          <h1 className="text-6xl font-serif font-bold text-left mb-4">
+            About
+          </h1>
+          <p className="text-base font-sans font-light text-left mb-4">
             Ciao, I'm Davide Condoluci and I recently completed the Web
             Application & Apps course at Scuola Mohole, where I gained solid
             skills as a frontend developer and graphic designer. I love working
             in teams, and have strong critical thinking. Precision is one of my
             strengths, which I apply to every project.
           </p>
-          <p className="text-base font-sans font-light text-left">
+          <p className="text-base font-sans font-light text-left mb-8">
             My passions range from sports, like soccer, gym, and running, to
             fashion, technology, and collecting. I also love traveling and
             discovering new cultures, which inspire and enrich my creativity.
@@ -32,13 +38,13 @@ const About = () => {
           </p>
           <a
             href="download_link"
-            className="text-blue-500 hover:underline  font-sans font-regular text-left uppercase"
+            className="text-blue-500 hover:underline text-2xl font-sans font-regular text-left uppercase"
           >
             ↓ My resume
           </a>
         </div>
       </div>
-    </LayoutFixed>
+    </Layout>
   );
 };
 

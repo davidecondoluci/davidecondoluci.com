@@ -20,7 +20,7 @@ const Work = () => {
           </div>
           <div className="w-2/5 fade flex flex-col items-start justify-start p-4 mt-4 overflow-y-auto h-[600px]">
             {projects.map((project, index) => (
-              <div key={index} className="mb-4">
+              <div key={index} className="mb-6 last:mb-24 space-y-2">
                 <h2 className="text-6xl font-serif font-bold">
                   {project.title}
                 </h2>

@@ -8,13 +8,13 @@ const Navbar = (props) => {
   const getLinkClass = (path) => {
     let classes = "text-white hover:text-gray-400";
     if (location.pathname === path) {
-      classes += " font-bold";
+      classes += " underline";
     }
     return classes;
   };
 
   return (
-    <nav className={`flex justify-center pb-8 ${props.classes}`}>
+    <nav className={`flex justify-center pb-16 ${props.classes}`}>
       <ul className="flex bg-gray-800 px-8 py-4 rounded-full space-x-8 items-center font-sans font-regular">
         <li>
           <Link to="/" className={getLinkClass("/")}>

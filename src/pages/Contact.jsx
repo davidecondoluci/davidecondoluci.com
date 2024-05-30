@@ -14,12 +14,23 @@ const Contact = () => {
             on davide.condoluci1@gmail.com
           </p>
           <div className="flex flex-col items-start w-full max-w-2xl">
-            <form className="w-full">
+            <form
+              className="w-full"
+              action="https://api.staticforms.xyz/submit"
+              method="post"
+            >
+              <input
+                type="hidden"
+                name="accessKey"
+                value="4e32a4ad-ff35-4d56-b95d-ea3129bad48c"
+              />
+              <input type="text" name="honeypot" className="hidden" />
               <div className="mb-6">
                 <input
                   className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="inline-full-name"
                   type="text"
+                  name="name"
                   placeholder="Full Name"
                 />
               </div>
@@ -28,6 +39,7 @@ const Contact = () => {
                   className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="inline-email"
                   type="email"
+                  name="email"
                   placeholder="Email"
                 />
               </div>
@@ -36,12 +48,14 @@ const Contact = () => {
                   className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 h-48"
                   id="inline-message"
                   placeholder="Message"
+                  name="message"
                 />
               </div>
               <div className="flex items-center mb-6">
                 <button
                   className="shadow bg-black hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                  type="button"
+                  type="submit"
+                  value="Submit"
                 >
                   Send
                 </button>
