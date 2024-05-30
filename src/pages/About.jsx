@@ -16,7 +16,7 @@ const About = () => {
             />
           </div>
         </div>
-        <div className="w-1/2 flex flex-col items-start justify-center pl-8 pr-32">
+        <div className="w-1/2 flex flex-col items-start justify-center pl-8 pr-32 text-[#212121]">
           <h1 className="text-6xl font-serif font-bold text-left mb-4">
             About
           </h1>
@@ -38,9 +38,9 @@ const About = () => {
           </p>
           <a
             href="download_link"
-            className="text-blue-500 hover:underline text-2xl font-sans font-regular text-left uppercase"
+            className="text-[#536DFE] hover:underline text-2xl font-sans font-regular text-left"
           >
-            ↓ My resume
+            ↓ My CV
           </a>
         </div>
       </div>

@@ -25,7 +25,7 @@ const Home = () => {
 
   return (
     <LayoutFixed>
-      <div className="flex flex-col items-center justify-center h-screen overflow-hidden text-center">
+      <div className="flex flex-col items-center justify-center h-screen overflow-hidden text-center text-[#212121]">
         <h3 className="text-4xl font-sans font-light mb-2">👋 Hi there, I’m</h3>
         <h1 className="text-8xl font-serif font-bold mb-2">Davide Condoluci</h1>
         <div className="flex justify-center items-center">

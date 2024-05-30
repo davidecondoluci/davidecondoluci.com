@@ -6,16 +6,16 @@ const Navbar = (props) => {
   const location = useLocation();
 
   const getLinkClass = (path) => {
-    let classes = "text-white hover:text-gray-400";
+    let classes = "text-white hover:text-[#C5CAE9]";
     if (location.pathname === path) {
-      classes += " underline";
+      classes += " underline text-[#C5CAE9]";
     }
     return classes;
   };
 
   return (
     <nav className={`flex justify-center pb-16 ${props.classes}`}>
-      <ul className="flex bg-gray-800 px-8 py-4 rounded-full space-x-8 items-center font-sans font-regular">
+      <ul className="flex bg-[#3F51B5] px-8 py-4 rounded-full space-x-8 items-center font-sans font-regular">
         <li>
           <Link to="/" className={getLinkClass("/")}>
             Home

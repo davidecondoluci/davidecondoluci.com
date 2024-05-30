@@ -6,14 +6,14 @@ import { FaGithub, FaLinkedin, FaInstagram, FaXTwitter } from "react-icons/fa6";
 const Contact = () => {
   return (
     <Layout>
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center text-[#212121]">
         <h1 className="text-6xl font-bold text-left font-serif">Contact</h1>
         <div className="w-full max-w-xl">
-          <p className="text-base text-center mb-8">
-            Get in touch or shoot me an email directly
-            on davide.condoluci1@gmail.com
+          <p className="text-base font-sans font-light text-center mb-4">
+            Get in touch or shoot me an email directly on
+            davide.condoluci1@gmail.com
           </p>
-          <div className="flex flex-col items-start w-full max-w-2xl">
+          <div className="flex flex-col items-start w-full max-w-2xl ">
             <form
               className="w-full"
               action="https://api.staticforms.xyz/submit"
@@ -27,7 +27,7 @@ const Contact = () => {
               <input type="text" name="honeypot" className="hidden" />
               <div className="mb-6">
                 <input
-                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                  className="bg-[#ebebeb] border-[#dbdbdb] focus:bg-white focus:border-[#536DFE] appearance-none border-2 rounded w-full py-2 px-4 leading-tight focus:outline-none font-sans font-light"
                   id="inline-full-name"
                   type="text"
                   name="name"
@@ -36,7 +36,7 @@ const Contact = () => {
               </div>
               <div className="mb-6">
                 <input
-                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                  className="bg-[#ebebeb] border-[#dbdbdb] focus:bg-white focus:border-[#536DFE] appearance-none border-2  rounded w-full py-2 px-4 leading-tight focus:outline-none font-sans font-light"
                   id="inline-email"
                   type="email"
                   name="email"
@@ -45,7 +45,7 @@ const Contact = () => {
               </div>
               <div className="mb-6">
                 <textarea
-                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 h-48"
+                  className="bg-[#ebebeb] border-[#dbdbdb] focus:bg-white focus:border-[#536DFE] appearance-none border-2 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none h-48 font-sans font-light"
                   id="inline-message"
                   placeholder="Message"
                   name="message"
@@ -53,7 +53,7 @@ const Contact = () => {
               </div>
               <div className="flex items-center mb-6">
                 <button
-                  className="shadow bg-black hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                  className="shadow bg-[#3F51B5] hover:bg-[#536DFE] focus:shadow-outline focus:outline-none text-white py-2 px-6 rounded font-sans font-bold"
                   type="submit"
                   value="Submit"
                 >
@@ -62,7 +62,9 @@ const Contact = () => {
               </div>
             </form>
             <div className="flex flex-row justify-start mt-6 w-full">
-              <h2 className="mr-4 text-left">Stay connected with me:</h2>
+              <h2 className="mr-4 font-sans font-light text-left">
+                Stay connected with me:
+              </h2>
               <div className="flex items-center space-x-4">
                 <a
                   href="https://github.com/davidecondoluci"
