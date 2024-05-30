@@ -13,8 +13,11 @@ const Contact = () => {
         >
           Contact
         </h1>
-        <div className="w-full max-w-xl" style={{ fontFamily: "Nunito-Light" }}>
-          <p className="text-base text-center mb-8">
+        <div className="w-full max-w-xl">
+          <p
+            className="text-base text-center mb-8"
+            style={{ fontFamily: "Nunito-Regular" }}
+          >
             Get in touch or shoot me an email directly
             on davide.condoluci1@gmail.com
           </p>
