@@ -1,10 +1,14 @@
 import React from "react";
+import "../App.css";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-center mt-12 fixed top-0 left-0 right-0 z-10">
-      <ul className="flex bg-gray-800 px-8 py-4 rounded-full space-x-8">
+    <nav
+      className="flex justify-center py-8 fixed top-0 left-0 right-0"
+      style={{ fontFamily: "Nunito-Regular" }}
+    >
+      <ul className="flex bg-gray-800 px-8 py-4 rounded-full space-x-8 items-center">
         <li>
           <Link to="/" className="text-white hover:text-gray-400">
             Home
