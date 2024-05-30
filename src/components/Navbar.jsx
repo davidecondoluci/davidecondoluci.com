@@ -1,31 +1,38 @@
 import React from "react";
 import "../App.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const location = useLocation();
+
+  const getLinkClass = (path) => {
+    let classes = "text-white hover:text-gray-400";
+    if (location.pathname === path) {
+      classes += " font-bold";
+    }
+    return classes;
+  };
+
   return (
-    <nav
-      className="flex justify-center py-8 fixed top-0 left-0 right-0"
-      style={{ fontFamily: "Nunito-Light" }}
-    >
-      <ul className="flex bg-gray-800 px-8 py-4 rounded-full space-x-8 items-center">
+    <nav className={`flex justify-center pb-8 ${props.classes}`}>
+      <ul className="flex bg-gray-800 px-8 py-4 rounded-full space-x-8 items-center font-sans font-regular">
         <li>
-          <Link to="/" className="text-white hover:text-gray-400">
+          <Link to="/" className={getLinkClass("/")}>
             Home
           </Link>
         </li>
         <li>
-          <Link to="/about" className="text-white hover:text-gray-400">
+          <Link to="/about" className={getLinkClass("/about")}>
             About
           </Link>
         </li>
         <li>
-          <Link to="/work" className="text-white hover:text-gray-400">
+          <Link to="/work" className={getLinkClass("/work")}>
             Work
           </Link>
         </li>
         <li>
-          <Link to="/contact" className="text-white hover:text-gray-400">
+          <Link to="/contact" className={getLinkClass("/contact")}>
             Contact
           </Link>
         </li>

@@ -6,18 +6,10 @@ import { FaGithub, FaLinkedin, FaInstagram, FaXTwitter } from "react-icons/fa6";
 const Contact = () => {
   return (
     <Layout>
-      <div className="flex flex-col items-center justify-center h-screen overflow-hidden">
-        <h1
-          className="text-6xl font-bold text-left"
-          style={{ fontFamily: "Melodrama-Bold" }}
-        >
-          Contact
-        </h1>
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-6xl font-bold text-left font-serif">Contact</h1>
         <div className="w-full max-w-xl">
-          <p
-            className="text-base text-center mb-8"
-            style={{ fontFamily: "Nunito-Regular" }}
-          >
+          <p className="text-base text-center mb-8">
             Get in touch or shoot me an email directly
             on davide.condoluci1@gmail.com
           </p>
