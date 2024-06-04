@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin, FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 const Contact = () => {
   return (
-    <div className="h-[80lvh] flex flex-col items-center overflow-hidden text-[#212121] px-32">
+    <div className="flex flex-col items-center overflow-hidden">
       <h1 className="text-6xl font-bold text-left font-serif">Contact</h1>
       <div className="w-full max-w-xl">
         <p className="text-base font-sans font-light text-center mb-4">
@@ -25,7 +25,7 @@ const Contact = () => {
             <input type="text" name="honeypot" className="hidden" />
             <div className="mb-6">
               <input
-                className="bg-[#ebebeb] border-[#dbdbdb] focus:bg-white focus:border-[#536DFE] appearance-none border-2 rounded w-full py-2 px-4 leading-tight focus:outline-none font-sans font-light"
+                className="appearance-none border-2 rounded w-full py-2 px-4 leading-tight focus:outline-none font-sans font-light"
                 id="inline-full-name"
                 type="text"
                 name="name"
@@ -34,7 +34,7 @@ const Contact = () => {
             </div>
             <div className="mb-6">
               <input
-                className="bg-[#ebebeb] border-[#dbdbdb] focus:bg-white focus:border-[#536DFE] appearance-none border-2  rounded w-full py-2 px-4 leading-tight focus:outline-none font-sans font-light"
+                className="appearance-none border-2  rounded w-full py-2 px-4 leading-tight focus:outline-none font-sans font-light"
                 id="inline-email"
                 type="email"
                 name="email"
@@ -43,7 +43,7 @@ const Contact = () => {
             </div>
             <div className="mb-6">
               <textarea
-                className="bg-[#ebebeb] border-[#dbdbdb] focus:bg-white focus:border-[#536DFE] appearance-none border-2 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none h-48 font-sans font-light"
+                className="appearance-none border-2 rounded w-full py-2 px-4 leading-tight focus:outline-none h-48 font-sans font-light"
                 id="inline-message"
                 placeholder="Message"
                 name="message"
@@ -51,7 +51,7 @@ const Contact = () => {
             </div>
             <div className="flex items-center mb-6">
               <button
-                className="shadow bg-[#3F51B5] hover:bg-[#536DFE] focus:shadow-outline focus:outline-none text-white py-2 px-6 rounded font-sans font-bold"
+                className="shadow bg-slate-400 focus:shadow-outline focus:outline-none py-2 px-6 rounded font-sans font-bold"
                 type="submit"
                 value="Submit"
               >

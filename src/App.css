@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  --cursor-color: #333;
+}
+
+html.dark-mode {
+  --cursor-color: #fff;
+}
+
 @font-face {
   font-family: "Melodrama";
   src: url("/fonts/Melodrama-Light.woff2") format("woff2"),
@@ -191,20 +199,4 @@
   font-weight: bold;
   font-style: italic;
   font-display: swap;
-}
-
-.fade-enter {
-  opacity: 0;
-}
-
-.fade-enter-active {
-  opacity: 1;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit-active {
-  opacity: 0;
 }

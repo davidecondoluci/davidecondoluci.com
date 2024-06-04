@@ -14,7 +14,7 @@ const Navbar = (props) => {
   };
 
   return (
-    <nav className={`flex justify-center py-12 ${props.classes}`}>
+    <nav className={`flex justify-center py-8 ${props.classes}`}>
       <ul className="flex bg-[#3F51B5] px-8 py-4 rounded-full space-x-8 items-center font-sans font-regular">
         <li>
           <Link to="/" className={getLinkClass("/")}>

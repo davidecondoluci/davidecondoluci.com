@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { motion, AnimatePresence } from "framer-motion";
 import "../App.css";
 
 const descriptions = [
-  "Front-end developer.",
+  "Sviluppatore front-end.",
   "Graphic Designer.",
-  "Energetic athlete.",
-  "Curious traveler.",
-  "Vintage lover.",
-  "Lego maniac.",
+  "Atleta energico.",
+  "Viaggiatore curioso.",
+  "Amante del vintage.",
+  "Maniaco dei Lego.",
 ];
 
 const Home = () => {
@@ -23,21 +23,22 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="h-[80lvh] flex flex-col items-center justify-center overflow-hidden text-center text-[#212121] px-32">
+    <div className="h-[85lvh] flex flex-col items-center justify-center overflow-hidden text-center text-[#212121]">
       <h3 className="text-4xl font-sans font-light mb-2">👋 Hi there, I’m</h3>
       <h1 className="text-8xl font-serif font-bold mb-2">Davide Condoluci</h1>
-      <div className="flex justify-center items-center">
-        <TransitionGroup component={null}>
-          <CSSTransition
-            key={descriptions[index]}
-            timeout={{ enter: 500, exit: 500 }}
-            classNames="fade"
+      <div className="relative flex justify-center items-center w-full h-10">
+        <AnimatePresence>
+          <motion.h2
+            key={index}
+            className="text-3xl font-sans font-regular absolute"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            <h2 className="text-3xl font-sans font-regular">
-              {descriptions[index]}
-            </h2>
-          </CSSTransition>
-        </TransitionGroup>
+            {descriptions[index]}
+          </motion.h2>
+        </AnimatePresence>
       </div>
     </div>
   );

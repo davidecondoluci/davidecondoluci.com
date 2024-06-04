@@ -4,10 +4,10 @@ import meImage from "../img/me.jpg";
 
 const About = () => {
   return (
-    <div className="h-[80lvh] flex flex-row items-start justify-center overflow-hidden text-[#212121] px-32">
-      <div className="w-1/2 flex pr-8">
-        <div className="overflow-hidden flex items-center justify-end">
-          <img src={meImage} alt="Me" className="container w-3/5 rounded-lg" />
+    <div className="flex flex-row items-start justify-center overflow-hidden text-[#212121]">
+      <div className="w-1/2 pr-8">
+        <div className="flex justify-end overflow-hidden">
+          <img src={meImage} alt="Me" className="container w-3/4 rounded-lg" />
         </div>
       </div>
       <div className="w-1/2 flex flex-col items-start justify-center pl-8">
