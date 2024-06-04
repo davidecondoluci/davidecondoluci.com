@@ -13,7 +13,7 @@ const App = () => {
     <div className="mx-auto w-4/5 bg-transparent">
       <AnimatedCursor
         innerSize={8}
-        outerSize={35}
+        outerSize={30}
         innerScale={1}
         outerScale={2}
         outerAlpha={0}

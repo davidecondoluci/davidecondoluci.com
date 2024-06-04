@@ -2,201 +2,302 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  --cursor-color: #333;
+:root {
+  --primary-color: #3b3b3b; /* Colore primario */
+  --secondary-color: #5ddc5b; /* Colore secondario */
+  --cursor-color: var(--primary-color); /* Colore del cursore predefinito */
 }
 
 html.dark-mode {
-  --cursor-color: #fff;
+  --primary-color: #fff; /* Colore primario in modalità scura */
 }
 
 @font-face {
-  font-family: "Melodrama";
-  src: url("/fonts/Melodrama-Light.woff2") format("woff2"),
-    url("/fonts/Melodrama-Light.woff") format("woff"),
-    url("/fonts/Melodrama-Light.ttf") format("truetype");
+  font-family: "Supreme";
+  src: url("./fonts/Supreme-Thin.woff2") format("woff2"),
+    url("./fonts/Supreme-Thin.woff") format("woff"),
+    url("./fonts/Supreme-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./fonts/Supreme-ThinItalic.woff2") format("woff2"),
+    url("./fonts/Supreme-ThinItalic.woff") format("woff"),
+    url("./fonts/Supreme-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./fonts/Supreme-Extralight.woff2") format("woff2"),
+    url("./fonts/Supreme-Extralight.woff") format("woff"),
+    url("./fonts/Supreme-Extralight.ttf") format("truetype");
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./fonts/Supreme-ExtralightItalic.woff2") format("woff2"),
+    url("./fonts/Supreme-ExtralightItalic.woff") format("woff"),
+    url("./fonts/Supreme-ExtralightItalic.ttf") format("truetype");
+  font-weight: 200;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./fonts/Supreme-Light.woff2") format("woff2"),
+    url("./fonts/Supreme-Light.woff") format("woff"),
+    url("./fonts/Supreme-Light.ttf") format("truetype");
   font-weight: 300;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: "Melodrama";
-  src: url("/fonts/Melodrama-Regular.woff2") format("woff2"),
-    url("/fonts/Melodrama-Regular.woff") format("woff"),
-    url("/fonts/Melodrama-Regular.ttf") format("truetype");
+  font-family: "Supreme";
+  src: url("./fonts/Supreme-LightItalic.woff2") format("woff2"),
+    url("./fonts/Supreme-LightItalic.woff") format("woff"),
+    url("./fonts/Supreme-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./fonts/Supreme-Regular.woff2") format("woff2"),
+    url("./fonts/Supreme-Regular.woff") format("woff"),
+    url("./fonts/Supreme-Regular.ttf") format("truetype");
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: "Melodrama";
-  src: url("/fonts/Melodrama-Medium.woff2") format("woff2"),
-    url("/fonts/Melodrama-Medium.woff") format("woff"),
-    url("/fonts/Melodrama-Medium.ttf") format("truetype");
+  font-family: "Supreme";
+  src: url("./fonts/Supreme-Italic.woff2") format("woff2"),
+    url("./fonts/Supreme-Italic.woff") format("woff"),
+    url("./fonts/Supreme-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./fonts/Supreme-Medium.woff2") format("woff2"),
+    url("./fonts/Supreme-Medium.woff") format("woff"),
+    url("./fonts/Supreme-Medium.ttf") format("truetype");
   font-weight: 500;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: "Melodrama";
-  src: url("/fonts/Melodrama-Semibold.woff2") format("woff2"),
-    url("/fonts/Melodrama-Semibold.woff") format("woff"),
-    url("/fonts/Melodrama-Semibold.ttf") format("truetype");
-  font-weight: 600;
+  font-family: "Supreme";
+  src: url("./fonts/Supreme-MediumItalic.woff2") format("woff2"),
+    url("./fonts/Supreme-MediumItalic.woff") format("woff"),
+    url("./fonts/Supreme-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
   font-display: swap;
-  font-style: normal;
+  font-style: italic;
 }
 @font-face {
-  font-family: "Melodrama";
-  src: url("/fonts/Melodrama-Bold.woff2") format("woff2"),
-    url("/fonts/Melodrama-Bold.woff") format("woff"),
-    url("/fonts/Melodrama-Bold.ttf") format("truetype");
+  font-family: "Supreme";
+  src: url("./fonts/Supreme-Bold.woff2") format("woff2"),
+    url("./fonts/Supreme-Bold.woff") format("woff"),
+    url("./fonts/Supreme-Bold.ttf") format("truetype");
   font-weight: 700;
   font-display: swap;
   font-style: normal;
 }
-
-/**Text**/
 @font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-ExtraBold.woff2") format("woff2"),
-    url("/fonts/Nunito-ExtraBold.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
+  font-family: "Supreme";
+  src: url("./fonts/Supreme-BoldItalic.woff2") format("woff2"),
+    url("./fonts/Supreme-BoldItalic.woff") format("woff"),
+    url("./fonts/Supreme-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
   font-display: swap;
-}
-
-@font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-MediumItalic.woff2") format("woff2"),
-    url("/fonts/Nunito-MediumItalic.woff") format("woff");
-  font-weight: 500;
   font-style: italic;
-  font-display: swap;
 }
-
 @font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-Black.woff2") format("woff2"),
-    url("/fonts/Nunito-Black.woff") format("woff");
-  font-weight: 900;
+  font-family: "Supreme";
+  src: url("./fonts/Supreme-Extrabold.woff2") format("woff2"),
+    url("./fonts/Supreme-Extrabold.woff") format("woff"),
+    url("./fonts/Supreme-Extrabold.ttf") format("truetype");
+  font-weight: 800;
+  font-display: swap;
   font-style: normal;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./fonts/Supreme-ExtraboldItalic.woff2") format("woff2"),
+    url("./fonts/Supreme-ExtraboldItalic.woff") format("woff"),
+    url("./fonts/Supreme-ExtraboldItalic.ttf") format("truetype");
+  font-weight: 800;
   font-display: swap;
+  font-style: italic;
 }
 
 @font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-Medium.woff2") format("woff2"),
-    url("/fonts/Nunito-Medium.woff") format("woff");
-  font-weight: 500;
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-Thin.woff2") format("woff2"),
+    url("./fonts/Poppins-Thin.woff") format("woff"),
+    url("./fonts/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-display: swap;
   font-style: normal;
-  font-display: swap;
 }
-
 @font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-Light.woff2") format("woff2"),
-    url("/fonts/Nunito-Light.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-ThinItalic.woff2") format("woff2"),
+    url("./fonts/Poppins-ThinItalic.woff") format("woff"),
+    url("./fonts/Poppins-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
   font-display: swap;
+  font-style: italic;
 }
-
 @font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-ExtraLight.woff2") format("woff2"),
-    url("/fonts/Nunito-ExtraLight.woff") format("woff");
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-ExtraLight.woff2") format("woff2"),
+    url("./fonts/Poppins-ExtraLight.woff") format("woff"),
+    url("./fonts/Poppins-ExtraLight.ttf") format("truetype");
   font-weight: 200;
+  font-display: swap;
   font-style: normal;
-  font-display: swap;
 }
-
 @font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-SemiBoldItalic.woff2") format("woff2"),
-    url("/fonts/Nunito-SemiBoldItalic.woff") format("woff");
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-Italic.woff2") format("woff2"),
-    url("/fonts/Nunito-Italic.woff") format("woff");
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-SemiBold.woff2") format("woff2"),
-    url("/fonts/Nunito-SemiBold.woff") format("woff");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-Regular.woff2") format("woff2"),
-    url("/fonts/Nunito-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-BoldItalic.woff2") format("woff2"),
-    url("/fonts/Nunito-BoldItalic.woff") format("woff");
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-LightItalic.woff2") format("woff2"),
-    url("/fonts/Nunito-LightItalic.woff") format("woff");
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-BlackItalic.woff2") format("woff2"),
-    url("/fonts/Nunito-BlackItalic.woff") format("woff");
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-Bold.woff2") format("woff2"),
-    url("/fonts/Nunito-Bold.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-ExtraLightItalic.woff2") format("woff2"),
-    url("/fonts/Nunito-ExtraLightItalic.woff") format("woff");
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-ExtraLightItalic.woff2") format("woff2"),
+    url("./fonts/Poppins-ExtraLightItalic.woff") format("woff"),
+    url("./fonts/Poppins-ExtraLightItalic.ttf") format("truetype");
   font-weight: 200;
-  font-style: italic;
   font-display: swap;
+  font-style: italic;
 }
-
 @font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-ExtraBoldItalic.woff2") format("woff2"),
-    url("/fonts/Nunito-ExtraBoldItalic.woff") format("woff");
-  font-weight: bold;
-  font-style: italic;
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-Light.woff2") format("woff2"),
+    url("./fonts/Poppins-Light.woff") format("woff"),
+    url("./fonts/Poppins-Light.ttf") format("truetype");
+  font-weight: 300;
   font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-LightItalic.woff2") format("woff2"),
+    url("./fonts/Poppins-LightItalic.woff") format("woff"),
+    url("./fonts/Poppins-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-Regular.woff2") format("woff2"),
+    url("./fonts/Poppins-Regular.woff") format("woff"),
+    url("./fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-Italic.woff2") format("woff2"),
+    url("./fonts/Poppins-Italic.woff") format("woff"),
+    url("./fonts/Poppins-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-Medium.woff2") format("woff2"),
+    url("./fonts/Poppins-Medium.woff") format("woff"),
+    url("./fonts/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-MediumItalic.woff2") format("woff2"),
+    url("./fonts/Poppins-MediumItalic.woff") format("woff"),
+    url("./fonts/Poppins-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-SemiBold.woff2") format("woff2"),
+    url("./fonts/Poppins-SemiBold.woff") format("woff"),
+    url("./fonts/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-SemiBoldItalic.woff2") format("woff2"),
+    url("./fonts/Poppins-SemiBoldItalic.woff") format("woff"),
+    url("./fonts/Poppins-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-Bold.woff2") format("woff2"),
+    url("./fonts/Poppins-Bold.woff") format("woff"),
+    url("./fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-BoldItalic.woff2") format("woff2"),
+    url("./fonts/Poppins-BoldItalic.woff") format("woff"),
+    url("./fonts/Poppins-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-ExtraBold.woff2") format("woff2"),
+    url("./fonts/Poppins-ExtraBold.woff") format("woff"),
+    url("./fonts/Poppins-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-ExtraBoldItalic.woff2") format("woff2"),
+    url("./fonts/Poppins-ExtraBoldItalic.woff") format("woff"),
+    url("./fonts/Poppins-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-Black.woff2") format("woff2"),
+    url("./fonts/Poppins-Black.woff") format("woff"),
+    url("./fonts/Poppins-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-BlackItalic.woff2") format("woff2"),
+    url("./fonts/Poppins-BlackItalic.woff") format("woff"),
+    url("./fonts/Poppins-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-display: swap;
+  font-style: italic;
 }

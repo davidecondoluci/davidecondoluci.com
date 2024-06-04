@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import { FaGithub, FaLinkedin, FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const { name, email, message } = formData;
+    setIsFormValid(
+      name.trim() !== "" && email.trim() !== "" && message.trim() !== ""
+    );
+  }, [formData]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
   return (
-    <div className="flex flex-col items-center overflow-hidden">
+    <div className="flex flex-col justify-center items-center py-16">
       <h1 className="text-6xl font-bold text-left font-serif">Contact</h1>
       <div className="w-full max-w-xl">
         <p className="text-base font-sans font-light text-center mb-4">
@@ -30,6 +53,8 @@ const Contact = () => {
                 type="text"
                 name="name"
                 placeholder="Full Name"
+                value={formData.name}
+                onChange={handleChange}
               />
             </div>
             <div className="mb-6">
@@ -39,6 +64,8 @@ const Contact = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
               />
             </div>
             <div className="mb-6">
@@ -47,6 +74,8 @@ const Contact = () => {
                 id="inline-message"
                 placeholder="Message"
                 name="message"
+                value={formData.message}
+                onChange={handleChange}
               />
             </div>
             <div className="flex items-center mb-6">
@@ -54,6 +83,7 @@ const Contact = () => {
                 className="shadow bg-slate-400 focus:shadow-outline focus:outline-none py-2 px-6 rounded font-sans font-bold"
                 type="submit"
                 value="Submit"
+                disabled={!isFormValid}
               >
                 Send
               </button>

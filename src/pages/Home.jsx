@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import descriptionsData from "../data/descriptions.json"; // Importa il file JSON
 import "../App.css";
-
-const descriptions = [
-  "Sviluppatore front-end.",
-  "Graphic Designer.",
-  "Atleta energico.",
-  "Viaggiatore curioso.",
-  "Amante del vintage.",
-  "Maniaco dei Lego.",
-];
 
 const Home = () => {
   const [index, setIndex] = useState(0);
+  const descriptions = descriptionsData; // Assegna le descrizioni dal file JSON
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -23,14 +16,14 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="h-[85lvh] flex flex-col items-center justify-center overflow-hidden text-center text-[#212121]">
+    <div className="h-[85lvh] flex flex-col justify-center items-center overflow-hidden text-center">
       <h3 className="text-4xl font-sans font-light mb-2">👋 Hi there, I’m</h3>
       <h1 className="text-8xl font-serif font-bold mb-2">Davide Condoluci</h1>
-      <div className="relative flex justify-center items-center w-full h-10">
+      <div className="flex justify-center items-center w-full h-10">
         <AnimatePresence>
           <motion.h2
             key={index}
-            className="text-3xl font-sans font-regular absolute"
+            className="text-3xl font-sans font-light absolute"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

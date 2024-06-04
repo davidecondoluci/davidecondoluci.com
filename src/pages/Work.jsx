@@ -15,7 +15,7 @@ const Work = () => {
   };
 
   return (
-    <div className="flex flex-col items-center overflow-hidden">
+    <div className="flex flex-col justify-center items-center py-16">
       <div className="h1/3 flex flex-col justify-between items-center">
         <h1 className="text-6xl font-serif font-bold">Work</h1>
         <p className="text-base font-sans font-light text-center w-1/2">

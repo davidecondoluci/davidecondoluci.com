@@ -1,0 +1,59 @@
+[
+  {
+    "name": "HTML5",
+    "color": "#E44D26"
+  },
+  {
+    "name": "CSS3",
+    "color": "#1572B6"
+  },
+  {
+    "name": "SASS",
+    "color": "#CC6699"
+  },
+  {
+    "name": "Javascript",
+    "color": "#F7DF1E"
+  },
+  {
+    "name": "React",
+    "color": "#61DAFB"
+  },
+  {
+    "name": "Vite",
+    "color": "#646CFF"
+  },
+  {
+    "name": "WordPress",
+    "color": "#21759B"
+  },
+  {
+    "name": "Bootstrap",
+    "color": "#7952B3"
+  },
+  {
+    "name": "Tailwind",
+    "color": "#38B2AC"
+  },
+  {
+    "name": "Codepen",
+    "color": "#000000"
+  },
+  {
+    "name": "VSCode",
+    "color": "#007ACC"
+  },
+  {
+    "name": "Figma",
+    "color": "#F24E1E"
+  },
+  {
+    "name": "Illustrator",
+    "color": "#FF9A00"
+  },
+  {
+    "name": "Photoshop",
+    "color": "#31A8FF"
+  }
+]
+

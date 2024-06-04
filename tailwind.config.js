@@ -5,8 +5,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Nunito"', ...defaultTheme.fontFamily.sans],
-        serif: ['"Melodrama"', ...defaultTheme.fontFamily.serif],
+        sans: ['"Poppins"', ...defaultTheme.fontFamily.sans],
+        serif: ['"Supreme"', ...defaultTheme.fontFamily.serif],
       },
     },
   },
