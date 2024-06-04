@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import LayoutFixed from "../components/LayoutFixed";
 import "../App.css";
 
 const descriptions = [
@@ -24,25 +23,23 @@ const Home = () => {
   }, []);
 
   return (
-    <LayoutFixed>
-      <div className="flex flex-col items-center justify-center h-screen overflow-hidden text-center text-[#212121]">
-        <h3 className="text-4xl font-sans font-light mb-2">👋 Hi there, I’m</h3>
-        <h1 className="text-8xl font-serif font-bold mb-2">Davide Condoluci</h1>
-        <div className="flex justify-center items-center">
-          <TransitionGroup component={null}>
-            <CSSTransition
-              key={descriptions[index]}
-              timeout={{ enter: 500, exit: 500 }}
-              classNames="fade"
-            >
-              <h2 className="text-3xl font-sans font-regular absolute mt-8">
-                {descriptions[index]}
-              </h2>
-            </CSSTransition>
-          </TransitionGroup>
-        </div>
+    <div className="h-[80lvh] flex flex-col items-center justify-center overflow-hidden text-center text-[#212121] px-32">
+      <h3 className="text-4xl font-sans font-light mb-2">👋 Hi there, I’m</h3>
+      <h1 className="text-8xl font-serif font-bold mb-2">Davide Condoluci</h1>
+      <div className="flex justify-center items-center">
+        <TransitionGroup component={null}>
+          <CSSTransition
+            key={descriptions[index]}
+            timeout={{ enter: 500, exit: 500 }}
+            classNames="fade"
+          >
+            <h2 className="text-3xl font-sans font-regular">
+              {descriptions[index]}
+            </h2>
+          </CSSTransition>
+        </TransitionGroup>
       </div>
-    </LayoutFixed>
+    </div>
   );
 };
 
