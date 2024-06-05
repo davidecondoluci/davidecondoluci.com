@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import meImage from "../img/me.jpg";
+import meImage from "/public/img/me.jpg";
 import skillsData from "../data/skills.json";
 import "../App.css";
 
@@ -102,7 +102,7 @@ const About = () => {
           </div>
         </div>
         <a href="">
-          <button className="bg-black text-white px-8 py-2 rounded-full flex justify-center items-center w-fit text-base font-sans font-regular">
+          <button className="w-fit bg-black text-white px-8 py-2 rounded-full flex justify-center items-center text-base font-sans font-regular">
             My CV
           </button>
         </a>

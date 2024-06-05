@@ -1,35 +1,50 @@
 [
-    {
-      "title": "Quiz Royale",
-      "subtitle": "Web Developement - 2024"
-    },
-    {
-      "title": "Petit",
-      "subtitle": "UI/UX Design - 2024"
-    },
-    {
-      "title": "FilmFlix",
-      "subtitle": "Web Developement - 2024"
-    },
-    {
-      "title": "Durud",
-      "subtitle": "Web Developement - 2024"
-    },
-    {
-      "title": "Aiko",
-      "subtitle": "Branding - 2024"
-    },
-    {
-      "title": "Champagne League",
-      "subtitle": "Branding - 2024"
-    },
-    {
-      "title": "Visionartech",
-      "subtitle": "Branding - 2024"
-    },
-    {
-      "title": "Ho preso er muro fratellì",
-      "subtitle": "Web Developement - 2022"
-    }
+  {
+    "title": "Quiz Royale",
+    "category": ["Web Development - 2024"],
+    "image": "/img/quiz_royale.jpg",
+    "description": "A multiplayer quiz game platform where users can challenge their friends and test their knowledge on various topics."
+  },
+  {
+    "title": "Petit",
+    "category": ["UI/UX Design - 2024"],
+    "image": "/img/petit.jpg",
+    "description": "A mobile app for managing personal finances, providing users with intuitive interfaces and insightful analytics."
+  },
+  {
+    "title": "FilmFlix",
+    "category": ["Web Development - 2024"],
+    "image": "/img/filmflix.jpg",
+    "description": "An online platform for streaming movies and TV shows, offering a vast library of content for subscribers."
+  },
+  {
+    "title": "Durud",
+    "category": ["Web Development - 2024"],
+    "image": "/img/durud.jpg",
+    "description": "An e-commerce website specializing in selling durable outdoor gear and equipment for adventure enthusiasts."
+  },
+  {
+    "title": "Aiko",
+    "category": ["Branding - 2024"],
+    "image": "/img/aiko.jpg",
+    "description": "A comprehensive branding project for a fashion label, including logo design, brand identity, and marketing collateral."
+  },
+  {
+    "title": "Champagne League",
+    "category": ["Branding - 2024"],
+    "image": "/img/champagne_league.jpg",
+    "description": "A branding campaign for a luxury sports league, focusing on elegance, sophistication, and exclusivity."
+  },
+  {
+    "title": "Visionartech",
+    "category": ["Branding - 2024"],
+    "image": "/img/visionartech.jpg",
+    "description": "A branding initiative for a technology company, emphasizing innovation, vision, and cutting-edge solutions."
+  },
+  {
+    "title": "Sustainable Ocean Movement",
+    "category": ["Web Development", "Branding"],
+    "image": "/img/som.jpg",
+    "description": "A website for an Italian restaurant, showcasing their menu, location, and ambiance to attract customers."
+  }
 ]
-  
