@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import descriptionsData from "../data/descriptions.json"; // Importa il file JSON
+import descriptionsData from "../data/descriptions.json";
 import "../App.css";
 
 const Home = () => {
   const [index, setIndex] = useState(0);
-  const descriptions = descriptionsData; // Assegna le descrizioni dal file JSON
+  const descriptions = descriptionsData;
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % descriptions.length);
-    }, 2000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);

@@ -1,31 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../App.css";
 import { FaGithub, FaLinkedin, FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const [isFormValid, setIsFormValid] = useState(false);
-
-  useEffect(() => {
-    const { name, email, message } = formData;
-    setIsFormValid(
-      name.trim() !== "" && email.trim() !== "" && message.trim() !== ""
-    );
-  }, [formData]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
   return (
     <div className="flex flex-col justify-center items-center py-16">
       <h1 className="text-6xl font-bold text-left font-serif">Contact</h1>
@@ -48,46 +25,36 @@ const Contact = () => {
             <input type="text" name="honeypot" className="hidden" />
             <div className="mb-6">
               <input
-                className="appearance-none border-2 rounded w-full py-2 px-4 leading-tight focus:outline-none font-sans font-light"
+                className="appearance-none border rounded w-full py-2 px-4 leading-tight focus:outline-none font-sans font-light border-lightgray focus:border-green bg-white hover:bg-white"
                 id="inline-full-name"
                 type="text"
                 name="name"
                 placeholder="Full Name"
-                value={formData.name}
-                onChange={handleChange}
               />
             </div>
             <div className="mb-6">
               <input
-                className="appearance-none border-2  rounded w-full py-2 px-4 leading-tight focus:outline-none font-sans font-light"
+                className="appearance-none border rounded w-full py-2 px-4 leading-tight focus:outline-none font-sans font-light border-lightgray focus:border-green bg-white hover:bg-white"
                 id="inline-email"
                 type="email"
                 name="email"
                 placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
               />
             </div>
             <div className="mb-6">
               <textarea
-                className="appearance-none border-2 rounded w-full py-2 px-4 leading-tight focus:outline-none h-48 font-sans font-light"
+                className="appearance-none border rounded w-full h-48 py-2 px-4 leading-tight focus:outline-none font-sans font-light border-lightgray focus:border-green bg-white hover:bg-white"
                 id="inline-message"
                 placeholder="Message"
                 name="message"
-                value={formData.message}
-                onChange={handleChange}
               />
             </div>
-            <div className="flex items-center mb-6">
-              <button
-                className="shadow bg-slate-400 focus:shadow-outline focus:outline-none py-2 px-6 rounded font-sans font-bold"
-                type="submit"
-                value="Submit"
-                disabled={!isFormValid}
-              >
-                Send
-              </button>
-            </div>
+            <button
+              className={`shadow bg-gray hover:bg-green text-white focus:shadow-outline focus:outline-none py-2 px-6 rounded font-sans font-medium`}
+              type="submit"
+            >
+              Send
+            </button>
           </form>
           <div className="flex flex-row justify-start mt-6 w-full">
             <h2 className="mr-4 font-sans font-light text-left">

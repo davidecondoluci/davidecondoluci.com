@@ -6,9 +6,9 @@ const Navbar = (props) => {
   const location = useLocation();
 
   const getLinkClass = (path) => {
-    let classes = "text-[#3B3B3B] hover:text-[#5DDC5B]";
+    let classes = "text-gray hover:text-green";
     if (location.pathname === path) {
-      classes += " underline text-[#5DDC5B]";
+      classes += " underline text-green";
     }
     return classes;
   };

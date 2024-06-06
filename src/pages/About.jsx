@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import meImage from "/public/img/me.jpg";
 import skillsData from "../data/skills.json";
 import "../App.css";
 
@@ -68,7 +67,23 @@ const About = () => {
         </div>
         <div className="space-y-4">
           <h2 className="text-4xl font-serif font-bold text-left">Education</h2>
-          <div className="border-b border-gray-300 pb-4">
+          <div className="border-b border-gray pb-4 space-y-2">
+            <h3 className="text-2xl font-serif font-bold">
+              Web Application & Apps
+            </h3>
+            <div className="flex flex-row justify-between">
+              <p className="text-base font-sans font-light">Scuola Mohole</p>
+              <span className="text-base font-sans font-light">2023-2024</span>
+            </div>
+            <a
+              href="https://scuola.mohole.it/"
+              target="_blank"
+              className="text-base font-sans font-light text-green hover:underline"
+            >
+              scuola.mohole.it
+            </a>
+          </div>
+          <div className="space-y-2">
             <h3 className="text-2xl font-serif font-bold mb-2">
               Graphic Design
             </h3>
@@ -80,35 +95,25 @@ const About = () => {
             </div>
             <a
               href="https://www.startingwork.it/"
-              className="text-base font-sans font-light text-[#5DDC5B] hover:underline"
+              target="_blank"
+              className="text-base font-sans font-light text-green hover:underline"
             >
               www.startingwork.it
             </a>
           </div>
-          <div className="space-y-4">
-            <h3 className="text-2xl font-serif font-bold">
-              Web Application & Apps
-            </h3>
-            <div className="flex flex-row justify-between">
-              <p className="text-base font-sans font-light">Scuola Mohole</p>
-              <span className="text-base font-sans font-light">2023-2024</span>
-            </div>
-            <a
-              href="https://scuola.mohole.it/"
-              className="text-base font-sans font-light text-[#5DDC5B] hover:underline"
-            >
-              scuola.mohole.it
-            </a>
-          </div>
         </div>
         <a href="">
-          <button className="w-fit bg-black text-white px-8 py-2 rounded-full flex justify-center items-center text-base font-sans font-regular">
+          <button className="w-fit bg-gray text-white px-8 py-2 rounded-full flex justify-center items-center text-base font-sans font-regular">
             My CV
           </button>
         </a>
       </div>
       <div className="w-1/2 flex justify-end items-start">
-        <img src={meImage} alt="Me" className="container w-3/4 rounded-lg" />
+        <img
+          src="/img/me.jpg"
+          alt="Me"
+          className="container w-3/4 rounded-lg"
+        />
       </div>
     </div>
   );
