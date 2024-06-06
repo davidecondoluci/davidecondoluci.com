@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary-color: #3b3b3b; /* Colore primario */
-  --secondary-color: #5ddc5b; /* Colore secondario */
-  --cursor-color: var(--primary-color); /* Colore del cursore predefinito */
-}
-
-html.dark-mode {
-  --primary-color: #fff; /* Colore primario in modalità scura */
-}
-
 @font-face {
   font-family: "Supreme";
   src: url("./fonts/Supreme-Thin.woff2") format("woff2"),
