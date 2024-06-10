@@ -22,11 +22,11 @@ const About = () => {
   };
 
   return (
-    <div className="flex flex-row py-16">
-      <div className="w-1/2 flex flex-col space-y-8">
+    <div className="flex flex-col md:flex-row lg:flex-row px-4 py-16">
+      <div className="w-full md:w-1/2 lg:w-1/2 flex flex-col space-y-8">
         <h1 className="text-6xl font-serif font-bold text-left">About</h1>
         <div className="space-y-4">
-          <p className="text-base font-sans font-light text-left">
+          <p className="text-base font-sans font-light text-left leading-loose">
             Ciao, I'm <span className="font-medium">Davide Condoluci</span> and
             I recently completed the Web Application & Apps course at Scuola
             Mohole, where I gained solid skills as a frontend developer and
@@ -34,7 +34,7 @@ const About = () => {
             thinking. Precision is one of my strengths, which I apply to every
             project.
           </p>
-          <p className="text-base font-sans font-light text-left">
+          <p className="text-base font-sans font-light text-left leading-loose">
             My passions range from sports, like soccer, gym, and running, to
             fashion, technology, and collecting. I also love traveling and
             discovering new cultures, which inspire and enrich my creativity.
@@ -67,11 +67,12 @@ const About = () => {
         </div>
         <div className="space-y-4">
           <h2 className="text-4xl font-serif font-bold text-left">Education</h2>
+
           <div className="border-b border-gray pb-4 space-y-2">
             <h3 className="text-2xl font-serif font-bold">
               Web Application & Apps
             </h3>
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-col space-y-2">
               <p className="text-base font-sans font-light">Scuola Mohole</p>
               <span className="text-base font-sans font-light">2023-2024</span>
             </div>
@@ -83,11 +84,10 @@ const About = () => {
               scuola.mohole.it
             </a>
           </div>
+
           <div className="space-y-2">
-            <h3 className="text-2xl font-serif font-bold mb-2">
-              Graphic Design
-            </h3>
-            <div className="flex flex-row justify-between">
+            <h3 className="text-2xl font-serif font-bold">Graphic Design</h3>
+            <div className="flex flex-col space-y-2">
               <p className="text-base font-sans font-light">
                 Istituto Superiore Starting Work
               </p>
@@ -102,17 +102,17 @@ const About = () => {
             </a>
           </div>
         </div>
-        <a href="">
-          <button className="w-fit bg-gray text-white px-8 py-2 rounded-full flex justify-center items-center text-base font-sans font-regular">
+        <a href="/path/al/tuo/file.pdf" download="nome_del_tuo_file.pdf">
+          <button className="w-fit bg-gray text-white px-8 py-2 rounded-full flex justify-center items-center text-base font-sans font-regular hover:bg-green transition-colors duration-300">
             My CV
           </button>
         </a>
       </div>
-      <div className="w-1/2 flex justify-end items-start">
+      <div className="w-full hidden md:w-1/2 lg:w-1/2 md:justify-end lg:justify-end mt-12 md:m-0 lg:m-0 items-start">
         <img
           src="/img/me.jpg"
           alt="Me"
-          className="container w-3/4 rounded-lg"
+          className="container md:w-3/4 lg:w-3/4 rounded-lg"
         />
       </div>
     </div>

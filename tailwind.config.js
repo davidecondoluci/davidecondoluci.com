@@ -16,6 +16,7 @@ export default {
         lightgreen: "#F8FFF8",
         white: "#ffffff",
         black: "#000000",
+        black50: "#00000075",
         red: "#FF396F",
       },
     },

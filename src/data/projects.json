@@ -1,50 +1,80 @@
 [
   {
     "title": "Quiz Royale",
-    "category": ["Web Development - 2024"],
     "image": "/img/quiz_royale.jpg",
-    "description": "A multiplayer quiz game platform where users can challenge their friends and test their knowledge on various topics."
+    "description": "A multiplayer quiz game platform where users can challenge their friends and test their knowledge on various topics.",
+    "programs": [
+      "HTML",
+      "Tailwind CSS",
+      "Alpine.js"
+    ]
   },
   {
     "title": "Petit",
-    "category": ["UI/UX Design - 2024"],
     "image": "/img/petit.jpg",
-    "description": "A mobile app for managing personal finances, providing users with intuitive interfaces and insightful analytics."
+    "description": "A mobile app for managing personal finances, providing users with intuitive interfaces and insightful analytics.",
+    "programs": [
+      "Figma"
+    ]
   },
   {
     "title": "FilmFlix",
-    "category": ["Web Development - 2024"],
     "image": "/img/filmflix.jpg",
-    "description": "An online platform for streaming movies and TV shows, offering a vast library of content for subscribers."
+    "description": "An online platform for streaming movies and TV shows, offering a vast library of content for subscribers.",
+    "programs": [
+      "React",
+      "Tailwind CSS",
+      "Framer Motion"
+    ]
   },
   {
     "title": "Durud",
-    "category": ["Web Development - 2024"],
     "image": "/img/durud.jpg",
-    "description": "An e-commerce website specializing in selling durable outdoor gear and equipment for adventure enthusiasts."
+    "description": "An e-commerce website specializing in selling durable outdoor gear and equipment for adventure enthusiasts.",
+    "programs": [
+      "Figma",
+      "HTML",
+      "SCSS",
+      "Wordpress",
+      "Timber"
+    ]
   },
   {
     "title": "Aiko",
-    "category": ["Branding - 2024"],
     "image": "/img/aiko.jpg",
-    "description": "A comprehensive branding project for a fashion label, including logo design, brand identity, and marketing collateral."
+    "description": "A comprehensive branding project for a fashion label, including logo design, brand identity, and marketing collateral.",
+    "programs": [
+      "Figma",
+      "Illustrator",
+      "Blender"
+    ]
   },
   {
     "title": "Champagne League",
-    "category": ["Branding - 2024"],
     "image": "/img/champagne_league.jpg",
-    "description": "A branding campaign for a luxury sports league, focusing on elegance, sophistication, and exclusivity."
+    "description": "A branding campaign for a luxury sports league, focusing on elegance, sophistication, and exclusivity.",
+    "programs": [
+      "Illustrator",
+      "Figma"
+    ]
   },
   {
     "title": "Visionartech",
-    "category": ["Branding - 2024"],
     "image": "/img/visionartech.jpg",
-    "description": "A branding initiative for a technology company, emphasizing innovation, vision, and cutting-edge solutions."
+    "description": "A branding initiative for a technology company, emphasizing innovation, vision, and cutting-edge solutions.",
+    "programs": [
+      "Illustrator"
+    ]
   },
   {
     "title": "Sustainable Ocean Movement",
-    "category": ["Web Development", "Branding"],
     "image": "/img/som.jpg",
-    "description": "A website for an Italian restaurant, showcasing their menu, location, and ambiance to attract customers."
+    "description": "A website for an Italian restaurant, showcasing their menu, location, and ambiance to attract customers.",
+    "programs": [
+      "Illustrator",
+      "HTML",
+      "CSS",
+      "Wordpress"
+    ]
   }
 ]
