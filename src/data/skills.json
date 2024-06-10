@@ -1,55 +1,66 @@
 [
   {
     "name": "HTML5",
-    "color": "#E44D26"
+    "color": "#e44d26"
   },
   {
     "name": "CSS3",
-    "color": "#1572B6"
+    "color": "#1572b6"
   },
   {
     "name": "SASS",
-    "color": "#CC6699"
+    "color": "#cb6699"
   },
   {
     "name": "Javascript",
-    "color": "#F7DF1E"
+    "color": "#f0db4f"
+  },
+  {
+    "name": "Alpine.js",
+    "color": "#2d3441"
   },
   {
     "name": "React",
-    "color": "#61DAFB"
+    "color": "#61dafb"
+  },
+  {
+    "name": "Framer Motion",
+    "color": "#000000"
+  },
+  {
+    "name": "Gsap",
+    "color": "#0ae448"
   },
   {
     "name": "Vite",
-    "color": "#646CFF"
+    "color": "#646cff"
   },
   {
     "name": "WordPress",
-    "color": "#21759B"
+    "color": "#3279a1"
   },
   {
     "name": "Bootstrap",
-    "color": "#7952B3"
+    "color": "#7952b3"
   },
   {
     "name": "Tailwind",
-    "color": "#38B2AC"
+    "color": "#38bdf8"
   },
   {
     "name": "VSCode",
-    "color": "#007ACC"
+    "color": "#0877b9"
   },
   {
     "name": "Figma",
-    "color": "#F24E1E"
+    "color": "#f24e1e"
   },
   {
     "name": "Illustrator",
-    "color": "#FF9A00"
+    "color": "#ff9a00"
   },
   {
     "name": "Photoshop",
-    "color": "#31A8FF"
+    "color": "#31a8ff"
   }
 ]
-

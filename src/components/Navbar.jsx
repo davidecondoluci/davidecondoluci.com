@@ -14,7 +14,7 @@ const Navbar = (props) => {
   };
 
   return (
-    <nav className="flex flex-row h-[15lvh] w-full p-4 sticky top-0 right-0 left-0 z-10 justify-between items-center bg-white">
+    <nav className="md:w-4/5 lg:w-4/5 md:mx-auto lg:mx-auto flex flex-row w-full px-4 py-8 sticky top-0 right-0 left-0 z-10 justify-between items-center bg-white">
       <Link to="/" className={getLinkClass("/")}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

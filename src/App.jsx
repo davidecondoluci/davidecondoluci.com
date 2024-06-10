@@ -10,19 +10,21 @@ import Contact from "./pages/Contact";
 
 const App = () => {
   return (
-    <div className="bg-white text-gray">
+    <div className="w-full bg-white text-gray">
       <AnimatedCursor
         innerSize={8}
-        outerSize={30}
+        outerSize={32}
         innerScale={1}
         outerScale={2}
         outerAlpha={0}
         hasBlendMode={true}
         innerStyle={{
-          backgroundColor: "lightgray",
+          backgroundColor: "#FFFFFF", // lightgray
+          mixBlendMode: "difference",
         }}
         outerStyle={{
-          border: "2px solid lightgray",
+          border: "1px solid #FFFFFF", // lightgray
+          mixBlendMode: "difference",
         }}
       />
       <Router>
