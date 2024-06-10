@@ -10,7 +10,7 @@ import Contact from "./pages/Contact";
 
 const App = () => {
   return (
-    <div className="mx-auto w-4/5 bg-transparent text-gray">
+    <div className="bg-white text-gray">
       <AnimatedCursor
         innerSize={8}
         outerSize={30}

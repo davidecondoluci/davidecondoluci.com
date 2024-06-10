@@ -14,9 +14,7 @@ const Navbar = (props) => {
   };
 
   return (
-    <nav
-      className={`h-[15lvh] sticky top-0 right-0 left-0 z-10 flex justify-between items-center bg-white ${props.classes}`}
-    >
+    <nav className="flex flex-row h-[15lvh] w-full p-4 sticky top-0 right-0 left-0 z-10 justify-between items-center bg-white">
       <Link to="/" className={getLinkClass("/")}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -1,25 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import projects from "../data/projects.json";
 import { FaAngleLeft } from "react-icons/fa6";
 
 const Work = () => {
-  const [hoveredProject, setHoveredProject] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
-
-  const handleMouseEnter = (project) => {
-    setHoveredProject(project);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredProject(null);
-  };
-
-  const handleImageError = (e) => {
-    e.target.onerror = null;
-    e.target.src = "";
-    e.target.parentElement.innerHTML =
-      '<div class="w-full h-full flex justify-center items-center bg-lightgray rounded-lg shadow-lg">Image not found</div>';
-  };
 
   const handleCardClick = (project) => {
     setSelectedProject(project);
@@ -31,57 +16,82 @@ const Work = () => {
     document.body.style.overflow = "auto";
   };
 
+  useEffect(() => {
+    const handleHover = () => {
+      const cards = document.querySelectorAll(".project-card");
+
+      cards.forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          card.classList.add("hovered");
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.classList.remove("hovered");
+        });
+      });
+    };
+
+    handleHover();
+
+    return () => {
+      const cards = document.querySelectorAll(".project-card");
+
+      cards.forEach((card) => {
+        card.removeEventListener("mouseenter", () => {
+          card.classList.add("hovered");
+        });
+
+        card.removeEventListener("mouseleave", () => {
+          card.classList.remove("hovered");
+        });
+      });
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col justify-center items-center py-16">
-      <div className="flex flex-col justify-between items-center">
+    <div className="flex flex-col justify-center items-center px-4 py-16">
+      <div className="flex flex-col items-center space-y-8 mb-8">
         <h1 className="text-6xl font-serif font-bold">Work</h1>
-        <p className="text-base font-sans font-light text-center w-1/2">
+        <p className="text-base font-sans font-light text-center w-full md:w-3/4 lg:w-1/2">
           A selection of my best work from over the years from websites, to
           UI/UX, to logos. Each project reflects my passion for design and
-          attention to detail.
+          attention to detail.🧐
         </p>
       </div>
 
-      <div className="flex flex-wrap justify-center container mx-auto">
+      <div className="flex flex-wrap justify-center container mx-auto space-y-4">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="w-full sm:w-1/2 p-4 cursor-pointer"
-            onMouseEnter={() => handleMouseEnter(project)}
-            onMouseLeave={handleMouseLeave}
+            className="w-full lg:w-1/2 cursor-pointer project-card"
             onClick={() => handleCardClick(project)}
           >
-            <div className="relative h-96">
+            <div
+              className={`relative h-96 lg:h-96 ${
+                selectedProject === project ? "hovered" : ""
+              }`}
+            >
               <img
                 src={project.image}
                 alt={project.title}
                 className="w-full h-full object-cover rounded-lg shadow-lg"
-                onError={handleImageError}
               />
-              <div
-                className={`absolute bottom-0 left-0 w-full h-full p-4 bg-gradient-to-t from-black to-transparent text-white rounded-b-lg transition-opacity duration-300 ${
-                  hoveredProject === project ? "opacity-100" : "opacity-0"
-                }`}
-              >
+              <div className="absolute bottom-0 left-0 w-full h-full p-4 bg-gradient-to-t from-black50 to-transparent text-white rounded-lg transition-opacity duration-300">
                 <div className="flex flex-col justify-end h-full space-y-2">
-                  {hoveredProject === project && (
-                    <>
-                      <h3 className="text-4xl font-serif font-bold">
-                        {project.title}
-                      </h3>
-                      <p className="text-sm">{project.description}</p>
-                      <div className="flex flex-wrap">
-                        {project.category.map((cat, catIndex) => (
-                          <button
-                            key={catIndex}
-                            className="w-fit text-xs border border-white px-2 py-1 mr-2 rounded-full"
-                          >
-                            {cat}
-                          </button>
-                        ))}
-                      </div>
-                    </>
-                  )}
+                  <h3 className="text-4xl font-serif font-bold">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm">{project.description}</p>
+                  <div className="flex flex-wrap">
+                    {project.programs.map((cat, catIndex) => (
+                      <button
+                        key={catIndex}
+                        className="w-fit text-xs bg-white bg-opacity-50 px-4 py-1 rounded-full"
+                      >
+                        {cat}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -112,7 +122,7 @@ const Work = () => {
                 {selectedProject.description}
               </p>
               <div className="flex flex-wrap">
-                {selectedProject.category.map((cat, index) => (
+                {selectedProject.programs.map((cat, index) => (
                   <button
                     key={index}
                     className="w-fit text-xs border border-black px-2 py-1 mr-2 mb-2 rounded-full"

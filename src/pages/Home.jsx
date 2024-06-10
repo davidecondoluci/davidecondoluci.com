@@ -17,13 +17,17 @@ const Home = () => {
 
   return (
     <div className="h-[85lvh] flex flex-col justify-center items-center overflow-hidden text-center">
-      <h3 className="text-4xl font-sans font-light mb-2">👋 Hi there, I’m</h3>
-      <h1 className="text-8xl font-serif font-bold mb-2">Davide Condoluci</h1>
+      <h3 className="text-3xl md:text-4xl lg:text-4xl font-sans font-light mb-2">
+        👋 Hi there, I’m
+      </h3>
+      <h1 className="text-6xl md:text-8xl lg:text-8xl font-serif font-bold mb-2">
+        Davide Condoluci
+      </h1>
       <div className="flex justify-center items-center w-full h-10">
         <AnimatePresence>
           <motion.h2
             key={index}
-            className="text-3xl font-sans font-light absolute"
+            className="text-2xl md:text-3xl lg:text-3xl font-sans font-light absolute"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
