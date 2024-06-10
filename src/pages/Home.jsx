@@ -16,7 +16,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="h-[85lvh] flex flex-col justify-center items-center overflow-hidden text-center">
+    <div className="h-[85.3lvh] flex flex-col justify-center items-center overflow-hidden text-center">
       <h3 className="text-3xl md:text-4xl lg:text-4xl font-sans font-light mb-2">
         👋 Hi there, I’m
       </h3>

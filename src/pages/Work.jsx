@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
 import projects from "../data/projects.json";
 import { FaAngleLeft } from "react-icons/fa6";
 
@@ -16,73 +15,37 @@ const Work = () => {
     document.body.style.overflow = "auto";
   };
 
-  useEffect(() => {
-    const handleHover = () => {
-      const cards = document.querySelectorAll(".project-card");
-
-      cards.forEach((card) => {
-        card.addEventListener("mouseenter", () => {
-          card.classList.add("hovered");
-        });
-
-        card.addEventListener("mouseleave", () => {
-          card.classList.remove("hovered");
-        });
-      });
-    };
-
-    handleHover();
-
-    return () => {
-      const cards = document.querySelectorAll(".project-card");
-
-      cards.forEach((card) => {
-        card.removeEventListener("mouseenter", () => {
-          card.classList.add("hovered");
-        });
-
-        card.removeEventListener("mouseleave", () => {
-          card.classList.remove("hovered");
-        });
-      });
-    };
-  }, []);
-
   return (
     <div className="flex flex-col justify-center items-center px-4 py-16">
       <div className="flex flex-col items-center space-y-8 mb-8">
         <h1 className="text-6xl font-serif font-bold">Work</h1>
-        <p className="text-base font-sans font-light text-center w-full md:w-3/4 lg:w-1/2">
+        <p className="text-base font-sans font-light text-center w-full md:w-3/4 lg:w-3/4">
           A selection of my best work from over the years from websites, to
           UI/UX, to logos. Each project reflects my passion for design and
           attention to detail.🧐
         </p>
       </div>
 
-      <div className="flex flex-wrap justify-center container mx-auto space-y-4">
+      <div className="flex flex-wrap justify-center container mx-auto gap-4">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="w-full lg:w-1/2 cursor-pointer project-card"
+            className="w-full lg:w-2/5 cursor-pointer project-card"
             onClick={() => handleCardClick(project)}
           >
-            <div
-              className={`relative h-96 lg:h-96 ${
-                selectedProject === project ? "hovered" : ""
-              }`}
-            >
+            <div className="relative h-96 lg:h-96">
               <img
                 src={project.image}
                 alt={project.title}
                 className="w-full h-full object-cover rounded-lg shadow-lg"
               />
-              <div className="absolute bottom-0 left-0 w-full h-full p-4 bg-gradient-to-t from-black50 to-transparent text-white rounded-lg transition-opacity duration-300">
+              <div className="absolute bottom-0 left-0 w-full h-full p-4 bg-gradient-to-t from-black/50 to-transparent text-white rounded-lg transition-opacity duration-300 lg:opacity-0 lg:hover:opacity-100">
                 <div className="flex flex-col justify-end h-full space-y-2">
                   <h3 className="text-4xl font-serif font-bold">
                     {project.title}
                   </h3>
                   <p className="text-sm">{project.description}</p>
-                  <div className="flex flex-wrap">
+                  <div className="flex flex-wrap gap-2">
                     {project.programs.map((cat, catIndex) => (
                       <button
                         key={catIndex}
@@ -100,8 +63,8 @@ const Work = () => {
       </div>
 
       {selectedProject && (
-        <div className="fixed inset-0 z-20 flex items-center justify-center bg-black bg-opacity-75">
-          <div className="relative bg-white p-8 rounded-lg shadow-lg w-11/12 max-w-4xl max-h-[90vh] overflow-y-auto space-y-8">
+        <div className="fixed inset-0 z-20 flex items-center justify-end bg-black bg-opacity-75">
+          <div className="relative bg-white p-8 shadow-lg w-2/5 h-full overflow-y-auto space-y-8">
             <button
               className="absolute top-4 left-4 text-black text-2xl flex items-center"
               onClick={handleClosePopup}

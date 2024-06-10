@@ -22,7 +22,7 @@ const About = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row lg:flex-row px-4 py-16">
+    <div className="flex flex-col justify-center items-center px-4 py-16">
       <div className="w-full md:w-1/2 lg:w-1/2 flex flex-col space-y-8">
         <h1 className="text-6xl font-serif font-bold text-left">About</h1>
         <div className="space-y-4">
@@ -72,7 +72,7 @@ const About = () => {
             <h3 className="text-2xl font-serif font-bold">
               Web Application & Apps
             </h3>
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col md:flex-row lg:flex-row justify-between md:space-y-0 lg:space-y-0 space-y-2">
               <p className="text-base font-sans font-light">Scuola Mohole</p>
               <span className="text-base font-sans font-light">2023-2024</span>
             </div>
@@ -87,7 +87,7 @@ const About = () => {
 
           <div className="space-y-2">
             <h3 className="text-2xl font-serif font-bold">Graphic Design</h3>
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col md:flex-row lg:flex-row justify-between md:space-y-0 lg:space-y-0 space-y-2">
               <p className="text-base font-sans font-light">
                 Istituto Superiore Starting Work
               </p>

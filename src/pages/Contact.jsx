@@ -52,8 +52,8 @@ const Contact = () => {
               </button>
             </form>
           </div>
-          <div className="flex flex-col lg:flex-row w-full justify-start lg:items-center space-y-4">
-            <h2 className="mr-4 font-sans font-light text-left lg:items-center">
+          <div className="flex flex-col md:flex-row lg:flex-row w-full md:items-center lg:items-center space-y-4 md:space-y-0 lg:space-y-0 space-x-2">
+            <h2 className="font-sans font-light text-left lg:items-center md:mr-4 lg:mr-4">
               Stay connected with me:
             </h2>
             <div className="flex flex-row lg:items-center space-x-4">
