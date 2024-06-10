@@ -23,7 +23,7 @@ const About = () => {
 
   return (
     <div className="flex flex-col justify-center items-center px-4 py-16">
-      <div className="w-full md:w-1/2 lg:w-1/2 flex flex-col space-y-8">
+      <div className="w-full md:w-3/4 lg:w-1/2 flex flex-col space-y-8">
         <h1 className="text-6xl font-serif font-bold text-left">About</h1>
         <div className="space-y-4">
           <p className="text-base font-sans font-light text-left leading-loose">

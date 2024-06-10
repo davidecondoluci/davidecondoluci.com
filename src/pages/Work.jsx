@@ -19,7 +19,7 @@ const Work = () => {
     <div className="flex flex-col justify-center items-center px-4 py-16">
       <div className="flex flex-col items-center space-y-8 mb-8">
         <h1 className="text-6xl font-serif font-bold">Work</h1>
-        <p className="text-base font-sans font-light text-center w-full md:w-3/4 lg:w-3/4">
+        <p className="text-base font-sans font-light text-center w-full md:w-4/5 lg:w-2/3">
           A selection of my best work from over the years from websites, to
           UI/UX, to logos. Each project reflects my passion for design and
           attention to detail.🧐
@@ -63,7 +63,10 @@ const Work = () => {
       </div>
 
       {selectedProject && (
-        <div className="fixed inset-0 z-20 flex items-center justify-end bg-black bg-opacity-75">
+        <div
+          className="fixed inset-0 z-20 flex items-center justify-end bg-black bg-opacity-75"
+          onClick={handleClosePopup}
+        >
           <div className="relative bg-white p-8 shadow-lg w-2/5 h-full overflow-y-auto space-y-8">
             <button
               className="absolute top-4 left-4 text-black text-2xl flex items-center"
