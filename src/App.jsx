@@ -19,11 +19,11 @@ const App = () => {
         outerAlpha={0}
         hasBlendMode={true}
         innerStyle={{
-          backgroundColor: "#FFFFFF", // lightgray
+          backgroundColor: "#FFFFFF",
           mixBlendMode: "difference",
         }}
         outerStyle={{
-          border: "1px solid #FFFFFF", // lightgray
+          border: "1px solid #FFFFFF",
           mixBlendMode: "difference",
         }}
       />

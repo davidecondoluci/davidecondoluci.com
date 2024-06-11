@@ -69,7 +69,7 @@ const Work = () => {
         >
           <div className="relative bg-white p-8 shadow-lg w-2/5 h-full overflow-y-auto space-y-8">
             <button
-              className="absolute top-4 left-4 text-black text-2xl flex items-center"
+              className="absolute top-4 left-4 text-black text-2xl flex items-center hover:underline"
               onClick={handleClosePopup}
             >
               <FaAngleLeft />

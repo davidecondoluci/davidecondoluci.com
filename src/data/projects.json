@@ -2,7 +2,7 @@
   {
     "title": "Quiz Royale",
     "image": "/img/quiz_royale.jpg",
-    "description": "A multiplayer quiz game platform where users can challenge their friends and test their knowledge on various topics.",
+    "description": "Online educational video game with multiple-choice quizzes in RPG style on a website.",
     "programs": [
       "HTML",
       "Tailwind CSS",
@@ -12,7 +12,7 @@
   {
     "title": "Petit",
     "image": "/img/petit.jpg",
-    "description": "A mobile app for managing personal finances, providing users with intuitive interfaces and insightful analytics.",
+    "description": "The only training app for pet owners that keeps your dog healthy  by offering personalized exercises and services.",
     "programs": [
       "Figma"
     ]
@@ -20,7 +20,7 @@
   {
     "title": "FilmFlix",
     "image": "/img/filmflix.jpg",
-    "description": "An online platform for streaming movies and TV shows, offering a vast library of content for subscribers.",
+    "description": "An application that allows you to search for your favorite movies and discover information about them.",
     "programs": [
       "React",
       "Tailwind CSS",
@@ -30,7 +30,7 @@
   {
     "title": "Durud",
     "image": "/img/durud.jpg",
-    "description": "An e-commerce website specializing in selling durable outdoor gear and equipment for adventure enthusiasts.",
+    "description": "A blog/website dedicated to cooking, travel, personal experiences, and poetry.",
     "programs": [
       "Figma",
       "HTML",
