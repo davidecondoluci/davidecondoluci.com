@@ -23,14 +23,14 @@ const Home = () => {
       <h1 className="text-6xl md:text-8xl lg:text-8xl font-serif font-bold mb-2">
         Davide Condoluci
       </h1>
-      <div className="flex justify-center items-center w-full h-10">
+      <div className="flex flex-col justify-center items-center h-10">
         <AnimatePresence>
           <motion.h2
             key={index}
-            className="text-2xl md:text-3xl lg:text-3xl font-sans font-light absolute"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            className="w-full text-2xl md:text-3xl lg:text-3xl font-sans font-light absolute"
+            initial={{ opacity: 0, y: 50, x: 0 }} // inizia da un punto più in basso e al centro
+            animate={{ opacity: 1, y: 0, x: 0 }} // anima verso la posizione originale
+            exit={{ opacity: 0, y: -50, x: 0 }} // esce verso l'alto e al centro
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
             {descriptions[index]}
