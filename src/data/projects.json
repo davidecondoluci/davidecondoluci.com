@@ -14,7 +14,8 @@
     "image": "/img/petit.jpg",
     "description": "The only training app for pet owners that keeps your dog healthy  by offering personalized exercises and services.",
     "programs": [
-      "Figma"
+      "Figma",
+      "Illustrator"
     ]
   },
   {
@@ -33,6 +34,7 @@
     "description": "A blog/website dedicated to cooking, travel, personal experiences, and poetry.",
     "programs": [
       "Figma",
+      "Illustrator",
       "HTML",
       "SCSS",
       "Wordpress",
@@ -42,7 +44,7 @@
   {
     "title": "Aiko",
     "image": "/img/aiko.jpg",
-    "description": "A comprehensive branding project for a fashion label, including logo design, brand identity, and marketing collateral.",
+    "description": "Development of an educational toy for Clementoni that teaches children the concept of artificial intelligence in a fun and engaging way.",
     "programs": [
       "Figma",
       "Illustrator",
@@ -52,16 +54,17 @@
   {
     "title": "Champagne League",
     "image": "/img/champagne_league.jpg",
-    "description": "A branding campaign for a luxury sports league, focusing on elegance, sophistication, and exclusivity.",
+    "description": "Development of the brand identity and website for a futsal tournament.",
     "programs": [
       "Illustrator",
-      "Figma"
+      "Figma",
+      "Wordpress"
     ]
   },
   {
     "title": "Visionartech",
     "image": "/img/visionartech.jpg",
-    "description": "A branding initiative for a technology company, emphasizing innovation, vision, and cutting-edge solutions.",
+    "description": "Creation of the logo for a startup, establishing a strong and cohesive visual presence.",
     "programs": [
       "Illustrator"
     ]
@@ -69,9 +72,10 @@
   {
     "title": "Sustainable Ocean Movement",
     "image": "/img/som.jpg",
-    "description": "A website for an Italian restaurant, showcasing their menu, location, and ambiance to attract customers.",
+    "description": "Creation of a brand against plastic pollution in the oceans, including logo, brand manual, website, and social media pages.",
     "programs": [
       "Illustrator",
+      "Photoshop",
       "Wordpress"
     ]
   }
