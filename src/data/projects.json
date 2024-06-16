@@ -2,6 +2,11 @@
   {
     "title": "Quiz Royale",
     "image": "/img/quiz_royale.svg",
+    "images": [
+      "/img/petit.svg",
+      "/img/filmflix.svg",
+      "/img/durud.svg"
+    ],
     "description": "Online educational video game with multiple-choice quizzes in RPG style on a website.",
     "programs": [
       "HTML",
@@ -12,6 +17,11 @@
   {
     "title": "Petit",
     "image": "/img/petit.svg",
+    "images": [
+      "/img/petit.svg",
+      "/img/filmflix.svg",
+      "/img/durud.svg"
+    ],
     "description": "The only training app for pet owners that keeps your dog healthy  by offering personalized exercises and services.",
     "programs": [
       "Figma",
@@ -21,6 +31,11 @@
   {
     "title": "FilmFlix",
     "image": "/img/filmflix.svg",
+    "images": [
+      "/img/petit.svg",
+      "/img/filmflix.svg",
+      "/img/durud.svg"
+    ],
     "description": "An application that allows you to search for your favorite movies and discover information about them.",
     "programs": [
       "React",
@@ -31,6 +46,11 @@
   {
     "title": "Durud",
     "image": "/img/durud.svg",
+    "images": [
+      "/img/petit.svg",
+      "/img/filmflix.svg",
+      "/img/durud.svg"
+    ],
     "description": "A blog/website dedicated to cooking, travel, personal experiences, and poetry.",
     "programs": [
       "Figma",
@@ -39,11 +59,17 @@
       "SCSS",
       "Wordpress",
       "Timber"
-    ]
+    ],
+    "website": "https://durud.blog"
   },
   {
     "title": "Aiko",
     "image": "/img/aiko.svg",
+    "images": [
+      "/img/petit.svg",
+      "/img/filmflix.svg",
+      "/img/durud.svg"
+    ],
     "description": "Development of an educational toy for Clementoni that teaches children the concept of artificial intelligence in a fun and engaging way.",
     "programs": [
       "Figma",
@@ -54,16 +80,27 @@
   {
     "title": "Champagne League",
     "image": "/img/champagne_league.svg",
+    "images": [
+      "/img/petit.svg",
+      "/img/filmflix.svg",
+      "/img/durud.svg"
+    ],
     "description": "Development of the brand identity and website for a futsal tournament.",
     "programs": [
       "Illustrator",
       "Figma",
       "Wordpress"
-    ]
+    ],
+    "website": "https://champagneleague.it"
   },
   {
     "title": "Visionartech",
     "image": "/img/visionartech.svg",
+    "images": [
+      "/img/petit.svg",
+      "/img/filmflix.svg",
+      "/img/durud.svg"
+    ],
     "description": "Creation of the logo for a startup, establishing a strong and cohesive visual presence.",
     "programs": [
       "Illustrator"
@@ -72,11 +109,17 @@
   {
     "title": "Sustainable Ocean Movement",
     "image": "/img/som.svg",
+    "images": [
+      "/img/petit.svg",
+      "/img/filmflix.svg",
+      "/img/durud.svg"
+    ],
     "description": "Creation of a brand against plastic pollution in the oceans, including logo, brand manual, website, and social media pages.",
     "programs": [
       "Illustrator",
       "Photoshop",
       "Wordpress"
-    ]
+    ],
+    "website": "http://sustainableoceanmovement.altervista.org/"
   }
 ]
