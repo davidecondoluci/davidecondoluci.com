@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import projects from "../data/projects.json";
-import { FaAngleLeft } from "react-icons/fa6";
+import Popup from "../components/Popup";
 
 const Work = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -14,12 +14,6 @@ const Work = () => {
   const handleClosePopup = () => {
     setSelectedProject(null);
     document.body.style.overflow = "auto";
-  };
-
-  const variants = {
-    hidden: { opacity: 0, x: "100vw" },
-    visible: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: "100vw" },
   };
 
   return (
@@ -51,7 +45,6 @@ const Work = () => {
                   <h3 className="text-4xl font-serif font-bold">
                     {project.title}
                   </h3>
-                  <p className="text-sm">{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.programs.map((cat, catIndex) => (
                       <button
@@ -70,50 +63,10 @@ const Work = () => {
       </div>
       <AnimatePresence>
         {selectedProject && (
-          <div
-            className="fixed inset-0 z-20 flex items-center justify-end bg-black bg-opacity-75"
-            onClick={handleClosePopup}
-          >
-            <motion.div
-              className="relative bg-white p-8 shadow-lg lg:w-2/5 h-full overflow-y-auto space-y-8"
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              variants={variants}
-              transition={{ duration: 0.5 }}
-            >
-              <button
-                className="absolute top-4 left-4 text-black text-2xl flex items-center hover:underline"
-                onClick={handleClosePopup}
-              >
-                <FaAngleLeft />
-                <span className="ml-2 text-base">Go back to projects</span>
-              </button>
-              <div className="space-y-4">
-                <h2 className="text-4xl font-serif font-bold">
-                  {selectedProject.title}
-                </h2>
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full h-96 object-cover rounded-lg"
-                />
-                <p className="text-base font-sans">
-                  {selectedProject.description}
-                </p>
-                <div className="flex flex-wrap">
-                  {selectedProject.programs.map((cat, index) => (
-                    <button
-                      key={index}
-                      className="w-fit text-xs border border-black px-2 py-1 mr-2 mb-2 rounded-full"
-                    >
-                      {cat}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
+          <Popup
+            project={selectedProject}
+            handleClosePopup={handleClosePopup}
+          />
         )}
       </AnimatePresence>
     </div>
