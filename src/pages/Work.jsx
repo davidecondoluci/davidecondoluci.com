@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import projects from "../data/projects.json";
 import Popup from "../components/Popup";
 
@@ -17,7 +17,13 @@ const Work = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center px-4 py-16">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="flex flex-col justify-center items-center px-4 pt-36 pb-16"
+    >
       <div className="flex flex-col items-center space-y-8 mb-8">
         <h1 className="text-6xl font-serif font-bold">Work</h1>
         <p className="text-base font-sans font-light text-center w-full md:w-4/5 lg:w-2/3">
@@ -69,7 +75,7 @@ const Work = () => {
           />
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };
 

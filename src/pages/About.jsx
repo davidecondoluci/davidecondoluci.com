@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import skillsData from "../data/skills.json";
 import "../App.css";
 
@@ -22,7 +23,13 @@ const About = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center px-4 py-16">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="flex flex-col justify-center items-center px-4 pt-36 pb-16"
+    >
       <div className="w-full md:w-3/4 lg:w-1/2 flex flex-col space-y-8">
         <h1 className="text-6xl font-serif font-bold text-left">About</h1>
         <div className="space-y-4">
@@ -115,7 +122,7 @@ const About = () => {
           className="container md:w-3/4 lg:w-3/4 rounded-lg"
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
