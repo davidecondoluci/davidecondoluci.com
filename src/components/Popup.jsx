@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaArrowLeftLong } from "react-icons/fa6";
+import { FaArrowLeftLong, FaGlobe } from "react-icons/fa6";
 
 const Popup = ({ project, handleClosePopup }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -17,7 +17,7 @@ const Popup = ({ project, handleClosePopup }) => {
     if (!isPaused) {
       interval = setInterval(() => {
         nextImage();
-      }, 3000);
+      }, 2500);
     }
     return () => clearInterval(interval);
   }, [nextImage, isPaused]);
@@ -78,15 +78,26 @@ const Popup = ({ project, handleClosePopup }) => {
               </button>
             ))}
           </div>
-          {project.website && (
-            <a
-              href={project.website}
-              target="_blank"
-              className="text-blue-500 hover:underline"
-            >
-              Visit website
-            </a>
-          )}{" "}
+          <div className="flex flex-row space-x-4">
+            {project.website && (
+              <a
+                href={project.website}
+                target="_blank"
+                className="text-blue-500 underline hover:no-underline"
+              >
+                Visit website
+              </a>
+            )}
+            {project.figma && (
+              <a
+                href={project.figma}
+                target="_blank"
+                className="text-blue-500 underline hover:no-underline"
+              >
+                Visit figma
+              </a>
+            )}
+          </div>
         </div>
       </motion.div>
     </div>

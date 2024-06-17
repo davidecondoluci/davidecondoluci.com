@@ -1,10 +1,17 @@
 import React from "react";
+import { motion } from "framer-motion";
 import "../App.css";
 import { FaGithub, FaLinkedin, FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 const Contact = () => {
   return (
-    <div className="flex flex-col justify-center items-center px-4 py-16">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="flex flex-col justify-center items-center px-4 pt-36 pb-16"
+    >
       <div className="flex flex-col justify-center items-center space-y-8">
         <h1 className="text-6xl font-bold text-left font-serif">Contact</h1>
         <div className="flex flex-col w-full items-center space-y-4">
@@ -89,7 +96,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

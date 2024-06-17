@@ -12,7 +12,8 @@
       "HTML",
       "Tailwind CSS",
       "Alpine.js"
-    ]
+    ],
+    "website": "https://durud.blog"
   },
   {
     "title": "Petit",
@@ -26,7 +27,8 @@
     "programs": [
       "Figma",
       "Illustrator"
-    ]
+    ],
+    "figma": "https://durud.blog"
   },
   {
     "title": "FilmFlix",
@@ -41,7 +43,8 @@
       "React",
       "Tailwind CSS",
       "Framer Motion"
-    ]
+    ],
+    "website": "https://durud.blog"
   },
   {
     "title": "Durud",
@@ -60,7 +63,8 @@
       "Wordpress",
       "Timber"
     ],
-    "website": "https://durud.blog"
+    "website": "https://durud.blog",
+    "figma": "https://durud.blog"
   },
   {
     "title": "Aiko",
