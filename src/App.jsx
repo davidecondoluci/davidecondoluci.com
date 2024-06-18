@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AnimatedCursor from "react-animated-cursor";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";

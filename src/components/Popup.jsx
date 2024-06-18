@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { FaArrowLeftLong, FaLink } from "react-icons/fa6";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaArrowLeftLong, FaGlobe } from "react-icons/fa6";
 
 const Popup = ({ project, handleClosePopup }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -83,18 +83,20 @@ const Popup = ({ project, handleClosePopup }) => {
               <a
                 href={project.website}
                 target="_blank"
-                className="text-blue-500 underline hover:no-underline"
+                className="flex flex-row items-center text-blue-500 underline hover:no-underline space-x-2"
               >
                 Visit website
+                <FaLink className="ml-1" />
               </a>
             )}
             {project.figma && (
               <a
                 href={project.figma}
                 target="_blank"
-                className="text-blue-500 underline hover:no-underline"
+                className="flex flex-row items-center text-blue-500 underline hover:no-underline"
               >
-                Visit figma
+                Visit project
+                <FaLink className="ml-1" />
               </a>
             )}
           </div>

@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
+import { FaCode } from "react-icons/fa6";
 
 const StarTrail = () => {
   useEffect(() => {
@@ -25,11 +27,13 @@ const StarTrail = () => {
 
     const addStr = (x, y) => {
       const str = document.createElement("div");
-      str.innerHTML = "&#10022;";
       str.className = `star absolute ${selRand(colors)} ${selRand(fsize)}`;
       str.style.top = `${y + rand(-20, 20)}px`;
       str.style.left = `${x}px`;
       document.body.appendChild(str);
+
+      const icon = React.createElement(FaCode, { size: "1em" });
+      ReactDOM.render(icon, str);
 
       const fs = 10 + 5 * parseFloat(getComputedStyle(str).fontSize);
 

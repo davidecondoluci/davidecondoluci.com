@@ -1,4 +1,3 @@
-// src/pages/Home.js
 import React from "react";
 import { motion } from "framer-motion";
 import StarTrail from "../components/StarTrail";
@@ -22,19 +21,16 @@ const Home = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="flex flex-col h-screen pt-28 justify-center items-center overflow-hidden text-center space-y-2"
+      className="flex flex-col h-screen t-28 justify-center items-center overflow-hidden text-center space-y-2"
     >
       <StarTrail />
-      <h3 className="text-3xl md:text-4xl lg:text-4xl font-sans font-light relative space-x-2">
-        <motion.span
-          role="img"
-          aria-label="waving hand"
-          animate={{ rotate: [0, 0, 20, -20, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          style={{ display: "inline-block" }}
-        >
-          👋
-        </motion.span>
+      <h3 className="flex flex-row text-3xl md:text-4xl lg:text-4xl font-sans font-light relative space-x-2">
+        <span className="flex h-10">
+          <img
+            src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand.png"
+            alt="Waving Hand"
+          />
+        </span>
         <span>Hi there, I’m</span>
       </h3>
       <h1 className="text-6xl md:text-8xl lg:text-8xl font-serif font-bold">
