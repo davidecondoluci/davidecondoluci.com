@@ -25,19 +25,38 @@ const Work = () => {
       className="flex flex-col justify-center items-center px-4 pt-36 pb-16"
     >
       <div className="flex flex-col items-center space-y-8 mb-8">
-        <h1 className="text-6xl font-serif font-bold">Work</h1>
-        <p className="text-base font-sans font-light text-center w-full md:w-4/5 lg:w-2/3">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="text-6xl font-serif font-bold"
+        >
+          Work
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
+          className="text-base font-sans font-light text-center w-full md:w-4/5 lg:w-2/3"
+        >
           A selection of my best work from over the years from websites, to
           UI/UX, to logos. Each project reflects my passion for design and
           attention to detail.🧐
-        </p>
+        </motion.p>
       </div>
 
       <div className="flex flex-wrap justify-center container mx-auto gap-4">
         {projects.map((project, index) => (
-          <div
+          <motion.div
             key={index}
             className="w-full lg:w-2/5 cursor-pointer project-card"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeInOut",
+              delay: 0.1 * index,
+            }}
             onClick={() => handleCardClick(project)}
           >
             <div className="relative h-96 lg:h-96">
@@ -64,7 +83,7 @@ const Work = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
       <AnimatePresence>

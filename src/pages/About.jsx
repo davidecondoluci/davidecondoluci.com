@@ -1,3 +1,4 @@
+// src/components/About.jsx
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import skillsData from "../data/skills.json";
@@ -31,8 +32,20 @@ const About = () => {
       className="flex flex-col justify-center items-center px-4 pt-36 pb-16"
     >
       <div className="w-full md:w-3/4 lg:w-1/2 flex flex-col space-y-8">
-        <h1 className="text-6xl font-serif font-bold text-left">About</h1>
-        <div className="space-y-4">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="text-6xl font-serif font-bold text-left"
+        >
+          About
+        </motion.h1>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
+          className="space-y-4"
+        >
           <p className="text-base font-sans font-light text-left leading-loose">
             Ciao, I'm <span className="font-medium">Davide Condoluci</span> and
             I recently completed the Web Application & Apps course at Scuola
@@ -50,13 +63,25 @@ const About = () => {
             challenges and opportunities to grow and learn, both professionally
             and personally.
           </p>
-        </div>
-        <div className="space-y-4">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}
+          className="space-y-4"
+        >
           <h2 className="text-4xl font-serif font-bold text-left">Skills</h2>
           <div className="flex flex-wrap">
             {skills.map((skill, index) => (
-              <button
+              <motion.button
                 key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeInOut",
+                  delay: 0.2 * (index + 1),
+                }}
                 className="border px-4 py-2 rounded-full m-1 flex justify-center items-center transition-colors duration-300 hover:border-transparent"
                 style={{
                   borderColor: skill.color,
@@ -68,13 +93,17 @@ const About = () => {
                 onMouseLeave={() => handleMouseLeave(index)}
               >
                 {skill.name}
-              </button>
+              </motion.button>
             ))}
           </div>
-        </div>
-        <div className="space-y-4">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.6 }}
+          className="space-y-4"
+        >
           <h2 className="text-4xl font-serif font-bold text-left">Education</h2>
-
           <div className="border-b border-gray pb-4 space-y-2">
             <h3 className="text-2xl font-serif font-bold">
               Web Application & Apps
@@ -91,7 +120,6 @@ const About = () => {
               scuola.mohole.it
             </a>
           </div>
-
           <div className="space-y-2">
             <h3 className="text-2xl font-serif font-bold">Graphic Design</h3>
             <div className="flex flex-col md:flex-row lg:flex-row justify-between md:space-y-0 lg:space-y-0 space-y-2">
@@ -105,22 +133,18 @@ const About = () => {
               target="_blank"
               className="text-base font-sans font-light text-green hover:underline"
             >
-              www.startingwork.it
+              startingwork.it
             </a>
           </div>
-        </div>
+        </motion.div>
         <a href="/path/al/tuo/file.pdf" download="nome_del_tuo_file.pdf">
-          <button className="w-fit bg-gray text-white px-8 py-2 rounded-full flex justify-center items-center text-base font-sans font-regular hover:bg-green transition-colors duration-300">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            className="w-fit bg-gray text-white px-8 py-2 rounded-full flex justify-center items-center text-base font-sans font-regular hover:bg-green transition-colors duration-300"
+          >
             My CV
-          </button>
+          </motion.button>
         </a>
-      </div>
-      <div className="w-full hidden md:w-1/2 lg:w-1/2 md:justify-end lg:justify-end mt-12 md:m-0 lg:m-0 items-start">
-        <img
-          src="/img/me.jpg"
-          alt="Me"
-          className="container md:w-3/4 lg:w-3/4 rounded-lg"
-        />
       </div>
     </motion.div>
   );
