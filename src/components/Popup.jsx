@@ -3,14 +3,6 @@ import { FaArrowLeftLong, FaLink } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
 const Popup = ({ project, handleClosePopup }) => {
-  const [isPaused, setIsPaused] = useState(false);
-
-  const imageVariants = {
-    hidden: { opacity: 0, filter: "blur(10px)" },
-    visible: { opacity: 1, filter: "blur(0px)" },
-    exit: { opacity: 0, filter: "blur(10px)" },
-  };
-
   const popupVariants = {
     hidden: { opacity: 0, x: 100 },
     visible: { opacity: 1, x: 0 },
@@ -54,11 +46,10 @@ const Popup = ({ project, handleClosePopup }) => {
             <motion.img
               src={project.image}
               alt={project.title}
-              className="absolute top-0 left-0 w-full h-full object-cover"
+              className="w-full h-full object-cover"
               initial="hidden"
               animate="visible"
               exit="exit"
-              variants={imageVariants}
               transition={{ duration: 0.5, ease: "easeInOut" }}
             />
           </div>
@@ -72,13 +63,12 @@ const Popup = ({ project, handleClosePopup }) => {
           </motion.p>
           <div className="flex flex-wrap">
             {project.programs.map((cat, index) => (
-              <motion.button
+              <button
                 key={index}
                 className="w-fit text-xs border border-black px-2 py-1 mr-2 mb-2 rounded-full"
-                whileHover={{ scale: 1.1 }}
               >
                 {cat}
-              </motion.button>
+              </button>
             ))}
           </div>
           <div className="flex flex-row space-x-4">

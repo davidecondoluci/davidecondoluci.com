@@ -14,8 +14,8 @@ const StarTrail = () => {
       "text-lightgray",
       "text-green",
       "text-lightgreen",
-      "text-black",
       "text-white",
+      "text-black",
     ];
 
     const rand = (min, max) =>
