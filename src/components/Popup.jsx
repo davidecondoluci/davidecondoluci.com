@@ -1,31 +1,14 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { FaArrowLeftLong, FaLink } from "react-icons/fa6";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Popup = ({ project, handleClosePopup }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  const nextImage = useCallback(() => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
-    );
-  }, [project.images.length]);
-
-  useEffect(() => {
-    let interval;
-    if (!isPaused) {
-      interval = setInterval(() => {
-        nextImage();
-      }, 2500);
-    }
-    return () => clearInterval(interval);
-  }, [nextImage, isPaused]);
-
   const imageVariants = {
-    hidden: { opacity: 0, x: 100 },
-    visible: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: 100 },
+    hidden: { opacity: 0, filter: "blur(10px)" },
+    visible: { opacity: 1, filter: "blur(0px)" },
+    exit: { opacity: 0, filter: "blur(10px)" },
   };
 
   const popupVariants = {
@@ -67,24 +50,17 @@ const Popup = ({ project, handleClosePopup }) => {
           >
             {project.title}
           </motion.h2>
-          <div
-            className="relative w-full h-96 overflow-hidden rounded-lg"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            <AnimatePresence initial={false} mode="await">
-              <motion.img
-                key={currentImageIndex}
-                src={project.images[currentImageIndex]}
-                alt={`${project.title} ${currentImageIndex + 1}`}
-                className="absolute top-0 left-0 w-full h-full object-cover"
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                variants={imageVariants}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-              />
-            </AnimatePresence>
+          <div className="relative w-full h-96 shadow-lg overflow-hidden rounded-lg">
+            <motion.img
+              src={project.image}
+              alt={project.title}
+              className="absolute top-0 left-0 w-full h-full object-cover"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={imageVariants}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            />
           </div>
           <motion.p
             className="text-base font-sans"
@@ -107,26 +83,38 @@ const Popup = ({ project, handleClosePopup }) => {
           </div>
           <div className="flex flex-row space-x-4">
             {project.website && (
-              <motion.a
+              <a
                 href={project.website}
                 target="_blank"
-                className="flex flex-row items-center text-blue-500 underline hover:no-underline space-x-2"
+                rel="noopener noreferrer"
+                className="flex flex-row items-center text-blue underline hover:no-underline space-x-2"
                 whileHover={{ scale: 1.1 }}
               >
-                Visit website
+                Open website
                 <FaLink className="ml-1" />
-              </motion.a>
+              </a>
             )}
             {project.figma && (
-              <motion.a
+              <a
                 href={project.figma}
                 target="_blank"
-                className="flex flex-row items-center text-blue-500 underline hover:no-underline"
-                whileHover={{ scale: 1.1 }}
+                rel="noopener noreferrer"
+                className="flex flex-row items-center text-blue underline hover:no-underline"
               >
-                Visit project
+                Open project
                 <FaLink className="ml-1" />
-              </motion.a>
+              </a>
+            )}
+            {project.pdf && (
+              <a
+                href={project.pdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-row items-center text-blue underline hover:no-underline"
+              >
+                Open pdf
+                <FaLink className="ml-1" />
+              </a>
             )}
           </div>
         </div>
