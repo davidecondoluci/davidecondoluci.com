@@ -18,6 +18,7 @@ export default {
         black: "#000000",
         black50: "#00000075",
         red: "#FF396F",
+        blue: "#0068C8",
       },
     },
   },
