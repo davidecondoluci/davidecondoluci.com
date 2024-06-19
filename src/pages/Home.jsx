@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import StarTrail from "../components/StarTrail";
 import descriptionsData from "../data/descriptions.json";
@@ -8,7 +7,6 @@ import "../App.css";
 const Home = () => {
   const [index, setIndex] = React.useState(0);
   const descriptions = descriptionsData;
-  const [isExiting, setIsExiting] = useState(false);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -53,14 +51,11 @@ const Home = () => {
           <motion.h2
             key={index}
             className="w-full text-2xl md:text-3xl lg:text-3xl font-sans font-light"
-            style={{ position: "absolute", zIndex: isExiting ? 2 : 1 }}
-            initial={{ opacity: 0, y: -30, x: 0 }}
-            animate={{ opacity: 1, y: 0, x: 0 }}
-            exit={{ opacity: 0, y: 30, x: 0 }}
+            style={{ position: "absolute" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, display: "none" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            onAnimationStart={(definition) => {
-              setIsExiting(definition === "exit");
-            }}
           >
             {descriptions[index]}
           </motion.h2>
