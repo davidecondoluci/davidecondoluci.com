@@ -28,7 +28,7 @@ const Home = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="flex flex-col h-screen justify-center items-center overflow-hidden text-center space-y-2"
+      className="flex flex-col h-svh justify-center items-center overflow-hidden text-center space-y-2"
     >
       <StarTrail />
       <motion.h3
