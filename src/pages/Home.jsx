@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import ParallaxBackground from "../components/Background";
 import StarTrail from "../components/StarTrail";
 import "../App.css";
 
@@ -18,7 +19,7 @@ const Home = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
-    }, 2000); // Cambia la durata qui per controllare la velocità di transizione
+    }, 2000);
     return () => clearInterval(interval);
   }, [items.length]);
 
@@ -28,8 +29,9 @@ const Home = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="flex flex-col h-svh justify-center items-center overflow-hidden text-center space-y-2"
+      className="flex flex-col h-screen justify-center items-center overflow-hidden text-center space-y-2 relative"
     >
+      <ParallaxBackground />
       <StarTrail />
       <motion.h3
         initial={{ opacity: 0, y: -20 }}
@@ -62,7 +64,7 @@ const Home = () => {
               opacity: index === currentIndex ? 1 : 0,
               transition: { duration: 0.5, ease: "easeInOut" },
             }}
-            className="text-4xl font-sans font-light"
+            className="text-2xl md:text-4xl lg:text-4xl font-sans font-light"
             style={{ position: index === currentIndex ? "static" : "absolute" }}
           >
             {item}
