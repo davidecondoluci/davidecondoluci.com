@@ -6,7 +6,7 @@ import "../App.css";
 const createHoverEffect = (element) => {
   const image = document.createElement("img");
   image.className =
-    "fixed inset-0 opacity-0 pointer-events-none select-none z-10 w-auto h-1/3 object-cover transition-opacity duration-300 ease";
+    "fixed inset-0 opacity-0 select-none z-10 w-auto h-1/3 object-cover rounded-lg m-1 transition-opacity duration-300 ease";
   image.src = "/img/me.jpg";
 
   document.body.appendChild(image);
