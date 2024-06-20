@@ -36,22 +36,25 @@ const Home = () => {
       >
         Davide Condoluci
       </motion.h1>
-      <motion.div className="flex flex-col w-full justify-center items-center">
-        <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-3xl">
-          <ReactTyped
-            strings={[
-              "Front-end Developer",
-              "Graphic Designer",
-              "Energetic Athlete",
-              "Curious Traveler",
-              "Vintage Lover",
-              "Lego Maniac",
-            ]}
-            typeSpeed={100}
-            loop
-          />
-        </h2>
-      </motion.div>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut", delay: 0.6 }}
+        className="font-sans font-light text-2xl md:text-3xl lg:text-3xl"
+      >
+        <ReactTyped
+          strings={[
+            "Front-end Developer",
+            "Graphic Designer",
+            "Energetic Athlete",
+            "Curious Traveler",
+            "Vintage Lover",
+            "Lego Maniac",
+          ]}
+          typeSpeed={100}
+          loop
+        />
+      </motion.h2>
     </motion.div>
   );
 };

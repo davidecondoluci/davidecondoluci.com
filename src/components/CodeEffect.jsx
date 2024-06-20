@@ -29,7 +29,7 @@ const StarTrail = () => {
 
     const addStr = (x, y) => {
       const str = document.createElement("div");
-      str.className = `star absolute ${selRand(colors)} ${selRand(fsize)}`;
+      str.className = `star absolute z-20 ${selRand(colors)} ${selRand(fsize)}`;
       str.style.top = `${y + rand(-20, 20)}px`;
       str.style.left = `${x}px`;
       document.body.appendChild(str);
