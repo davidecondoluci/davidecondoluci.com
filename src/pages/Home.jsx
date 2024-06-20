@@ -1,28 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import ParallaxBackground from "../components/Background";
-import StarTrail from "../components/StarTrail";
+import { ReactTyped } from "react-typed";
+import CodeEffect from "../components/CodeEffect";
 import "../App.css";
 
 const Home = () => {
-  const items = [
-    "Front-end Developer",
-    "Graphic Designer",
-    "Energetic Athlete",
-    "Curious Traveler",
-    "Vintage Lover",
-    "Lego Maniac",
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [items.length]);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -31,8 +13,7 @@ const Home = () => {
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className="flex flex-col h-screen justify-center items-center overflow-hidden text-center space-y-2 relative"
     >
-      <ParallaxBackground />
-      <StarTrail />
+      <CodeEffect />
       <motion.h3
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -56,20 +37,20 @@ const Home = () => {
         Davide Condoluci
       </motion.h1>
       <motion.div className="flex flex-col w-full justify-center items-center">
-        {items.map((item, index) => (
-          <motion.h2
-            key={index}
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: index === currentIndex ? 1 : 0,
-              transition: { duration: 0.5, ease: "easeInOut" },
-            }}
-            className="text-2xl md:text-4xl lg:text-4xl font-sans font-light"
-            style={{ position: index === currentIndex ? "static" : "absolute" }}
-          >
-            {item}
-          </motion.h2>
-        ))}
+        <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-3xl">
+          <ReactTyped
+            strings={[
+              "Front-end Developer",
+              "Graphic Designer",
+              "Energetic Athlete",
+              "Curious Traveler",
+              "Vintage Lover",
+              "Lego Maniac",
+            ]}
+            typeSpeed={100}
+            loop
+          />
+        </h2>
       </motion.div>
     </motion.div>
   );
