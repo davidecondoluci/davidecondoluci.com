@@ -7,7 +7,7 @@ const Navbar = () => {
   const getLinkClass = (path) => {
     let classes = "text-gray hover:text-green";
     if (location.pathname === path) {
-      classes += " underline text-green";
+      classes += " text-green";
     }
     return classes;
   };
@@ -15,28 +15,44 @@ const Navbar = () => {
   return (
     <div className="absolute top-0 right-0 left-0 z-10 px-4 md:px-6 py-8 bg-white">
       <nav className="flex flex-row w-full lg:w-4/5 md:mx-auto lg:mx-auto justify-between items-center">
-        <Link to="/" className={`${getLinkClass("/")} logo-link`}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="63"
-            height="50"
-            fill="none"
-            viewBox="0 0 63 50"
-          >
-            <g clipPath="url(#a)">
-              <path
-                fill="#3B3B3B"
-                d="M7.2 37.5h-1A6.2 6.2 0 0 0 0 43.8C.1 47.1 2.9 50 6.3 50H21A27.2 27.2 0 0 1 7.2 37.5ZM6.3 12.5h25a12.5 12.5 0 0 1 6.9 23H54a24.8 24.8 0 0 0-1.1-23A25 25 0 0 0 31.3 0h-25A6.2 6.2 0 0 0 0 6.3c0 3.4 2.8 6.2 6.3 6.2Z"
-              />
-              <path
-                fill="#5DDC5B"
-                d="M55.3 12.5h1a6.2 6.2 0 0 0 6.3-6.3C62.4 2.9 59.6 0 56.1 0H41.6a27.2 27.2 0 0 1 13.7 12.5ZM56.3 37.5h-25a12.5 12.5 0 0 1-7-23H8.5a24.8 24.8 0 0 0 1.1 23A25 25 0 0 0 31.2 50h25a6.2 6.2 0 0 0 6.3-6.3c0-3.4-2.8-6.2-6.3-6.2Z"
-              />
-            </g>
-          </svg>
-        </Link>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="63"
+          height="50"
+          fill="none"
+          viewBox="0 0 63 50"
+        >
+          <g clipPath="url(#a)">
+            <path
+              fill="#3B3B3B"
+              d="M7 38H6a6 6 0 0 0-6 6c0 3 3 6 6 6h15c-6-2-11-7-14-12Z"
+            />
+            <path
+              fill="#3B3B3B"
+              d="m54 15-1-1v-1C49 5 41 0 31 0H6a6 6 0 0 0-6 6c0 4 3 7 6 7h25a13 13 0 0 1 7 2 12 12 0 0 1 0 20h16a25 25 0 0 0 0-20Z"
+            />
+            <path
+              fill="#5DDC5B"
+              d="M55 13h1a6 6 0 0 0 7-7c0-3-3-6-7-6H42c6 2 10 7 13 13Z"
+            />
+            <path
+              fill="#5DDC5B"
+              d="M56 38H31a13 13 0 0 1-7-3 12 12 0 0 1 0-20H9a25 25 0 0 0 1 23c4 7 12 12 21 12h25a6 6 0 0 0 6-6c0-4-2-6-6-6Z"
+            />
+          </g>
+          <defs>
+            <clipPath id="a">
+              <path fill="#fff" d="M0 0h63v50H0z" />
+            </clipPath>
+          </defs>
+        </svg>
 
         <ul className="flex space-x-8 items-center font-sans font-regular">
+          <li>
+            <Link to="/" className={getLinkClass("/")}>
+              Home
+            </Link>
+          </li>
           <li>
             <Link to="/about" className={getLinkClass("/about")}>
               About
