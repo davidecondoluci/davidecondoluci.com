@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { FaCode } from "react-icons/fa6";
 
-const StarTrail = () => {
+const CodeEffect = () => {
   const [prevCoords, setPrevCoords] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -76,4 +76,4 @@ const StarTrail = () => {
   return null;
 };
 
-export default StarTrail;
+export default CodeEffect;
