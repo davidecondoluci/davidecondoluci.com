@@ -27,7 +27,8 @@
     "programs": [
       "React",
       "Tailwind CSS",
-      "Framer Motion"
+      "Framer Motion",
+      "Supabase"
     ],
     "website": "https://github.com/davidecondoluci/movie_storage.git"
   },

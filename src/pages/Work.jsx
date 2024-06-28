@@ -41,7 +41,7 @@ const Work = () => {
         >
           A selection of my best work from over the years from websites, to
           UI/UX, to logos. Each project reflects my passion for design and
-          attention to detail.🧐
+          attention to detail.
         </motion.p>
       </div>
 
@@ -49,7 +49,7 @@ const Work = () => {
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            className="w-full lg:w-2/5 cursor-pointer project-card"
+            className="w-full lg:w-2/5 cursor-pointer"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
