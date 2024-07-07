@@ -1,16 +1,75 @@
 import React from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import "../App.css";
 import { FaGithub, FaLinkedin, FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 const Contact = () => {
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess(false);
+    setError("");
+
+    // Validazione dei campi
+    if (!formState.name || !formState.email || !formState.message) {
+      setLoading(false);
+      setError("Please fill in all fields.");
+      return;
+    }
+
+    try {
+      const response = await fetch("https://api.staticforms.xyz/submit", {
+        method: "POST",
+        body: JSON.stringify({
+          accessKey: "4e32a4ad-ff35-4d56-b95d-ea3129bad48c",
+          name: formState.name,
+          email: formState.email,
+          message: formState.message,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSuccess(true);
+        setFormState({ name: "", email: "", message: "" });
+      } else {
+        setError(data.message || "Something went wrong, please try again.");
+      }
+    } catch (error) {
+      setError("Something went wrong, please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="flex flex-col justify-center items-center px-4 pt-36 pb-16"
+      className="flex flex-col justify-center items-center px-4 pt-36 pb-16 space-y-4"
     >
       <div className="flex flex-col justify-center items-center space-y-8">
         <motion.h1
@@ -37,23 +96,15 @@ const Contact = () => {
         transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}
         className="flex flex-col justify-center items-start w-full max-w-2xl"
       >
-        <form
-          className="w-full space-y-4 pb-4"
-          action="https://api.staticforms.xyz/submit"
-          method="post"
-        >
-          <input
-            type="hidden"
-            name="accessKey"
-            value="4e32a4ad-ff35-4d56-b95d-ea3129bad48c"
-          />
-          <input type="text" name="honeypot" className="hidden" />
+        <form className="w-full space-y-4 pb-4" onSubmit={handleSubmit}>
           <input
             className="appearance-none border rounded w-full py-2 px-4 leading-tight focus:outline-none font-sans font-light border-lightgray focus:border-green bg-white hover:bg-white"
             id="inline-full-name"
             type="text"
             name="name"
             placeholder="Full Name"
+            value={formState.name}
+            onChange={handleChange}
           />
           <input
             className="appearance-none border rounded w-full py-2 px-4 leading-tight focus:outline-none font-sans font-light border-lightgray focus:border-green bg-white hover:bg-white"
@@ -61,20 +112,39 @@ const Contact = () => {
             type="email"
             name="email"
             placeholder="Email"
+            value={formState.email}
+            onChange={handleChange}
           />
           <textarea
             className="appearance-none border rounded w-full h-48 py-2 px-4 leading-tight focus:outline-none font-sans font-light border-lightgray focus:border-green bg-white hover:bg-white"
             id="inline-message"
             placeholder="Message"
             name="message"
+            value={formState.message}
+            onChange={handleChange}
           />
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            className={`shadow bg-lightgray hover:bg-green text-white focus:shadow-outline focus:outline-none py-2 px-6 rounded font-sans font-medium`}
-            type="submit"
-          >
-            Send
-          </motion.button>
+          <div className="flex items-center gap-4">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              className={`shadow bg-lightgray hover:bg-green text-white focus:shadow-outline focus:outline-none py-2 px-6 rounded font-sans font-medium ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              type="submit"
+              disabled={loading}
+            >
+              Send
+            </motion.button>
+            {success && (
+              <span className="text-sm font-sans font-italic text-green">
+                Message sent successfully!
+              </span>
+            )}
+            {error && (
+              <span className="text-sm font-sans font-light italic text-red">
+                {error}
+              </span>
+            )}
+          </div>
         </form>
       </motion.div>
       <motion.div
