@@ -9,7 +9,7 @@ const CodeEffect = () => {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width >= 640 && width < 768) {
+      if (width < 768) {
         setIsEffectActive(false);
       } else {
         setIsEffectActive(true);
