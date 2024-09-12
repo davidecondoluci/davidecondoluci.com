@@ -4,8 +4,29 @@ import { FaCode } from "react-icons/fa6";
 
 const CodeEffect = () => {
   const [prevCoords, setPrevCoords] = useState({ x: 0, y: 0 });
+  const [isEffectActive, setIsEffectActive] = useState(true);
 
   useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width >= 640 && width < 768) {
+        setIsEffectActive(false);
+      } else {
+        setIsEffectActive(true);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Call it initially to set the correct state
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isEffectActive) return;
+
     const dist_to_draw = 50;
     const delay = 1000;
     const fsize = ["text-sm", "text-lg", "text-xs", "text-xl"];
