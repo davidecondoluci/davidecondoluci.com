@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import projects from "../data/projects.json";
 import Popup from "../components/Popup";
 
 const Work = () => {
   const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const handleBeforeUnload = () => {
+      window.scrollTo(0, 0);
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   const handleCardClick = (project) => {
     setSelectedProject(project);

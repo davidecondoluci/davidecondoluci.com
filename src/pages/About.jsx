@@ -37,6 +37,20 @@ const About = () => {
     }
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const handleBeforeUnload = () => {
+      window.scrollTo(0, 0);
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
   const handleMouseEnter = (index) => {
     const newSkills = [...skills];
     newSkills[index].hovered = true;
@@ -59,10 +73,10 @@ const About = () => {
     >
       <div className="w-full md:w-3/4 lg:w-1/2 flex flex-col space-y-8">
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="text-6xl font-serif font-bold text-left"
+          className="text-6xl font-serif font-bold"
         >
           About
         </motion.h1>
