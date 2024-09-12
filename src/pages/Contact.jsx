@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "../App.css";
 import { FaGithub, FaLinkedin, FaInstagram, FaXTwitter } from "react-icons/fa6";
@@ -27,7 +27,6 @@ const Contact = () => {
     setSuccess(false);
     setError("");
 
-    // Validazione dei campi
     if (!formState.name || !formState.email || !formState.message) {
       setLoading(false);
       setError("Please fill in all fields.");
@@ -62,6 +61,20 @@ const Contact = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const handleBeforeUnload = () => {
+      window.scrollTo(0, 0);
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   return (
     <motion.div
