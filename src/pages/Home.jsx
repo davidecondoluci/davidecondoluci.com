@@ -1,10 +1,25 @@
 import React from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
 import CodeEffect from "../components/CodeEffect";
 import "../App.css";
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const handleBeforeUnload = () => {
+      window.scrollTo(0, 0);
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
