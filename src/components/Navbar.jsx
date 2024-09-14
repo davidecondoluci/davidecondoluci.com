@@ -7,7 +7,7 @@ const Navbar = () => {
 
   const getLinkClass = (path) => {
     let classes = "text-gray hover:text-green";
-    if (location.pathname === path && path !== "/") {
+    if (location.pathname === path) {
       classes += " text-green";
     }
     return classes;
@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className="flex">
           <Logo />
         </div>
-        <ul className="flex space-x-4 items-center font-sans font-regular">
+        <ul className="flex space-x-4 md:space-x-8 lg:space-x-8 items-center font-sans font-regular">
           <li>
             <Link to="/" className={getLinkClass("/")}>
               Home
