@@ -7,19 +7,19 @@ const CodeEffect = () => {
   const [isEffectActive, setIsEffectActive] = useState(true);
 
   useEffect(() => {
-    const lgBreakpoint = 1024; // Define lg breakpoint
+    const lgBreakpoint = 1024;
 
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < lgBreakpoint) {
-        setIsEffectActive(false); // Disable effect if screen width is less than lg
+        setIsEffectActive(false);
       } else {
-        setIsEffectActive(true); // Enable effect if screen width is lg or larger
+        setIsEffectActive(true);
       }
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // Check on component mount
+    handleResize();
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -27,7 +27,7 @@ const CodeEffect = () => {
   }, []);
 
   useEffect(() => {
-    if (!isEffectActive) return;
+    if (!isEffectActive || "ontouchstart" in window) return; // Skip if touch device or effect is disabled
 
     const dist_to_draw = 50;
     const delay = 1000;
@@ -94,7 +94,7 @@ const CodeEffect = () => {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [prevCoords]);
+  }, [prevCoords, isEffectActive]);
 
   return null;
 };
