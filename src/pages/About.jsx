@@ -3,28 +3,6 @@ import { motion } from "framer-motion";
 import skillsData from "../data/skills.json";
 import "../App.css";
 
-const createHoverEffect = (element) => {
-  const image = document.createElement("img");
-  image.className =
-    "fixed inset-0 opacity-0 select-none z-10 w-auto h-1/3 object-cover rounded-lg m-1 transition-opacity duration-300 ease";
-  image.src = "/img/me.jpg";
-
-  document.body.appendChild(image);
-
-  element.addEventListener("mousemove", (event) => {
-    const x = event.clientX;
-    const y = event.clientY;
-
-    image.style.left = `${x}px`;
-    image.style.top = `${y}px`;
-    image.style.opacity = 1;
-  });
-
-  element.addEventListener("mouseleave", () => {
-    image.style.opacity = 0;
-  });
-};
-
 const About = () => {
   const [skills, setSkills] = useState([]);
   const nameRef = useRef(null);
@@ -88,10 +66,8 @@ const About = () => {
         >
           <p className="text-base font-sans font-light text-left leading-loose">
             Ciao, I'm{" "}
-            <span ref={nameRef} className="font-medium text-green">
-              Davide Condoluci
-            </span>{" "}
-            and I recently completed the Web Application & Apps course at Scuola
+            <span className="font-medium text-green">Davide Condoluci</span> and
+            I recently completed the Web Application & Apps course at Scuola
             Mohole, where I gained solid skills as a frontend developer and
             graphic designer. I love working in teams, and have strong critical
             thinking. Precision is one of my strengths, which I apply to every
