@@ -7,17 +7,19 @@ const CodeEffect = () => {
   const [isEffectActive, setIsEffectActive] = useState(true);
 
   useEffect(() => {
+    const lgBreakpoint = 1024; // Define lg breakpoint
+
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width < 768) {
-        setIsEffectActive(false);
+      if (width < lgBreakpoint) {
+        setIsEffectActive(false); // Disable effect if screen width is less than lg
       } else {
-        setIsEffectActive(true);
+        setIsEffectActive(true); // Enable effect if screen width is lg or larger
       }
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // Call it initially to set the correct state
+    handleResize(); // Check on component mount
 
     return () => {
       window.removeEventListener("resize", handleResize);
