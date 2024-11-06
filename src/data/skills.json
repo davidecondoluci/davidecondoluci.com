@@ -40,12 +40,16 @@
     "color": "#3279a1"
   },
   {
+    "name": "Tailwind",
+    "color": "#38bdf8"
+  },
+  {
     "name": "Bootstrap",
     "color": "#7952b3"
   },
   {
-    "name": "Tailwind",
-    "color": "#38bdf8"
+    "name": "Material UI",
+    "color": "#0073e6"
   },
   {
     "name": "VSCode",
