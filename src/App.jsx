@@ -24,13 +24,29 @@ const App = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
+  useEffect(() => {
+    // Nascondi il cursore di sistema al caricamento del sito
+    const hideSystemCursor = () => {
+      document.body.style.cursor = "none"; // Nasconde il cursore di sistema
+    };
+
+    // Nascondi il cursore di sistema quando il sito guadagna il focus
+    window.addEventListener("focus", hideSystemCursor);
+
+    hideSystemCursor(); // Applica immediatamente
+
+    return () => {
+      window.removeEventListener("focus", hideSystemCursor);
+    };
+  }, []);
+
   return (
     <div className="w-full bg-white text-gray">
       {isLargeScreen && (
         <AnimatedCursor
           innerSize={8}
           outerSize={32}
-          color="#ffffff"
+          color="255, 255, 255" // Usa valori RGB
           outerAlpha={0.5}
           innerScale={0.75}
           outerScale={2}
@@ -42,6 +58,18 @@ const App = () => {
             backgroundColor: "#ffffff",
             mixBlendMode: "exclusion",
           }}
+          clickables={[
+            "a",
+            "button",
+            'input[type="text"]',
+            'input[type="email"]',
+            'input[type="number"]',
+            'input[type="submit"]',
+            "textarea",
+            "select",
+            "label",
+            ".custom-interactive", // Aggiungi altre classi personalizzate qui
+          ]}
         />
       )}
       <Router>
