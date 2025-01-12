@@ -156,7 +156,7 @@ const About = () => {
             </a>
           </div>
         </motion.div>
-        <a href="/pdf/CV_Davide_Condoluci.pdf" download="CV_Davide_Condoluci">
+        <a href="/pdf/Condoluci_Davide_cv.pdf" download="Condoluci_Davide_cv">
           <motion.button
             whileHover={{ scale: 1.1 }}
             className="w-fit bg-gray text-white px-8 py-2 rounded-full flex justify-center items-center text-base font-sans font-regular hover:bg-green transition-colors duration-300"
