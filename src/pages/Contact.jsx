@@ -99,8 +99,13 @@ const Contact = () => {
           transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
           className="text-base font-sans font-light text-center"
         >
-          Get in touch or shoot me an email directly on
-          davide.condoluci1@gmail.com
+          Get in touch or shoot me an email directly on{" "}
+          <a
+            href="mailto:davide.condoluci1@gmail.com"
+            className="underline hover:no-underline"
+          >
+            davide.condoluci1@gmail.com
+          </a>
         </motion.p>
       </div>
       <motion.div
