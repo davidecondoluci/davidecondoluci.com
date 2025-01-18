@@ -63,7 +63,7 @@ const Work = () => {
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            className="w-full lg:w-2/5 cursor-pointer"
+            className="w-full lg:w-2/5 link"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{

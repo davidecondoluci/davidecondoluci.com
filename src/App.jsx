@@ -58,18 +58,6 @@ const App = () => {
             backgroundColor: "#ffffff",
             mixBlendMode: "exclusion",
           }}
-          clickables={[
-            "a",
-            "button",
-            'input[type="text"]',
-            'input[type="email"]',
-            'input[type="number"]',
-            'input[type="submit"]',
-            "textarea",
-            "select",
-            "label",
-            ".custom-interactive", // Aggiungi altre classi personalizzate qui
-          ]}
         />
       )}
       <Router>
