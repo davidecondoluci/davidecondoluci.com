@@ -111,6 +111,11 @@ const About = () => {
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={() => handleMouseLeave(index)}
               >
+                <img
+                  src={skill.icon}
+                  alt={`${skill.name} icon`}
+                  className="mr-2 w-6 h-6 object-contain"
+                />
                 {skill.name}
               </motion.button>
             ))}
