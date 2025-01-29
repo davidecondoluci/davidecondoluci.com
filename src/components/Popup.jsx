@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { FaArrowLeftLong, FaLink } from "react-icons/fa6";
+import React from "react";
+import { VscArrowLeft, VscLink } from "react-icons/vsc";
 import { motion } from "framer-motion";
 
 const Popup = ({ project, handleClosePopup }) => {
@@ -30,7 +30,7 @@ const Popup = ({ project, handleClosePopup }) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
         >
-          <FaArrowLeftLong />
+          <VscArrowLeft />
           <span className="text-base">Go back to projects</span>
         </motion.button>
         <div className="space-y-4">
@@ -81,7 +81,7 @@ const Popup = ({ project, handleClosePopup }) => {
                 whileHover={{ scale: 1.1 }}
               >
                 Open website
-                <FaLink className="ml-1" />
+                <VscLink className="ml-1" />
               </a>
             )}
             {project.figma && (
@@ -92,7 +92,7 @@ const Popup = ({ project, handleClosePopup }) => {
                 className="flex flex-row items-center text-blue underline hover:no-underline"
               >
                 Open project
-                <FaLink className="ml-1" />
+                <VscLink className="ml-1" />
               </a>
             )}
             {project.pdf && (
@@ -103,7 +103,7 @@ const Popup = ({ project, handleClosePopup }) => {
                 className="flex flex-row items-center text-blue underline hover:no-underline"
               >
                 Open pdf
-                <FaLink className="ml-1" />
+                <VscLink className="ml-1" />
               </a>
             )}
           </div>

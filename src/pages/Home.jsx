@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
-import CodeEffect from "../components/CodeEffect";
+import CodeEffect from "../components/CodeEffect.jsx";
 import "../App.css";
 
 const Home = () => {
