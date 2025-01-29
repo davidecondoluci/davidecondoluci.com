@@ -47,7 +47,7 @@ const Home = () => {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}
-        className="text-6xl md:text-8xl lg:text-8xl font-serif font-bold"
+        className="text-7xl md:text-8xl lg:text-9xl font-serif font-bold"
       >
         Davide Condoluci
       </motion.h1>
