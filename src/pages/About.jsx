@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import skillsData from "../data/skills.json";
 import "../App.css";
+import { VscDesktopDownload } from "react-icons/vsc";
 
 const About = () => {
   const [skills, setSkills] = useState([]);
@@ -167,6 +168,9 @@ const About = () => {
             className="w-fit bg-gray text-white px-8 py-2 rounded-full flex justify-center items-center text-base font-sans font-regular hover:bg-green transition-colors duration-300"
           >
             My CV
+            <span className="ml-2">
+              <VscDesktopDownload />
+            </span>
           </motion.button>
         </a>
       </div>
