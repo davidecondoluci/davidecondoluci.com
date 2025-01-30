@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AnimatedCursor from "react-animated-cursor";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, BrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -60,7 +61,9 @@ const App = () => {
           }}
         />
       )}
-      <Router>
+      <BrowserRouter
+        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      >
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -68,7 +71,7 @@ const App = () => {
           <Route path="/work" element={<Work />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 };
