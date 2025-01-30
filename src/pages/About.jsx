@@ -100,7 +100,7 @@ const About = () => {
                 transition={{
                   duration: 0.5,
                   ease: "easeInOut",
-                  delay: 0.2 * (index + 1),
+                  delay: 0.05 * (index + 1),
                 }}
                 className="border px-4 py-2 rounded-full m-1 flex justify-center items-center transition-colors duration-300 hover:border-transparent"
                 style={{
