@@ -19,9 +19,9 @@
     "title": "Petit",
     "image": "/img/covers/petit.svg",
     "screens": [
-      "/img/screens/home.jpg",
-      "/img/screens/topics.jpg",
-      "/img/screens/game.jpg"
+      "/img/screens/petit/app.png",
+      "/img/screens/petit/figma.png",
+      "/img/screens/petit/logo.svg"
     ],
     "description": "The only training app for pet owners that keeps your dog healthy  by offering personalized exercises and services.",
     "programs": [
@@ -34,9 +34,9 @@
     "title": "FilmFlix",
     "image": "/img/covers/filmflix.svg",
     "screens": [
-      "/img/screens/home.jpg",
-      "/img/screens/topics.jpg",
-      "/img/screens/game.jpg"
+      "/img/filmflix.svg",
+      "/img/filmflix.svg",
+      "/img/filmflix.svg"
     ],
     "description": "An application that allows you to search for your favorite movies and discover information about them.",
     "programs": [
@@ -45,7 +45,8 @@
       "Framer Motion",
       "Supabase"
     ],
-    "website": "https://github.com/davidecondoluci/movie_storage.git"
+    "website": "https://filmflix.davidecondoluci.com/",
+    "github": "https://github.com/davidecondoluci/movie_storage.git"
   },
   {
     "title": "Durud",
@@ -68,27 +69,12 @@
     "figma": "https://durud.blog"
   },
   {
-    "title": "Aiko",
-    "image": "/img/covers/aiko.svg",
-    "screens": [
-      "/img/screens/home.jpg",
-      "/img/screens/topics.jpg",
-      "/img/screens/game.jpg"
-    ],
-    "description": "Development of an educational toy for Clementoni that teaches children the concept of artificial intelligence in a fun and engaging way.",
-    "programs": [
-      "Figma",
-      "Illustrator",
-      "Blender"
-    ]
-  },
-  {
     "title": "Champagne League",
     "image": "/img/covers/champagne_league.svg",
     "screens": [
       "/img/screens/champagne_league/site.jpg",
       "/img/screens/champagne_league/logo.svg",
-      "/img/screens/champagne_league/logo.svg"
+      "/img/screens/champagne_league/insta.jpg"
     ],
     "description": "Development of the brand identity and website for a futsal tournament.",
     "programs": [
@@ -103,9 +89,9 @@
     "title": "Visionartech",
     "image": "/img/covers/visionartech.svg",
     "screens": [
-      "/img/screens/home.jpg",
-      "/img/screens/topics.jpg",
-      "/img/screens/game.jpg"
+      "/img/visionartech.svg",
+      "/img/visionartech.svg",
+      "/img/visionartech.svg"
     ],
     "description": "Creation of the logo for a startup, establishing a strong and cohesive visual presence.",
     "programs": [
