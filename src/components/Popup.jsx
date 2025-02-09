@@ -78,10 +78,7 @@ const Popup = ({ project, handleClosePopup }) => {
           >
             {project.title}
           </motion.h2>
-          <div
-            className="relative w-full shadow-lg overflow-hidden rounded-lg"
-            style={{ height: "300px" }}
-          >
+          <div className="relative w-full shadow-lg overflow-hidden rounded-lg">
             {project.screens && project.screens.length > 0 ? (
               <div className="embla" ref={emblaRef}>
                 <div className="embla__container flex">
@@ -92,15 +89,15 @@ const Popup = ({ project, handleClosePopup }) => {
                     >
                       <img
                         src={screen}
-                        alt={`${project.title} screen ${index + 1}`}
-                        className="w-full h-full object-cover rounded-lg"
+                        alt={`${project.title} project img ${index + 1}`}
+                        className="w-full h-full object-cover object-center"
                       />
                     </div>
                   ))}
                 </div>
               </div>
             ) : (
-              <div className="w-full h-full flex items-center justify-center bg-gray-200 rounded-lg">
+              <div className="w-full h-96 flex items-center justify-center bg-gray-200 rounded-lg">
                 <span className="text-gray-500">No images available</span>
               </div>
             )}
@@ -176,6 +173,17 @@ const Popup = ({ project, handleClosePopup }) => {
                 className="flex flex-row items-center text-blue underline hover:no-underline"
               >
                 Open pdf
+                <VscLink className="ml-1" />
+              </motion.a>
+            )}
+            {project.github && (
+              <motion.a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-row items-center text-blue underline hover:no-underline"
+              >
+                Open github
                 <VscLink className="ml-1" />
               </motion.a>
             )}

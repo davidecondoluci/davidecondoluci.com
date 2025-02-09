@@ -59,11 +59,11 @@ const Work = () => {
         </motion.p>
       </div>
 
-      <div className="flex flex-wrap justify-center container mx-auto gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 container mx-auto lg:w-4/5">
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            className="w-full lg:w-2/5 link"
+            className="w-full"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
@@ -73,11 +73,11 @@ const Work = () => {
             }}
             onClick={() => handleCardClick(project)}
           >
-            <div className="relative h-96 lg:h-96">
+            <div className="relative h-96 overflow-hidden rounded-lg shadow-lg">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover rounded-lg shadow-lg"
+                className="w-full h-full object-cover"
               />
               <div className="absolute bottom-0 left-0 w-full h-full p-4 bg-gradient-to-t from-black/50 to-transparent text-white rounded-lg transition-opacity duration-300 lg:opacity-0 lg:hover:opacity-100">
                 <div className="flex flex-col justify-end h-full space-y-2">
@@ -100,6 +100,7 @@ const Work = () => {
           </motion.div>
         ))}
       </div>
+
       <AnimatePresence>
         {selectedProject && (
           <Popup
