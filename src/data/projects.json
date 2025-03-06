@@ -34,16 +34,16 @@
     "title": "FilmFlix",
     "image": "/img/covers/filmflix.svg",
     "screens": [
-      "/img/filmflix.svg",
-      "/img/filmflix.svg",
-      "/img/filmflix.svg"
+      "/img/screens/filmflix/home.jpg",
+      "/img/screens/filmflix/info.jpg",
+      "/img/screens/filmflix/register.jpg"
     ],
     "description": "An application that allows you to search for your favorite movies and discover information about them.",
     "programs": [
       "React",
       "Tailwind CSS",
       "Framer Motion",
-      "Supabase"
+      "Firebase"
     ],
     "website": "https://filmflix.davidecondoluci.com/",
     "github": "https://github.com/davidecondoluci/movie_storage.git"
@@ -53,7 +53,6 @@
     "image": "/img/covers/durud.svg",
     "screens": [
       "/img/screens/durud/home.jpg",
-      "/img/screens/durud/topics.jpg",
       "/img/screens/durud/mockup.png"
     ],
     "description": "A blog/website dedicated to cooking, travel, personal experiences, and poetry.",
@@ -89,8 +88,6 @@
     "title": "Visionartech",
     "image": "/img/covers/visionartech.svg",
     "screens": [
-      "/img/visionartech.svg",
-      "/img/visionartech.svg",
       "/img/visionartech.svg"
     ],
     "description": "Creation of the logo for a startup, establishing a strong and cohesive visual presence.",
