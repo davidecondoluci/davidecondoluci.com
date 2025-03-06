@@ -42,7 +42,7 @@ const Popup = ({ project, handleClosePopup }) => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-20 flex items-center justify-end bg-black bg-opacity-75"
+      className="fixed inset-0 z-20 flex items-center justify-end bg-black/80"
       initial="hidden"
       animate="visible"
       exit="exit"
@@ -134,12 +134,12 @@ const Popup = ({ project, handleClosePopup }) => {
           </motion.p>
           <div className="flex flex-wrap">
             {project.programs.map((cat, index) => (
-              <button
+              <div
                 key={index}
                 className="w-fit text-xs border border-black px-2 py-1 mr-2 mb-2 rounded-full"
               >
                 {cat}
-              </button>
+              </div>
             ))}
           </div>
           <div className="flex flex-row space-x-4">

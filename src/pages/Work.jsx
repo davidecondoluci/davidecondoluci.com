@@ -79,7 +79,7 @@ const Work = () => {
                 alt={project.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-0 left-0 w-full h-full p-4 bg-gradient-to-t from-black/50 to-transparent text-white rounded-lg transition-opacity duration-300 lg:opacity-0 lg:hover:opacity-100">
+              <div className="absolute bottom-0 left-0 w-full h-full p-4 bg-gradient-to-t from-black/40 to-transparent text-white rounded-lg transition-opacity duration-300 lg:opacity-0 lg:hover:opacity-100">
                 <div className="flex flex-col justify-end h-full space-y-2">
                   <h3 className="text-4xl font-serif font-bold">
                     {project.title}
