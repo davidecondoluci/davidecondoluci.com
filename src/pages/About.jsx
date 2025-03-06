@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import skillsData from "../data/skills.json";
+import { VscLinkExternal } from "react-icons/vsc";
 import "../App.css";
-import { VscDesktopDownload } from "react-icons/vsc";
 
 const About = () => {
   const [skills, setSkills] = useState([]);
@@ -140,9 +140,10 @@ const About = () => {
             <a
               href="https://scuola.mohole.it/"
               target="_blank"
-              className="text-base font-sans font-light text-green hover:underline"
+              className="w-fit text-base font-sans font-light text-green hover:underline flex flex-row items-center"
             >
-              scuola.mohole.it
+              scuola.mohole.it&nbsp;
+              <VscLinkExternal />
             </a>
           </div>
           <div className="space-y-2">
@@ -156,9 +157,10 @@ const About = () => {
             <a
               href="https://www.startingwork.it/"
               target="_blank"
-              className="text-base font-sans font-light text-green hover:underline"
+              className="w-fit text-base font-sans font-light text-green hover:underline flex flex-row items-center"
             >
-              startingwork.it
+              startingwork.it&nbsp;
+              <VscLinkExternal />
             </a>
           </div>
         </motion.div>
@@ -167,10 +169,7 @@ const About = () => {
             whileHover={{ scale: 1.1 }}
             className="w-fit bg-gray text-white px-8 py-2 rounded-full flex justify-center items-center text-base font-sans font-regular hover:bg-green transition-colors duration-300"
           >
-            My CV
-            <span className="ml-2">
-              <VscDesktopDownload />
-            </span>
+            My Resume
           </motion.button>
         </a>
       </div>
