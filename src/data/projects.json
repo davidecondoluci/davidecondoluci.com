@@ -1,11 +1,11 @@
 [
   {
     "title": "Quiz Royale",
-    "image": "/img/covers/quiz_royale.svg",
+    "image": "/img/covers/quiz-royale.svg",
     "screens": [
-      "/img/screens/quiz_royale/home.jpg",
-      "/img/screens/quiz_royale/topics.jpg",
-      "/img/screens/quiz_royale/game.jpg"
+      "/img/screens/quiz-royale/home.jpg",
+      "/img/screens/quiz-royale/topics.jpg",
+      "/img/screens/quiz-royale/game.jpg"
     ],
     "description": "Online educational video game with multiple-choice quizzes in RPG style on a website.",
     "programs": [
@@ -69,11 +69,11 @@
   },
   {
     "title": "Champagne League",
-    "image": "/img/covers/champagne_league.svg",
+    "image": "/img/covers/champagne-league.svg",
     "screens": [
-      "/img/screens/champagne_league/site.jpg",
-      "/img/screens/champagne_league/logo.svg",
-      "/img/screens/champagne_league/insta.jpg"
+      "/img/screens/champagne-league/site.jpg",
+      "/img/screens/champagne-league/logo.svg",
+      "/img/screens/champagne-league/insta.jpg"
     ],
     "description": "Development of the brand identity and website for a futsal tournament.",
     "programs": [
