@@ -37,7 +37,7 @@ const Navbar = () => {
           {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
         </button>
         {/* Desktop Menu */}
-        <ul className="hidden lg:flex space-x-8 items-center font-sans font-regular">
+        <ul className="hidden lg:flex space-x-8 items-center font-sans font-regular text-xl">
           <li>
             <Link to="/about" className={getLinkClass("/about")}>
               About
