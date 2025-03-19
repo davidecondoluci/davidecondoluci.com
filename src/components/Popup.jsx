@@ -9,7 +9,10 @@ import {
 import { motion } from "framer-motion";
 
 const Popup = ({ project, handleClosePopup }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel();
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    draggable: project.screens && project.screens.length > 1, // Disabilita il trascinamento se c'è solo un'immagine
+    loop: project.screens && project.screens.length > 1, // Disabilita il loop se c'è solo un'immagine
+  });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
 
@@ -101,7 +104,7 @@ const Popup = ({ project, handleClosePopup }) => {
                 <span className="text-gray-500">No images available</span>
               </div>
             )}
-            {project.screens && project.screens.length > 0 && (
+            {project.screens && project.screens.length > 1 && (
               <>
                 <button
                   className={`absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white bg-black50 p-2 rounded-full ${
