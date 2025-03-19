@@ -107,7 +107,7 @@ const Popup = ({ project, handleClosePopup }) => {
             {project.screens && project.screens.length > 1 && (
               <>
                 <button
-                  className={`absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white bg-black50 p-2 rounded-full ${
+                  className={`absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white bg-black/40 p-2 rounded-full ${
                     !canScrollPrev && "opacity-50 cursor-not-allowed"
                   }`}
                   onClick={scrollPrev}
@@ -116,7 +116,7 @@ const Popup = ({ project, handleClosePopup }) => {
                   <VscChevronLeft size={24} />
                 </button>
                 <button
-                  className={`absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white bg-black50 p-2 rounded-full ${
+                  className={`absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white bg-black/40 p-2 rounded-full ${
                     !canScrollNext && "opacity-50 cursor-not-allowed"
                   }`}
                   onClick={scrollNext}

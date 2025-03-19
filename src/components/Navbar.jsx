@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../components/Logo.jsx";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -7,10 +7,33 @@ import { motion, AnimatePresence } from "framer-motion";
 const Navbar = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef(null); // Ref per la navbar
+  const [navHeight, setNavHeight] = useState(0); // Stato per l'altezza della navbar
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  // Misura l'altezza della navbar quando il componente viene montato
+  useEffect(() => {
+    if (navRef.current) {
+      setNavHeight(navRef.current.offsetHeight);
+    }
+  }, []);
+
+  // Aggiungi o rimuovi la classe Tailwind `overflow-hidden` al body
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+
+    // Pulizia: rimuovi la classe quando il componente viene smontato
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [menuOpen]);
 
   const getLinkClass = (path) => {
     let classes = "text-gray hover:text-green";
@@ -27,7 +50,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="absolute top-0 right-0 left-0 z-10 px-4 md:px-6 py-8">
+    <div
+      className="absolute top-0 right-0 left-0 z-10 px-4 md:px-6 py-8"
+      ref={navRef}
+    >
       <nav className="flex justify-between items-center w-full lg:w-4/5 mx-auto">
         <a href="/">
           <Logo />
@@ -59,7 +85,8 @@ const Navbar = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="lg:hidden fixed top-[104px] left-0 w-full bg-white shadow-md flex flex-col items-center justify-center z-20"
+            className="lg:hidden fixed left-0 w-full bg-white shadow-md flex flex-col items-center justify-center z-20"
+            style={{ top: `${navHeight}px` }} // Imposta il top dinamicamente
             initial="hidden"
             animate="visible"
             exit="exit"
