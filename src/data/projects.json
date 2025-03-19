@@ -11,7 +11,8 @@
     "programs": [
       "HTML",
       "Tailwind CSS",
-      "Alpine.js"
+      "Alpine.js",
+      "GSAP"
     ],
     "website": "https://quizroyale.davidecondoluci.com/"
   },
@@ -42,6 +43,7 @@
     "programs": [
       "React",
       "Tailwind CSS",
+      "Javascript",
       "Framer Motion",
       "Firebase"
     ],

@@ -73,7 +73,7 @@ const Work = () => {
             }}
             onClick={() => handleCardClick(project)}
           >
-            <div className="relative h-96 overflow-hidden rounded-lg shadow-lg">
+            <div className="relative h-fit overflow-hidden rounded-lg shadow-lg">
               <img
                 src={project.image}
                 alt={project.title}
