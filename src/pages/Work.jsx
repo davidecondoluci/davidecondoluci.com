@@ -86,12 +86,12 @@ const Work = () => {
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {project.programs.map((cat, catIndex) => (
-                      <button
+                      <div
                         key={catIndex}
                         className="w-fit text-xs bg-white bg-opacity-40 px-4 py-1 rounded-full"
                       >
                         {cat}
-                      </button>
+                      </div>
                     ))}
                   </div>
                 </div>

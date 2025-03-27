@@ -93,7 +93,7 @@ const About = () => {
           <h2 className="text-4xl font-serif font-bold text-left">Skills</h2>
           <div className="flex flex-wrap">
             {skills.map((skill, index) => (
-              <motion.button
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ const About = () => {
                   className="mr-2 w-6 h-6 object-contain"
                 />
                 {skill.name}
-              </motion.button>
+              </motion.div>
             ))}
           </div>
         </motion.div>
