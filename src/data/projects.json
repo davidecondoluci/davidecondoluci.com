@@ -17,19 +17,21 @@
     "website": "https://quizroyale.davidecondoluci.com/"
   },
   {
-    "title": "Petit",
-    "image": "/img/covers/petit.svg",
+    "title": "Eidosmedia",
+    "image": "/img/covers/eidosmedia.svg",
     "screens": [
-      "/img/screens/petit/app.png",
-      "/img/screens/petit/figma.png",
-      "/img/screens/petit/logo.svg"
+      "/img/screens/eidosmedia/desktop.svg",
+      "/img/screens/eidosmedia/mobile.svg"
     ],
-    "description": "The only training app for pet owners that keeps your dog healthy  by offering personalized exercises and services.",
+    "description": "Online educational video game with multiple-choice quizzes in RPG style on a website.",
     "programs": [
-      "Figma",
-      "Illustrator"
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "Javascript",
+      "Filezilla"
     ],
-    "figma": "https://www.figma.com/design/f7vd2H7QWV8FyRQekfLMTB/Petit?node-id=0-1&t=RdxYttLp6eFwaw4G-1"
+    "website": "https://eidosmedia.com/"
   },
   {
     "title": "FilmFlix",
@@ -49,6 +51,21 @@
     ],
     "website": "https://filmflix.davidecondoluci.com/",
     "github": "https://github.com/davidecondoluci/movie_storage.git"
+  },
+  {
+    "title": "Petit",
+    "image": "/img/covers/petit.svg",
+    "screens": [
+      "/img/screens/petit/app.png",
+      "/img/screens/petit/figma.png",
+      "/img/screens/petit/logo.svg"
+    ],
+    "description": "The only training app for pet owners that keeps your dog healthy  by offering personalized exercises and services.",
+    "programs": [
+      "Figma",
+      "Illustrator"
+    ],
+    "figma": "https://www.figma.com/design/f7vd2H7QWV8FyRQekfLMTB/Petit?node-id=0-1&t=RdxYttLp6eFwaw4G-1"
   },
   {
     "title": "Durud",
