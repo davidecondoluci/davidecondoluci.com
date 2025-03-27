@@ -36,10 +36,7 @@ const Home = () => {
         className="flex flex-col md:flex-row lg:flex-row justify-center items-center text-3xl md:text-4xl lg:text-4xl font-sans font-light relative space-x-2"
       >
         <span className="flex w-10 h-10">
-          <img
-            src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand.png"
-            alt="Waving Hand"
-          />
+          <img src="/img/victory-hand.png" alt="Victory Hand" />
         </span>
         <span>Hi there, I’m</span>
       </motion.h3>
