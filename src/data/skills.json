@@ -30,6 +30,11 @@
     "icon": "/img/icons/react.svg"
   },
   {
+    "name": "NPM",
+    "color": "#C12127",
+    "icon": "/img/icons/npm.svg"
+  },
+  {
     "name": "Framer Motion",
     "color": "#000000",
     "icon": "/img/icons/framer.svg"
@@ -68,6 +73,11 @@
     "name": "VSCode",
     "color": "#0877b9",
     "icon": "/img/icons/vscode.svg"
+  },
+  {
+    "name": "Github",
+    "color": "#24292F",
+    "icon": "/img/icons/github.svg"
   },
   {
     "name": "Figma",
