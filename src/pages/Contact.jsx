@@ -181,7 +181,7 @@ const Contact = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaGithub className="text-[#333] text-3xl" />
+            <img src="/img/icons/github.svg" alt="GitHub" className="h-8" />
           </motion.a>
           <motion.a
             whileHover={{ scale: 1.2 }}
@@ -189,7 +189,7 @@ const Contact = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaLinkedin className="text-[#0077B5] text-3xl" />
+            <img src="/img/icons/linkedin.svg" alt="LinkedIn" className="h-8" />
           </motion.a>
           <motion.a
             whileHover={{ scale: 1.2 }}
@@ -197,7 +197,11 @@ const Contact = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaInstagram className="text-[#E4405F] text-3xl" />
+            <img
+              src="/img/icons/instagram.svg"
+              alt="Instagram"
+              className="h-8"
+            />
           </motion.a>
           <motion.a
             whileHover={{ scale: 1.2 }}
@@ -205,7 +209,7 @@ const Contact = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaXTwitter className="text-[#000000] text-3xl" />
+            <img src="/img/icons/x.svg" alt="X" className="h-8" />
           </motion.a>
         </div>
       </motion.div>

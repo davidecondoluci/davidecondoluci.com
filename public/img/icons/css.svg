@@ -1,101 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="102.3716mm"
-   height="144.49777mm"
-   viewBox="0 0 362.73401 511.99998"
-   id="svg3476"
-   version="1.1"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="CSS3.svg">
-  <defs
-     id="defs3478" />
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="181.367"
-     inkscape:cy="256"
-     inkscape:document-units="px"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:window-width="1366"
-     inkscape:window-height="704"
-     inkscape:window-x="0"
-     inkscape:window-y="27"
-     inkscape:window-maximized="1" />
-  <metadata
-     id="metadata3481">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     inkscape:label="Calque 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(-193.633,-276.3622)">
-    <g
-       id="g3013"
-       transform="translate(119,276.3622)">
-      <polygon
-         id="polygon2989"
-         points="437.367,100.62 404.321,470.819 255.778,512 107.644,470.877 74.633,100.62 "
-         style="fill:#264de4" />
-      <polygon
-         id="polygon2991"
-         points="376.03,447.246 404.27,130.894 256,130.894 256,480.523 "
-         style="fill:#2965f1" />
-      <polygon
-         id="polygon2993"
-         points="150.31,268.217 154.38,313.627 256,313.627 256,268.217 "
-         style="fill:#ebebeb" />
-      <polygon
-         id="polygon2995"
-         points="256,176.305 255.843,176.305 142.132,176.305 146.26,221.716 256,221.716 "
-         style="fill:#ebebeb" />
-      <polygon
-         id="polygon2997"
-         points="256,433.399 256,386.153 255.801,386.206 205.227,372.55 201.994,336.333 177.419,336.333 156.409,336.333 162.771,407.634 255.791,433.457 "
-         style="fill:#ebebeb" />
-      <path
-         id="path2999"
-         d="m 160,0 55,0 0,23 -32,0 0,23 32,0 0,23 -55,0 z"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3001"
-         d="m 226,0 55,0 0,20 -32,0 0,4 32,0 0,46 -55,0 0,-21 32,0 0,-4 -32,0 z"
-         inkscape:connector-curvature="0" />
-      <path
-         id="path3003"
-         d="m 292,0 55,0 0,20 -32,0 0,4 32,0 0,46 -55,0 0,-21 32,0 0,-4 -32,0 z"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon3005"
-         points="311.761,313.627 306.49,372.521 255.843,386.191 255.843,433.435 348.937,407.634 349.62,399.962 360.291,280.411 361.399,268.217 369.597,176.305 255.843,176.305 255.843,221.716 319.831,221.716 315.699,268.217 255.843,268.217 255.843,313.627 "
-         style="fill:#ffffff" />
-    </g>
-  </g>
+<svg width="71" height="101" viewBox="0 0 71 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2229_8)">
+<path d="M71.3465 20.1523L64.8922 92.4568L35.8799 100.5L6.94746 92.4682L0.5 20.1523H71.3465Z" fill="#264DE4"/>
+<path d="M59.3666 87.8529L64.8822 26.0654H35.9232V94.3523L59.3666 87.8529Z" fill="#2965F1"/>
+<path d="M15.2806 52.8862L16.0756 61.7554H35.9232V52.8862H15.2806Z" fill="#EBEBEB"/>
+<path d="M35.9233 34.9346H35.8926H13.6834L14.4897 43.8039H35.9233V34.9346Z" fill="#EBEBEB"/>
+<path d="M35.9232 85.1481V75.9204L35.8844 75.9308L26.0066 73.2636L25.3752 66.1899H20.5754H16.4719L17.7144 80.1159L35.8824 85.1595L35.9232 85.1481Z" fill="#EBEBEB"/>
+<path d="M17.1732 0.5H27.9154V4.99219H21.6654V9.48438H27.9154V13.9766H17.1732V0.5Z" fill="black"/>
+<path d="M30.0638 0.5H40.806V4.40625H34.556V5.1875H40.806V14.1719H30.0638V10.0703H36.3138V9.28906H30.0638V0.5Z" fill="black"/>
+<path d="M42.9545 0.5H53.6967V4.40625H47.4467V5.1875H53.6967V14.1719H42.9545V10.0703H49.2045V9.28906H42.9545V0.5Z" fill="black"/>
+<path d="M46.8141 61.7553L45.7846 73.258L35.8926 75.9279V85.1553L54.075 80.116L54.2084 78.6176L56.2926 55.2678L56.509 52.8861L58.1102 34.9346H35.8926V43.8039H48.3902L47.5832 52.8861H35.8926V61.7553H46.8141Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_2229_8">
+<rect width="70" height="100" fill="white" transform="translate(0.5 0.5)"/>
+</clipPath>
+</defs>
 </svg>

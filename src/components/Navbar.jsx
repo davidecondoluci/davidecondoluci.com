@@ -55,9 +55,9 @@ const Navbar = () => {
       ref={navRef}
     >
       <nav className="flex justify-between items-center w-full lg:w-4/5 mx-auto">
-        <a href="/">
+        <motion.a whileHover={{ scale: 0.8 }} href="/">
           <Logo />
-        </a>
+        </motion.a>
         {/* Hamburger Icon */}
         <button className="lg:hidden text-gray" onClick={toggleMenu}>
           {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
