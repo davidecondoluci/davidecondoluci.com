@@ -55,7 +55,7 @@ const Navbar = () => {
       ref={navRef}
     >
       <nav className="flex justify-between items-center w-full lg:w-4/5 mx-auto">
-        <motion.a whileHover={{ scale: 0.8 }} href="/">
+        <motion.a whileHover={{ scale: 1.2 }} href="/">
           <Logo />
         </motion.a>
         {/* Hamburger Icon */}
