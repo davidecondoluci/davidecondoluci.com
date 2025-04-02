@@ -70,6 +70,11 @@
     "icon": "/img/icons/mui.svg"
   },
   {
+    "name": "Filezilla",
+    "color": "#BF0000",
+    "icon": "/img/icons/filezilla.svg"
+  },
+  {
     "name": "VSCode",
     "color": "#0877b9",
     "icon": "/img/icons/vscode.svg"
