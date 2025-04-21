@@ -10,19 +10,19 @@
     "icon": "/img/icons/css.svg"
   },
   {
-    "name": "SASS",
-    "color": "#cb6699",
-    "icon": "/img/icons/sass.svg"
-  },
-  {
     "name": "Javascript",
     "color": "#f0db4f",
     "icon": "/img/icons/javascript.svg"
   },
   {
-    "name": "Alpine.js",
-    "color": "#2d3441",
-    "icon": "/img/icons/alpine.svg"
+    "name": "PHP",
+    "color": "#777BB3",
+    "icon": "/img/icons/php.svg"
+  },
+  {
+    "name": "SASS",
+    "color": "#cb6699",
+    "icon": "/img/icons/sass.svg"
   },
   {
     "name": "React",
@@ -68,6 +68,11 @@
     "name": "Material UI",
     "color": "#0073e6",
     "icon": "/img/icons/mui.svg"
+  },
+  {
+    "name": "Alpine.js",
+    "color": "#2d3441",
+    "icon": "/img/icons/alpine.svg"
   },
   {
     "name": "Filezilla",
