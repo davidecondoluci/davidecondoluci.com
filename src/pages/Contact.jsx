@@ -82,7 +82,7 @@ const Contact = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="flex flex-col items-center px-4 pt-36 space-y-4 h-screen"
+      className="flex flex-col items-center px-4 pt-36 pb-36 space-y-4 h-screen"
     >
       <div className="flex flex-col justify-center items-center space-y-8">
         <motion.h1
@@ -134,7 +134,7 @@ const Contact = () => {
             onChange={handleChange}
           />
           <textarea
-            className="appearance-none border rounded w-full h-48 py-2 px-4 leading-tight focus:outline-none font-sans font-light border-lightgray focus:border-green bg-white hover:bg-white"
+            className="resize-none appearance-none border rounded w-full h-48 py-2 px-4 leading-tight focus:outline-none font-sans font-light border-lightgray focus:border-green bg-white hover:bg-white"
             id="inline-message"
             placeholder="Message"
             name="message"
