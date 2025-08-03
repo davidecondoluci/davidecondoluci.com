@@ -1,10 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import "../App.css";
 import { FaGithub, FaLinkedin, FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -29,7 +31,7 @@ const Contact = () => {
 
     if (!formState.name || !formState.email || !formState.message) {
       setLoading(false);
-      setError("Please fill in all fields.");
+      setError(t("contact.form.error"));
       return;
     }
 
@@ -53,10 +55,10 @@ const Contact = () => {
         setSuccess(true);
         setFormState({ name: "", email: "", message: "" });
       } else {
-        setError(data.message || "Something went wrong, please try again.");
+        setError(data.message || t("contact.form.errorGeneric"));
       }
     } catch (error) {
-      setError("Something went wrong, please try again.");
+      setError(t("contact.form.errorGeneric"));
     } finally {
       setLoading(false);
     }
@@ -91,7 +93,7 @@ const Contact = () => {
           transition={{ duration: 0.5, ease: "easeInOut" }}
           className="text-6xl font-bold text-left font-serif"
         >
-          Contact
+          {t("contact.title")}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: -20 }}
@@ -99,7 +101,7 @@ const Contact = () => {
           transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
           className="text-base font-sans font-light text-center"
         >
-          Get in touch or shoot me an email directly on{" "}
+          {t("contact.description")}{" "}
           <a
             href="mailto:davide.condoluci1@gmail.com"
             className="underline hover:no-underline"
@@ -120,7 +122,7 @@ const Contact = () => {
             id="inline-full-name"
             type="text"
             name="name"
-            placeholder="Full Name"
+            placeholder={t("contact.form.name")}
             value={formState.name}
             onChange={handleChange}
           />
@@ -129,14 +131,14 @@ const Contact = () => {
             id="inline-email"
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder={t("contact.form.email")}
             value={formState.email}
             onChange={handleChange}
           />
           <textarea
             className="resize-none appearance-none border rounded w-full h-48 py-2 px-4 leading-tight focus:outline-none font-sans font-light border-lightgray focus:border-green bg-white hover:bg-white"
             id="inline-message"
-            placeholder="Message"
+            placeholder={t("contact.form.message")}
             name="message"
             value={formState.message}
             onChange={handleChange}
@@ -150,11 +152,11 @@ const Contact = () => {
               type="submit"
               disabled={loading}
             >
-              Send
+              {t("contact.form.send")}
             </motion.button>
             {success && (
               <span className="text-sm font-sans font-italic text-green">
-                Message sent successfully!
+                {t("contact.form.success")}
               </span>
             )}
             {error && (
@@ -172,7 +174,7 @@ const Contact = () => {
         className="flex flex-col md:flex-row lg:flex-row w-full max-w-2xl justify-start md:items-center lg:items-center space-y-2 md:space-x-2 lg:space-x-2"
       >
         <h2 className="font-sans font-light text-left lg:items-center md:mr-4 lg:mr-4">
-          Stay connected with me:
+          {t("contact.stayConnected")}
         </h2>
         <div className="flex flex-row lg:items-center space-x-4">
           <motion.a

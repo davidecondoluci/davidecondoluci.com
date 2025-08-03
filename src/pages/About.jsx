@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import skillsData from "../data/skills.json";
 import { VscLinkExternal } from "react-icons/vsc";
 import "../App.css";
 
 const About = () => {
+  const { t } = useTranslation();
   const [skills, setSkills] = useState([]);
   const nameRef = useRef(null);
 
@@ -57,7 +59,7 @@ const About = () => {
           transition={{ duration: 0.5, ease: "easeInOut" }}
           className="text-6xl font-serif font-bold"
         >
-          About
+          {t("about.title")}
         </motion.h1>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -66,22 +68,10 @@ const About = () => {
           className="space-y-4"
         >
           <p className="text-base font-sans font-light text-left leading-loose">
-            Ciao, I'm{" "}
-            <span className="font-medium text-green">Davide Condoluci</span> and
-            I recently completed the Web Application & Apps course at Scuola
-            Mohole, where I gained solid skills as a frontend developer and
-            graphic designer. I love working in teams, and have strong critical
-            thinking. Precision is one of my strengths, which I apply to every
-            project.
+            {t("about.description.0")}
           </p>
           <p className="text-base font-sans font-light text-left leading-loose">
-            My passions range from sports, like soccer, gym, and running, to
-            fashion, technology, and collecting. I also love traveling and
-            discovering new cultures, which inspire and enrich my creativity.
-            This mix of interests allows me to bring a unique and creative
-            perspective to everything I do. I am always looking for new
-            challenges and opportunities to grow and learn, both professionally
-            and personally.
+            {t("about.description.1")}
           </p>
         </motion.div>
         <motion.div
@@ -90,7 +80,9 @@ const About = () => {
           transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}
           className="space-y-4"
         >
-          <h2 className="text-4xl font-serif font-bold text-left">Skills</h2>
+          <h2 className="text-4xl font-serif font-bold text-left">
+            {t("about.skills")}
+          </h2>
           <div className="flex flex-wrap">
             {skills.map((skill, index) => (
               <motion.div
@@ -128,7 +120,9 @@ const About = () => {
           transition={{ duration: 0.5, ease: "easeInOut", delay: 0.6 }}
           className="space-y-4"
         >
-          <h2 className="text-4xl font-serif font-bold text-left">Education</h2>
+          <h2 className="text-4xl font-serif font-bold text-left">
+            {t("about.education")}
+          </h2>
           <div className="border-b border-gray pb-4 space-y-2">
             <h3 className="text-2xl font-serif font-bold">
               Web Application & Apps
@@ -173,7 +167,7 @@ const About = () => {
             whileHover={{ scale: 1.1 }}
             className="w-fit bg-gray text-white px-8 py-2 rounded-full flex justify-center items-center text-base font-sans font-regular hover:bg-green transition-colors duration-300"
           >
-            My Resume
+            {t("about.CV")}
           </motion.button>
         </a>
       </div>

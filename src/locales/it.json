@@ -1,0 +1,81 @@
+{
+    "nav": {
+        "about": "Chi Sono",
+        "work": "Lavori",
+        "contact": "Contatti"
+    },
+    "home": {
+        "hello": "Ciao, sono",
+        "description": "Sviluppatore Frontend specializzato in React, Next.js e tecnologie moderne.",
+        "roles": [
+            "Front-end Developer",
+            "Graphic Designer",
+            "Atleta Energico",
+            "Viaggiatore Curioso",
+            "Amante del Vintage",
+            "Maniaco dei Lego"
+        ]
+    },
+    "about": {
+        "title": "Chi Sono",
+        "description": [
+            "Ciao, sono Davide Condoluci e ho recentemente completato il corso Web Application & Apps presso la Scuola Mohole, dove ho acquisito solide competenze come sviluppatore frontend e graphic designer. Mi piace lavorare in team e ho un forte pensiero critico. La precisione è uno dei miei punti di forza, che applico a ogni progetto.",
+            "Le mie passioni spaziano dallo sport, come il calcio, la palestra e la corsa, alla moda, alla tecnologia e alla collezione. Adoro anche viaggiare e scoprire nuove culture, che ispirano e arricchiscono la mia creatività. Questo mix di interessi mi consente di portare una prospettiva unica e creativa in tutto ciò che faccio. Sono sempre alla ricerca di nuove sfide e opportunità per crescere e imparare, sia professionalmente che personalmente."
+        ],
+        "skills": "Competenze",
+        "education": "Formazione",
+        "CV": "Scarica CV"
+    },
+    "work": {
+        "title": "I Miei Lavori",
+        "description": "Una selezione dei miei migliori lavori negli anni, da siti web a applicazioni e branding."
+    },
+    "contact": {
+        "title": "Contatti",
+        "description": "Mettiti in contatto o scrivimi direttamente su",
+        "form": {
+            "name": "Nome Completo",
+            "email": "Email",
+            "message": "Messaggio",
+            "send": "Invia",
+            "success": "Messaggio inviato con successo!",
+            "error": "Compila tutti i campi.",
+            "errorGeneric": "Qualcosa è andato storto, riprova."
+        },
+        "stayConnected": "Rimani connesso con me:"
+    },
+    "popup": {
+        "goBack": "Torna ai progetti",
+        "noImages": "Nessuna immagine disponibile",
+        "openWebsite": "Apri sito web",
+        "openProject": "Apri progetto",
+        "openPdf": "Apri pdf",
+        "openGithub": "Apri Github"
+    },
+    "projects": {
+        "quizRoyale": {
+            "description": "Videogioco educativo online con quiz a scelta multipla in stile RPG su un sito web."
+        },
+        "eidosmedia": {
+            "description": "Aggiornamento della navbar sul sito web di Eidosmedia con un design moderno e una navigazione migliorata per desktop e mobile."
+        },
+        "filmflix": {
+            "description": "Un'applicazione che ti permette di cercare i tuoi film preferiti e scoprire informazioni su di essi."
+        },
+        "petit": {
+            "description": "L'unica app di allenamento per proprietari di animali domestici che mantiene il tuo cane in salute offrendo esercizi e servizi personalizzati."
+        },
+        "durud": {
+            "description": "Un blog/sito web dedicato alla cucina, ai viaggi, alle esperienze personali e alla poesia."
+        },
+        "champagneLeague": {
+            "description": "Sviluppo dell'identità del brand e del sito web per un torneo di calcetto."
+        },
+        "visionartech": {
+            "description": "Creazione del logo per una startup, stabilendo una presenza visiva forte e coesa."
+        },
+        "som": {
+            "description": "Creazione di un brand contro l'inquinamento da plastica negli oceani, inclusi logo, manuale del brand, sito web e pagine social media."
+        }
+    }
+}
