@@ -85,7 +85,7 @@ const Navbar = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="lg:hidden fixed left-0 w-full bg-white shadow-md flex flex-col items-center justify-center z-20"
+            className="lg:hidden fixed left-0 w-full h-full bg-white flex flex-col items-center z-20"
             style={{ top: `${navHeight}px` }} // Imposta il top dinamicamente
             initial="hidden"
             animate="visible"
