@@ -7,8 +7,10 @@ import {
   VscLink,
 } from "react-icons/vsc";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const Popup = ({ project, handleClosePopup }) => {
+  const { t } = useTranslation();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     draggable: project.screens && project.screens.length > 1, // Disabilita il trascinamento se c'è solo un'immagine
     loop: project.screens && project.screens.length > 1, // Disabilita il loop se c'è solo un'immagine
@@ -70,7 +72,7 @@ const Popup = ({ project, handleClosePopup }) => {
           transition={{ delay: 0.6 }}
         >
           <VscArrowLeft />
-          <span className="text-base">Go back to projects</span>
+          <span className="text-base">{t("popup.goBack")}</span>
         </motion.button>
         <div className="space-y-4">
           <motion.h2
@@ -101,7 +103,7 @@ const Popup = ({ project, handleClosePopup }) => {
               </div>
             ) : (
               <div className="w-full h-96 flex items-center justify-center bg-gray-200 rounded-lg">
-                <span className="text-gray-500">No images available</span>
+                <span className="text-gray-500">{t("popup.noImages")}</span>
               </div>
             )}
             {project.screens && project.screens.length > 1 && (
@@ -133,7 +135,7 @@ const Popup = ({ project, handleClosePopup }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            {project.description}
+            {t(project.descriptionKey)}
           </motion.p>
           <div className="flex flex-wrap">
             {project.programs.map((cat, index) => (
@@ -153,7 +155,7 @@ const Popup = ({ project, handleClosePopup }) => {
                 rel="noopener noreferrer"
                 className="flex flex-row items-center text-blue underline hover:no-underline"
               >
-                Open website
+                {t("popup.openWebsite")}
                 <VscLink className="ml-1" />
               </motion.a>
             )}
@@ -164,7 +166,7 @@ const Popup = ({ project, handleClosePopup }) => {
                 rel="noopener noreferrer"
                 className="flex flex-row items-center text-blue underline hover:no-underline"
               >
-                Open project
+                {t("popup.openProject")}
                 <VscLink className="ml-1" />
               </motion.a>
             )}
@@ -175,7 +177,7 @@ const Popup = ({ project, handleClosePopup }) => {
                 rel="noopener noreferrer"
                 className="flex flex-row items-center text-blue underline hover:no-underline"
               >
-                Open pdf
+                {t("popup.openPdf")}
                 <VscLink className="ml-1" />
               </motion.a>
             )}
@@ -186,7 +188,7 @@ const Popup = ({ project, handleClosePopup }) => {
                 rel="noopener noreferrer"
                 className="flex flex-row items-center text-blue underline hover:no-underline"
               >
-                Open github
+                {t("popup.openGithub")}
                 <VscLink className="ml-1" />
               </motion.a>
             )}

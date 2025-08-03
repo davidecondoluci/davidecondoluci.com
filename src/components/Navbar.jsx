@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Logo from "../components/Logo.jsx";
+import LanguageSelector from "../components/LanguageSelector.jsx";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null); // Ref per la navbar
@@ -66,18 +69,21 @@ const Navbar = () => {
         <ul className="hidden lg:flex space-x-8 items-center font-sans font-regular text-xl">
           <li>
             <Link to="/about" className={getLinkClass("/about")}>
-              About
+              {t("nav.about")}
             </Link>
           </li>
           <li>
             <Link to="/work" className={getLinkClass("/work")}>
-              Work
+              {t("nav.work")}
             </Link>
           </li>
           <li>
             <Link to="/contact" className={getLinkClass("/contact")}>
-              Contact
+              {t("nav.contact")}
             </Link>
+          </li>
+          <li>
+            <LanguageSelector />
           </li>
         </ul>
       </nav>
@@ -101,7 +107,7 @@ const Navbar = () => {
                   className={getLinkClass("/about")}
                   onClick={toggleMenu}
                 >
-                  About
+                  {t("nav.about")}
                 </Link>
               </li>
               <li>
@@ -110,7 +116,7 @@ const Navbar = () => {
                   className={getLinkClass("/work")}
                   onClick={toggleMenu}
                 >
-                  Work
+                  {t("nav.work")}
                 </Link>
               </li>
               <li>
@@ -119,8 +125,11 @@ const Navbar = () => {
                   className={getLinkClass("/contact")}
                   onClick={toggleMenu}
                 >
-                  Contact
+                  {t("nav.contact")}
                 </Link>
+              </li>
+              <li>
+                <LanguageSelector />
               </li>
             </ul>
           </motion.div>

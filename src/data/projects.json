@@ -1,5 +1,6 @@
 [
   {
+    "id": "quizRoyale",
     "title": "Quiz Royale",
     "image": "/img/covers/quiz-royale.svg",
     "screens": [
@@ -7,7 +8,7 @@
       "/img/screens/quiz-royale/topics.jpg",
       "/img/screens/quiz-royale/game.jpg"
     ],
-    "description": "Online educational video game with multiple-choice quizzes in RPG style on a website.",
+    "descriptionKey": "projects.quizRoyale.description",
     "programs": [
       "HTML",
       "Tailwind CSS",
@@ -17,13 +18,14 @@
     "website": "https://quizroyale.davidecondoluci.com/"
   },
   {
+    "id": "eidosmedia",
     "title": "Eidosmedia",
     "image": "/img/covers/eidosmedia.svg",
     "screens": [
       "/img/screens/eidosmedia/desktop.svg",
       "/img/screens/eidosmedia/mobile.svg"
     ],
-    "description": "Updated navbar on Eidosmedia’s website with a modern design and improved navigation for both desktop and mobile.",
+    "descriptionKey": "projects.eidosmedia.description",
     "programs": [
       "HTML",
       "CSS",
@@ -34,6 +36,7 @@
     "website": "https://eidosmedia.com/"
   },
   {
+    "id": "filmflix",
     "title": "FilmFlix",
     "image": "/img/covers/filmflix.svg",
     "screens": [
@@ -41,7 +44,7 @@
       "/img/screens/filmflix/info.jpg",
       "/img/screens/filmflix/register.jpg"
     ],
-    "description": "An application that allows you to search for your favorite movies and discover information about them.",
+    "descriptionKey": "projects.filmflix.description",
     "programs": [
       "React",
       "Tailwind CSS",
@@ -53,6 +56,7 @@
     "github": "https://github.com/davidecondoluci/movie_storage.git"
   },
   {
+    "id": "petit",
     "title": "Petit",
     "image": "/img/covers/petit.svg",
     "screens": [
@@ -60,7 +64,7 @@
       "/img/screens/petit/figma.png",
       "/img/screens/petit/logo.svg"
     ],
-    "description": "The only training app for pet owners that keeps your dog healthy  by offering personalized exercises and services.",
+    "descriptionKey": "projects.petit.description",
     "programs": [
       "Figma",
       "Illustrator"
@@ -68,13 +72,14 @@
     "figma": "https://www.figma.com/design/f7vd2H7QWV8FyRQekfLMTB/Petit?node-id=0-1&t=RdxYttLp6eFwaw4G-1"
   },
   {
+    "id": "durud",
     "title": "Durud",
     "image": "/img/covers/durud.svg",
     "screens": [
       "/img/screens/durud/home.jpg",
       "/img/screens/durud/mockup.png"
     ],
-    "description": "A blog/website dedicated to cooking, travel, personal experiences, and poetry.",
+    "descriptionKey": "projects.durud.description",
     "programs": [
       "Figma",
       "Illustrator",
@@ -87,6 +92,7 @@
     "figma": "https://www.figma.com/design/3NC7e8SbMJnsFf0Vmv1r9j/wireframe?node-id=0-1&t=KNPaesQp2LCTabXf-1"
   },
   {
+    "id": "champagneLeague",
     "title": "Champagne League",
     "image": "/img/covers/champagne-league.svg",
     "screens": [
@@ -94,7 +100,7 @@
       "/img/screens/champagne-league/logo.svg",
       "/img/screens/champagne-league/insta.jpg"
     ],
-    "description": "Development of the brand identity and website for a futsal tournament.",
+    "descriptionKey": "projects.champagneLeague.description",
     "programs": [
       "Illustrator",
       "Figma",
@@ -104,17 +110,19 @@
     "pdf": "https://issuu.com/davidecondoluci/docs/cl_brand_guidelines"
   },
   {
+    "id": "visionartech",
     "title": "Visionartech",
     "image": "/img/covers/visionartech.svg",
     "screens": [
       "/img/screens/visionartech/evolution.svg"
     ],
-    "description": "Creation of the logo for a startup, establishing a strong and cohesive visual presence.",
+    "descriptionKey": "projects.visionartech.description",
     "programs": [
       "Illustrator"
     ]
   },
   {
+    "id": "som",
     "title": "Sustainable Ocean Movement",
     "image": "/img/covers/som.svg",
     "screens": [
@@ -122,7 +130,7 @@
       "/img/screens/som/shop.jpg",
       "/img/screens/som/logo.svg"
     ],
-    "description": "Creation of a brand against plastic pollution in the oceans, including logo, brand manual, website, and social media pages.",
+    "descriptionKey": "projects.som.description",
     "programs": [
       "Illustrator",
       "Photoshop",

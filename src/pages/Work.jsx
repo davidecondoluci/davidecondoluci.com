@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { AnimatePresence, motion } from "framer-motion";
 import projects from "../data/projects.json";
 import Popup from "../components/Popup";
 
 const Work = () => {
+  const { t } = useTranslation();
   const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
@@ -45,7 +47,7 @@ const Work = () => {
           transition={{ duration: 0.5, ease: "easeInOut" }}
           className="text-6xl font-serif font-bold"
         >
-          Work
+          {t("work.title")}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: -20 }}
@@ -53,9 +55,7 @@ const Work = () => {
           transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
           className="text-base font-sans font-light text-center w-full md:w-4/5 lg:w-2/3"
         >
-          A selection of my best work from over the years from websites, to
-          UI/UX, to logos. Each project reflects my passion for design and
-          attention to detail.
+          {t("work.description")}
         </motion.p>
       </div>
 

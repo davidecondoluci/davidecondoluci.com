@@ -1,11 +1,14 @@
 import React from "react";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
 import CodeEffect from "../components/CodeEffect.jsx";
 import "../App.css";
 
 const Home = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -38,7 +41,7 @@ const Home = () => {
         <span className="flex w-10 h-10">
           <img src="/img/victory-hand.png" alt="Victory Hand" />
         </span>
-        <span>Hi there, I’m</span>
+        <span>{t("home.hello")}</span>
       </motion.h3>
       <motion.h1
         initial={{ opacity: 0, scale: 0.8 }}
@@ -56,12 +59,12 @@ const Home = () => {
       >
         <ReactTyped
           strings={[
-            "Front-end Developer",
-            "Graphic Designer",
-            "Energetic Athlete",
-            "Curious Traveler",
-            "Vintage Lover",
-            "Lego Maniac",
+            t("home.roles.0"),
+            t("home.roles.1"),
+            t("home.roles.2"),
+            t("home.roles.3"),
+            t("home.roles.4"),
+            t("home.roles.5"),
           ]}
           typeSpeed={100}
           loop
