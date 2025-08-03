@@ -19,7 +19,7 @@ const LanguageSelector = () => {
       whileHover={{ scale: 1.2 }}
       title={isItalian ? "Switch to English" : "Cambia in Italiano"}
     >
-      <span className="text-2xl">{isItalian ? "🇮🇹" : "🇬🇧"}</span>
+      <span className="text-2xl">{isItalian ? "🇬🇧" : "🇮🇹"}</span>
     </motion.button>
   );
 };
