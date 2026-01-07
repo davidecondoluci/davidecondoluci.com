@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="288" fill="none" viewBox="0 0 512 288"><g clip-path="url(#a)"><path fill="#fff" d="M512 0H0v288h512V0Z"/><path fill="#000" d="M150.3 150v-2h4v-2h2v-2h2v-4h2v-12.2h-2v-4h-2v-2h-2v-2h-4v-2H138v2h-4v2h-2v2h-2v4h-2V140h2v4h2v2h2v2h4v2h2v2h2v2.1h4.1v2h6v2h8.2v-2h-6.1v-2h-4v-2h-2v-2h2Zm-10.2-2v-2h-2v-2h-2v-4h-2v-12.2h2v-4h2v-2h2v-2h8.1v2h2v2h2v4h2.1V140h-2v4h-2v2h-2v2H140ZM174.5 146h-2v-18.2h-8v2h2V146h2v2h2v2h6v-2h-2v-2ZM186.7 127.8h-8.1v2h2V144h-2v2h2v4h8.1v-2h-2v-20.2ZM178.6 146h-2v2h2v-2ZM199.8 117.7h-6v6h6v-6ZM199.8 125.8h-2v2h-2v2h-2v2h-2v2.1h2v14.2h-2v2h10v-2h-2v-22.3ZM224.1 146h-2v2H211v-2h2v-2h2v-2h2v-2h2v-2h2v-2h2.1v-2.1h2v-6H209v-2.1h-2v4h-2v4.1h2v-2h2v-2h12.2v2h-2v2h-2v2h-2v2H213v2h-2v2h-2v2.1h-2v2h-2.1v4h19.2v-2h2v-4h-2v2ZM267.6 148v-2h-2v-2h-2v-2h-2v-2h-2v-2h-2v-2h4v-2.1h2v-2h2v-10.1h-2v-2h-2v-2h-22.3v2h4V148h-4v2h14.2v-2h-4v-10.2h2v2h2v2h2v2.1h2v2h2v2h2v2h10.2v-2h-4ZM249.4 134v-14.2h8.1v2h2V132h-2v2h-8ZM295 136v-4.1h-2v-2h-4.1v-2h-8.1v2h-4v2h-2v4h-2v6h2v4.1h2v2h4v2h8v-2h4.1v-2h2v-4h2.1v-6h-2Zm-4 6h-2.1v4h-2v2h-4v-2h-2.1v-4h-2v-6h2v-4.1h2v-2h4v2h2v4h2.1v6ZM315.2 140h-2v5h2v-5ZM311.1 140h-2v-5h-2v-5.2h3v-2H298v2h3v5.1h2v5h2v5.1h2.1v5h2v4.1h2v-4h2v-5h-2V140ZM314.2 129.8h3v5.1h2v-5h3v-2h-8v2ZM317.2 135h-2v5h2v-5ZM307.1 156.2h-2v2h-6v4h6v-2h2v-2h2v-4h-2v2ZM346.6 148v2h-6.1v-2h-4v-2h2v-8h-2v-2h2v-4.1h-2v-2h-4.1v2h-2v2h-6.1v-2h2v-2h2v-2h12.2v2h2v2h2V148h2Z"/><path fill="#000" d="M330.4 142v4h2v2h4v2h-8v-2h-2v-2h-2.1v-4h2v-2h4v-2h6.1v2h-4v2h-2ZM384 144h-2v2h2v-2ZM384 136v-4.1h-2v-2h-2v-2h-12.2v2h-2v2h-2v4h-2v6h2v4.1h2v2h2v2H380v-2h-8v-2h-2v-4h-2v-6H384Zm-16.2-4.1h2v-2h6.1v2h2v2h-10v-2Z"/><path fill="#000" d="M382 146h-2v2h2v-2ZM365.8 156.1h-2v2h-4v-2h-2.1v-44.5h-2v2h-2v2h-2v2.1h-2.1v2h2v36.4h-2v2h-4v-2h-2v6h-2v4.1h2v-2h2v-2h2v-2h4v12.1h1v4h4v-4h1.1v-12.1h4v2h2v2h2v2h2.1v-4h-2v-6Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h512v288H0z"/></clipPath></defs></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 28.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 288" style="enable-background:new 0 0 512 288;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+</style>
+<path class="st0" d="M512,0H0v288h512V0z"/>
+<g>
+	<path d="M150.3,150v-2h4v-2h2v-2h2v-4h2v-12.2h-2v-4h-2v-2h-2v-2h-4v-2H138v2h-4v2h-2v2h-2v4h-2V140h2v4h2v2h2v2h4v2h2v2h2v2.1h4.1
+		v2h6v2h8.2v-2h-6.1v-2h-4v-2h-2v-2h2L150.3,150z M140.1,148v-2h-2v-2h-2v-4h-2v-12.2h2v-4h2v-2h2v-2h8.1v2h2v2h2v4h2.1V140h-2v4h-2
+		v2h-2v2H140H140.1z M174.5,146h-2v-18.2h-8v2h2V146h2v2h2v2h6v-2h-2V146z M186.7,127.8h-8.1v2h2V144h-2v2h2v4h8.1v-2h-2V127.8z
+		 M178.6,146h-2v2h2V146z M199.8,117.7h-6v6h6V117.7z M199.8,125.8h-2v2h-2v2h-2v2h-2v2.1h2v14.2h-2v2h10v-2h-2V125.8z M224.1,146
+		h-2v2H211v-2h2v-2h2v-2h2v-2h2v-2h2v-2h2.1v-2.1h2v-6H209v-2.1h-2v4h-2v4.1h2v-2h2v-2h12.2v2h-2v2h-2v2h-2v2H213v2h-2v2h-2v2.1h-2
+		v2h-2.1v4h19.2v-2h2v-4h-2L224.1,146L224.1,146z M267.6,148v-2h-2v-2h-2v-2h-2v-2h-2v-2h-2v-2h4v-2.1h2v-2h2v-10.1h-2v-2h-2v-2
+		h-22.3v2h4V148h-4v2h14.2v-2h-4v-10.2h2v2h2v2h2v2.1h2v2h2v2h2v2h10.2v-2h-4L267.6,148z M249.4,134v-14.2h8.1v2h2V132h-2v2h-8
+		H249.4z M295,136v-4.1h-2v-2h-4.1v-2h-8.1v2h-4v2h-2v4h-2v6h2v4.1h2v2h4v2h8v-2h4.1v-2h2v-4h2.1v-6H295z M291,142h-2.1v4h-2v2h-4
+		v-2h-2.1v-4h-2v-6h2v-4.1h2v-2h4v2h2v4h2.1v6L291,142z M315.2,140h-2v5h2V140z M311.1,140h-2v-5h-2v-5.2h3v-2H298v2h3v5.1h2v5h2
+		v5.1h2.1v5h2v4.1h2v-4h2v-5h-2V140z M314.2,129.8h3v5.1h2v-5h3v-2h-8v2V129.8z M317.2,135h-2v5h2V135z M307.1,156.2h-2v2h-6v4h6v-2
+		h2v-2h2v-4h-2V156.2z M346.6,148v2h-6.1v-2h-4v-2h2v-8h-2v-2h2v-4.1h-2v-2h-4.1v2h-2v2h-6.1v-2h2v-2h2v-2h12.2v2h2v2h2V148h2H346.6
+		z"/>
+	<path d="M330.4,142v4h2v2h4v2h-8v-2h-2v-2h-2.1v-4h2v-2h4v-2h6.1v2h-4v2H330.4z M384,144h-2v2h2V144z M384,136v-4.1h-2v-2h-2v-2
+		h-12.2v2h-2v2h-2v4h-2v6h2v4.1h2v2h2v2H380v-2h-8v-2h-2v-4h-2v-6H384z M367.8,131.9h2v-2h6.1v2h2v2h-10v-2H367.8z"/>
+	<path d="M382,146h-2v2h2V146z M365.8,156.1h-2v2h-4v-2h-2.1v-44.5h-2v2h-2v2h-2v2.1h-2.1v2h2v36.4h-2v2h-4v-2h-2v6h-2v4.1h2v-2h2
+		v-2h2v-2h4v12.1h1v4h4v-4h1.1v-12.1h4v2h2v2h2v2h2.1v-4h-2v-6V156.1z"/>
+</g>
+</svg>

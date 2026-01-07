@@ -55,6 +55,9 @@
         "quizRoyale": {
             "description": "Online educational video game with multiple-choice quizzes in RPG style on a website."
         },
+        "pokedex": {
+            "description": "A web application that allows users to search and explore information about Pokémon from the Pokédex of Kanto."
+        },
         "eidosmedia": {
             "description": "Updated navbar on Eidosmedia's website with a modern design and improved navigation for both desktop and mobile."
         },
