@@ -56,6 +56,9 @@
         "quizRoyale": {
             "description": "Videogioco educativo online con quiz a scelta multipla in stile RPG su un sito web."
         },
+        "pokedex": {
+            "description": "Un'applicazione web che permette agli utenti di cercare ed esplorare informazioni sui Pokémon del Pokédex di Kanto."
+        },
         "eidosmedia": {
             "description": "Aggiornamento della navbar sul sito web di Eidosmedia con un design moderno e una navigazione migliorata per desktop e mobile."
         },

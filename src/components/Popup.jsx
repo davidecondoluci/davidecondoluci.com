@@ -56,7 +56,7 @@ const Popup = ({ project, handleClosePopup }) => {
       onClick={handleClosePopup}
     >
       <motion.div
-        className="relative bg-white p-8 shadow-lg w-full lg:w-2/5 h-full overflow-y-auto space-y-8"
+        className="relative w-full h-full p-8 space-y-8 overflow-y-auto bg-white shadow-lg lg:w-2/5"
         initial="hidden"
         animate="visible"
         exit="exit"
@@ -65,7 +65,7 @@ const Popup = ({ project, handleClosePopup }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <motion.button
-          className="flex items-center hover:underline text-black text-2xl space-x-2"
+          className="flex items-center space-x-2 text-2xl text-black hover:underline"
           onClick={handleClosePopup}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -76,33 +76,33 @@ const Popup = ({ project, handleClosePopup }) => {
         </motion.button>
         <div className="space-y-4">
           <motion.h2
-            className="text-4xl font-serif font-bold"
+            className="font-serif text-4xl font-bold"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
             {project.title}
           </motion.h2>
-          <div className="relative w-full shadow-lg overflow-hidden rounded-lg">
+          <div className="relative w-full overflow-hidden rounded-lg shadow-lg">
             {project.screens && project.screens.length > 0 ? (
               <div className="embla" ref={emblaRef}>
-                <div className="embla__container flex">
+                <div className="flex embla__container">
                   {project.screens.map((screen, index) => (
                     <div
-                      className="embla__slide flex-shrink-0 w-full"
+                      className="flex-shrink-0 w-full embla__slide"
                       key={index}
                     >
                       <img
                         src={screen}
                         alt={`${project.title} project img ${index + 1}`}
-                        className="w-full h-full object-cover object-center"
+                        className="object-cover object-center w-full h-full"
                       />
                     </div>
                   ))}
                 </div>
               </div>
             ) : (
-              <div className="w-full h-96 flex items-center justify-center bg-gray-200 rounded-lg">
+              <div className="flex items-center justify-center w-full bg-gray-200 rounded-lg h-96">
                 <span className="text-gray-500">{t("popup.noImages")}</span>
               </div>
             )}
@@ -130,7 +130,7 @@ const Popup = ({ project, handleClosePopup }) => {
             )}
           </div>
           <motion.p
-            className="text-base font-sans"
+            className="font-sans text-base"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -141,7 +141,7 @@ const Popup = ({ project, handleClosePopup }) => {
             {project.programs.map((cat, index) => (
               <div
                 key={index}
-                className="w-fit text-xs border border-black px-2 py-1 mr-2 mb-2 rounded-full"
+                className="px-2 py-1 mb-2 mr-2 text-xs border border-black rounded-full w-fit"
               >
                 {cat}
               </div>
@@ -153,7 +153,7 @@ const Popup = ({ project, handleClosePopup }) => {
                 href={project.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-row items-center text-blue underline hover:no-underline"
+                className="flex flex-row items-center underline text-blue hover:no-underline"
               >
                 {t("popup.openWebsite")}
                 <VscLink className="ml-1" />
@@ -164,7 +164,7 @@ const Popup = ({ project, handleClosePopup }) => {
                 href={project.figma}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-row items-center text-blue underline hover:no-underline"
+                className="flex flex-row items-center underline text-blue hover:no-underline"
               >
                 {t("popup.openProject")}
                 <VscLink className="ml-1" />
@@ -175,7 +175,7 @@ const Popup = ({ project, handleClosePopup }) => {
                 href={project.pdf}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-row items-center text-blue underline hover:no-underline"
+                className="flex flex-row items-center underline text-blue hover:no-underline"
               >
                 {t("popup.openPdf")}
                 <VscLink className="ml-1" />
@@ -186,7 +186,7 @@ const Popup = ({ project, handleClosePopup }) => {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-row items-center text-blue underline hover:no-underline"
+                className="flex flex-row items-center underline text-blue hover:no-underline"
               >
                 {t("popup.openGithub")}
                 <VscLink className="ml-1" />
