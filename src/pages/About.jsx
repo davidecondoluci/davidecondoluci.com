@@ -6,8 +6,12 @@ import { VscLinkExternal } from "react-icons/vsc";
 import "../App.css";
 
 const About = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [skills, setSkills] = useState([]);
+  const cvPath =
+    i18n.language === "it"
+      ? "/pdf/Condoluci_Davide_cv_IT.pdf"
+      : "/pdf/Condoluci_Davide_cv_EN.pdf";
   const nameRef = useRef(null);
 
   useEffect(() => {
@@ -158,11 +162,7 @@ const About = () => {
             </a>
           </div>
         </motion.div>
-        <a
-          href="/pdf/Condoluci_Davide_cv.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={cvPath} target="_blank" rel="noopener noreferrer">
           <motion.button
             whileHover={{ scale: 1.1 }}
             className="w-fit bg-gray text-white px-8 py-2 rounded-full flex justify-center items-center text-base font-sans font-regular hover:bg-green transition-colors duration-300"
