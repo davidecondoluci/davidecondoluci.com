@@ -18,6 +18,28 @@
     "website": "https://quizroyale.davidecondoluci.com/"
   },
   {
+    "id": "champagneLeague",
+    "title": "Champagne League",
+    "image": "/img/covers/champagne-league.svg",
+    "screens": [
+      "/img/screens/champagne-league/site.jpg",
+      "/img/screens/champagne-league/logo.svg",
+      "/img/screens/champagne-league/insta.jpg"
+    ],
+    "descriptionKey": "projects.champagneLeague.description",
+    "programs": [
+      "Illustrator",
+      "Figma",
+      "React",
+      "Tailwind CSS",
+      "Javascript",
+      "GSAP"
+    ],
+    "website": "https://champagneleague.it",
+    "github": "https://github.com/davidecondoluci/champagne-league",
+    "pdf": "https://issuu.com/davidecondoluci/docs/cl_brand_guidelines"
+  },
+  {
     "id": "filmflix",
     "title": "FilmFlix",
     "image": "/img/covers/filmflix.svg",
@@ -89,24 +111,6 @@
     ],
     "website": "https://durud.blog",
     "figma": "https://www.figma.com/design/3NC7e8SbMJnsFf0Vmv1r9j/wireframe?node-id=0-1&t=KNPaesQp2LCTabXf-1"
-  },
-  {
-    "id": "champagneLeague",
-    "title": "Champagne League",
-    "image": "/img/covers/champagne-league.svg",
-    "screens": [
-      "/img/screens/champagne-league/site.jpg",
-      "/img/screens/champagne-league/logo.svg",
-      "/img/screens/champagne-league/insta.jpg"
-    ],
-    "descriptionKey": "projects.champagneLeague.description",
-    "programs": [
-      "Illustrator",
-      "Figma",
-      "Wordpress"
-    ],
-    "website": "https://champagneleague.it",
-    "pdf": "https://issuu.com/davidecondoluci/docs/cl_brand_guidelines"
   },
   {
     "id": "eidosmedia",
