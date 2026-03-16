@@ -1,177 +1,158 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
-import skillsData from "../data/skills.json";
-import { VscLinkExternal } from "react-icons/vsc";
-import "../App.css";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const ACCENT_WORDS = new Set([
+  "minimal",
+  "functionality",
+  "animations",
+  "detail",
+  "interactive",
+]);
+
+const ABOUT_TEXT =
+  "Passionate about web and graphic design, I craft minimal experiences with a creative touch. I love designing interfaces where aesthetics meet functionality, enhanced by playful animations. Attention to detail drives me to create designs that are both memorable and dynamic, delivering smooth and interactive journeys.";
 
 const About = () => {
-  const { t, i18n } = useTranslation();
-  const [skills, setSkills] = useState([]);
-  const cvPath =
-    i18n.language === "it"
-      ? "/pdf/Condoluci_Davide_cv_IT.pdf"
-      : "/pdf/Condoluci_Davide_cv_EN.pdf";
-  const nameRef = useRef(null);
+  const paragraphRef = useRef(null);
+  const photoMobileRef = useRef(null);
+  const photoDesktopRef = useRef(null);
 
   useEffect(() => {
-    setSkills(skillsData);
+    const paragraph = paragraphRef.current;
+    if (!paragraph) return;
 
-    if (nameRef.current) {
-      createHoverEffect(nameRef.current);
-    }
-  }, []);
+    const text = ABOUT_TEXT;
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
+    paragraph.innerHTML = text
+      .trim()
+      .split(/\s+/)
+      .map((word) => {
+        const clean = word.replace(/[^a-zA-Z]/g, "").toLowerCase();
+        const isAccent = ACCENT_WORDS.has(clean);
+        const disperse = Math.floor(Math.random() * 4);
+        const paddingStyle =
+          disperse === 1
+            ? "padding-left:0.8em"
+            : disperse === 2
+              ? "padding-right:1.6em"
+              : disperse === 3
+                ? "padding-left:2.4em"
+                : "";
+        const accentStyle = isAccent
+          ? 'font-family:"Fraunces 72pt",serif;font-style:italic;font-weight:300'
+          : "";
+        const style = [paddingStyle, accentStyle].filter(Boolean).join(";");
+        return `<span class="inline-block word${disperse}"${style ? ` style="${style}"` : ""}>${word}</span>`;
+      })
+      .join(" ");
 
-    const handleBeforeUnload = () => {
-      window.scrollTo(0, 0);
-    };
+    const tweens = [];
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
+    paragraph.querySelectorAll(".word1, .word2, .word3").forEach((el) => {
+      let fromX = 0;
+      if (el.classList.contains("word1")) fromX = "-0.8em";
+      else if (el.classList.contains("word2")) fromX = "1.6em";
+      else if (el.classList.contains("word3")) fromX = "-2.4em";
+
+      tweens.push(
+        gsap.fromTo(
+          el,
+          { x: fromX },
+          {
+            x: 0,
+            ease: "none",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 80%",
+              end: "bottom 60%",
+              scrub: 0.2,
+            },
+          },
+        ),
+      );
+    });
 
     return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
+      tweens.forEach((tween) => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      });
     };
   }, []);
 
-  const handleMouseEnter = (index) => {
-    const newSkills = [...skills];
-    newSkills[index].hovered = true;
-    setSkills(newSkills);
-  };
-
-  const handleMouseLeave = (index) => {
-    const newSkills = [...skills];
-    newSkills[index].hovered = false;
-    setSkills(newSkills);
-  };
+  useEffect(() => {
+    const photoTweens = [];
+    [photoMobileRef, photoDesktopRef].forEach((ref) => {
+      if (!ref.current) return;
+      photoTweens.push(
+        gsap.fromTo(
+          ref.current,
+          { opacity: 0, scale: 0.9 },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 1.2,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ref.current,
+              start: "top 85%",
+              once: true,
+            },
+          },
+        ),
+      );
+    });
+    return () => {
+      photoTweens.forEach((t) => {
+        t.scrollTrigger?.kill();
+        t.kill();
+      });
+    };
+  }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="flex flex-col justify-center items-center px-4 pt-36 pb-16"
-    >
-      <div className="w-full md:w-3/4 lg:w-1/2 flex flex-col space-y-8">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="text-6xl font-serif font-bold"
+    <section id="about" className="pt-24 lg:pt-60">
+      {/* Mobile: photo centered on top */}
+      <div className="flex justify-center px-6 mb-8 lg:hidden">
+        <div
+          ref={photoMobileRef}
+          className="overflow-hidden rounded-full w-36 h-36"
         >
-          {t("about.title")}
-        </motion.h1>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
-          className="space-y-4"
-        >
-          <p className="text-base font-sans font-light text-left leading-loose">
-            {t("about.description.0")}
-          </p>
-          <p className="text-base font-sans font-light text-left leading-loose">
-            {t("about.description.1")}
-          </p>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}
-          className="space-y-4"
-        >
-          <h2 className="text-4xl font-serif font-bold text-left">
-            {t("about.skills")}
-          </h2>
-          <div className="flex flex-wrap">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  ease: "easeInOut",
-                  delay: 0.05 * (index + 1),
-                }}
-                className="border px-4 py-2 rounded-full m-1 flex justify-center items-center transition-colors duration-300 hover:border-transparent"
-                style={{
-                  borderColor: skill.color,
-                  background: skill.hovered
-                    ? `${skill.color}12`
-                    : "transparent",
-                }}
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={() => handleMouseLeave(index)}
-              >
-                <img
-                  src={skill.icon}
-                  alt={`${skill.name} icon`}
-                  className="mr-2 w-6 h-6 object-contain"
-                />
-                {skill.name}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.6 }}
-          className="space-y-4"
-        >
-          <h2 className="text-4xl font-serif font-bold text-left">
-            {t("about.education")}
-          </h2>
-          <div className="border-b border-gray pb-4 space-y-2">
-            <h3 className="text-2xl font-serif font-bold">
-              Web Application & Apps
-            </h3>
-            <div className="flex flex-col md:flex-row lg:flex-row justify-between md:space-y-0 lg:space-y-0 space-y-2">
-              <p className="text-base font-sans font-light">Scuola Mohole</p>
-              <span className="text-base font-sans font-light">2023-2024</span>
-            </div>
-            <a
-              href="https://scuola.mohole.it/"
-              target="_blank"
-              className="w-fit text-base font-sans font-light text-green hover:underline flex flex-row items-center"
-            >
-              scuola.mohole.it&nbsp;
-              <VscLinkExternal />
-            </a>
-          </div>
-          <div className="space-y-2">
-            <h3 className="text-2xl font-serif font-bold">Graphic Design</h3>
-            <div className="flex flex-col md:flex-row lg:flex-row justify-between md:space-y-0 lg:space-y-0 space-y-2">
-              <p className="text-base font-sans font-light">
-                Istituto Superiore Starting Work
-              </p>
-              <span className="text-base font-sans font-light">2016-2022</span>
-            </div>
-            <a
-              href="https://www.startingwork.it/"
-              target="_blank"
-              className="w-fit text-base font-sans font-light text-green hover:underline flex flex-row items-center"
-            >
-              startingwork.it&nbsp;
-              <VscLinkExternal />
-            </a>
-          </div>
-        </motion.div>
-        <a href={cvPath} target="_blank" rel="noopener noreferrer">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            className="w-fit bg-gray text-white px-8 py-2 rounded-full flex justify-center items-center text-base font-sans font-regular hover:bg-green transition-colors duration-300"
-          >
-            {t("about.CV")}
-          </motion.button>
-        </a>
+          <img
+            src="/img/photo.jpg"
+            alt="Davide Condoluci"
+            className="object-cover object-center w-full h-full"
+          />
+        </div>
       </div>
-    </motion.div>
+
+      <div className="flex justify-between px-6">
+        {/* Left: animated text */}
+        <div className="w-full lg:w-[50vw] lg:pr-8">
+          <p
+            ref={paragraphRef}
+            className="font-sans font-light leading-tight tracking-tight text-[clamp(18px,5vw,48px)] text-center lg:text-left"
+          />
+        </div>
+
+        {/* Right: sticky photo — desktop only */}
+        <div className="hidden shrink-0 lg:block">
+          <div
+            ref={photoDesktopRef}
+            className="sticky top-[calc(50vh-14vw)] w-[28vw] h-[28vw] rounded-full overflow-hidden"
+          >
+            <img
+              src="/img/photo.jpg"
+              alt="Davide Condoluci"
+              className="object-cover object-center w-full h-full"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
