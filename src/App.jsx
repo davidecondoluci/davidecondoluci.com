@@ -1,77 +1,99 @@
-import React, { useEffect, useState } from "react";
-import AnimatedCursor from "react-animated-cursor";
-import { BrowserRouter as Router, BrowserRouter } from "react-router-dom";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
+import Hero from "./pages/Hero";
 import About from "./pages/About";
 import Work from "./pages/Work";
 import Contact from "./pages/Contact";
+import Loader from "./components/Loader";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
-  const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const cursorRef = useRef(null);
+  const cursorWrapperRef = cursorRef;
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Funzione per controllare la dimensione dello schermo
-    const checkScreenSize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024); // lg: in Tailwind è 1024px
+    const handler = (e) => {
+      if (cursorWrapperRef.current) {
+        cursorWrapperRef.current.style.visibility = e.detail.active
+          ? "hidden"
+          : "";
+      }
     };
+    window.addEventListener("custom-cursor-active", handler);
+    return () => window.removeEventListener("custom-cursor-active", handler);
+  }, []);
 
-    checkScreenSize(); // Controlla immediatamente alla prima esecuzione
-    window.addEventListener("resize", checkScreenSize); // Aggiungi l'evento resize
+  // Lenis smooth scroll — synced with GSAP ticker for ScrollTrigger compatibility
+  useEffect(() => {
+    const lenis = new Lenis();
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
 
-    // Pulizia dell'evento quando il componente viene smontato
-    return () => window.removeEventListener("resize", checkScreenSize);
+    const handler = (e) => (e.detail.stop ? lenis.stop() : lenis.start());
+    window.addEventListener("lenis-toggle", handler);
+
+    return () => {
+      window.removeEventListener("lenis-toggle", handler);
+      lenis.destroy();
+      gsap.ticker.remove((time) => lenis.raf(time * 1000));
+    };
+  }, []);
+
+  // Custom dot cursor — pointer devices only
+  useEffect(() => {
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    const cursor = cursorRef.current;
+    if (!cursor) return;
+    const onMove = (e) => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    };
+    window.addEventListener("mousemove", onMove);
+    return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
   useEffect(() => {
-    // Nascondi il cursore di sistema al caricamento del sito
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    document.body.style.cursor = "none";
     const hideSystemCursor = () => {
-      document.body.style.cursor = "none"; // Nasconde il cursore di sistema
+      document.body.style.cursor = "none";
     };
-
-    // Nascondi il cursore di sistema quando il sito guadagna il focus
     window.addEventListener("focus", hideSystemCursor);
-
-    hideSystemCursor(); // Applica immediatamente
-
     return () => {
       window.removeEventListener("focus", hideSystemCursor);
+      document.body.style.cursor = "";
     };
   }, []);
 
   return (
     <div className="w-full bg-white text-gray">
-      {isLargeScreen && (
-        <AnimatedCursor
-          innerSize={8}
-          outerSize={32}
-          color="255, 255, 255" // Usa valori RGB
-          outerAlpha={0.5}
-          innerScale={0.75}
-          outerScale={2}
-          outerStyle={{
-            backgroundColor: "#ffffff20",
-            mixBlendMode: "exclusion",
-          }}
-          innerStyle={{
-            backgroundColor: "#ffffff",
-            mixBlendMode: "exclusion",
+      {loading && (
+        <Loader
+          onComplete={() => {
+            setLoading(false);
+            window.dispatchEvent(new CustomEvent("site-ready"));
           }}
         />
       )}
-      <BrowserRouter
-        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
-      >
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/work" element={<Work />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </BrowserRouter>
+      {/* Custom dot cursor — desktop only */}
+      <div
+        ref={cursorRef}
+        className="hidden lg:block fixed top-0 left-0 z-[99999] pointer-events-none w-4 h-4 rounded-full bg-white mix-blend-difference -translate-x-1/2 -translate-y-1/2"
+        style={{ willChange: "transform" }}
+      />
+      <Navbar />
+      <Hero />
+      <About />
+      <Work />
+      <Contact />
     </div>
   );
 };
