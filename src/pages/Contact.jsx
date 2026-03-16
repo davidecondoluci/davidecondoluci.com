@@ -1,221 +1,266 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import FlipLink from "../components/FlipLink";
 import { motion } from "framer-motion";
-import "../App.css";
-import { FaGithub, FaLinkedin, FaInstagram, FaXTwitter } from "react-icons/fa6";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const REPEAT_COUNT = 6;
+const TEXT = "Get in touch · ";
+
+const BackTop = () => {
+  return (
+    <a
+      href="#hero"
+      onClick={(e) => {
+        e.preventDefault();
+        document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+      }}
+      className="relative grid w-20 h-20 transition-colors duration-500 ease-out border border-white rounded-full shrink-0 group place-content-center lg:border-white/30 lg:hover:border-white"
+    >
+      <span className="material-symbols-outlined pointer-events-none relative z-10 text-black lg:text-white transition-all duration-500 ease-out lg:group-hover:text-black group-hover:-translate-y-0.5 text-4xl">
+        arrow_upward
+      </span>
+      <div className="absolute inset-0 z-0 transition-transform duration-500 ease-out scale-100 bg-white rounded-full pointer-events-none lg:scale-0 lg:group-hover:scale-100" />
+
+      {/* Rotating circular text */}
+      <motion.svg
+        initial={{ rotate: 0 }}
+        animate={{ rotate: 360 }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          repeatType: "loop",
+          ease: "linear",
+        }}
+        style={{ top: "50%", left: "50%", x: "-50%", y: "-50%" }}
+        width="88"
+        height="88"
+        className="absolute z-10 pointer-events-none"
+      >
+        <path
+          id="backTopCircle"
+          d="M44,44 m-36,0 a36,36 0 1,0 72,0 a36,36 0 1,0 -72,0"
+          fill="none"
+        />
+        <text>
+          <textPath
+            href="#backTopCircle"
+            fill="white"
+            textLength="226"
+            lengthAdjust="spacing"
+            style={{ fontSize: 8 }}
+            className="uppercase transition-all duration-500 ease-out opacity-100 lg:opacity-0 lg:group-hover:opacity-100 [fill:black] lg:[fill:white] lg:group-hover:[fill:black]"
+          >
+            {
+              "Back to top\u00A0\u00A0·\u00A0\u00A0Back to top\u00A0\u00A0·\u00A0\u00A0"
+            }
+          </textPath>
+        </text>
+      </motion.svg>
+    </a>
+  );
+};
 
 const Contact = () => {
-  const { t } = useTranslation();
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setSuccess(false);
-    setError("");
-
-    if (!formState.name || !formState.email || !formState.message) {
-      setLoading(false);
-      setError(t("contact.form.error"));
-      return;
-    }
-
-    try {
-      const response = await fetch("https://api.staticforms.xyz/submit", {
-        method: "POST",
-        body: JSON.stringify({
-          accessKey: "4e32a4ad-ff35-4d56-b95d-ea3129bad48c",
-          name: formState.name,
-          email: formState.email,
-          message: formState.message,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        setSuccess(true);
-        setFormState({ name: "", email: "", message: "" });
-      } else {
-        setError(data.message || t("contact.form.errorGeneric"));
-      }
-    } catch (error) {
-      setError(t("contact.form.errorGeneric"));
-    } finally {
-      setLoading(false);
-    }
-  };
+  const marqueeRef = useRef(null);
+  const firstCopyRef = useRef(null);
+  const cursorRef = useRef(null);
+  const descRef = useRef(null);
+  const footerRef = useRef(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const el = marqueeRef.current;
+    const first = firstCopyRef.current;
+    if (!el || !first) return;
 
-    const handleBeforeUnload = () => {
-      window.scrollTo(0, 0);
+    let tween;
+    document.fonts.ready.then(() => {
+      const singleWidth = first.getBoundingClientRect().width;
+      tween = gsap.to(el, {
+        x: -singleWidth,
+        ease: "none",
+        duration: 24,
+        repeat: -1,
+      });
+    });
+
+    return () => tween?.kill();
+  }, []);
+
+  useEffect(() => {
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    const cursor = cursorRef.current;
+    if (!cursor) return;
+
+    const onMove = (e) => {
+      gsap.to(cursor, {
+        x: e.clientX,
+        y: e.clientY,
+        duration: 0.15,
+        ease: "power2.out",
+        overwrite: true,
+      });
     };
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
+    window.addEventListener("mousemove", onMove);
+    return () => window.removeEventListener("mousemove", onMove);
+  }, []);
+
+  useEffect(() => {
+    const desc = descRef.current;
+    const footer = footerRef.current;
+    if (!desc || !footer) return;
+
+    const tweens = [
+      gsap.fromTo(
+        desc,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: { trigger: desc, start: "top 85%", once: true },
+        },
+      ),
+      gsap.fromTo(
+        Array.from(footer.children),
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: { trigger: footer, start: "top 90%", once: true },
+        },
+      ),
+    ];
 
     return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
+      tweens.forEach((t) => {
+        t.scrollTrigger?.kill();
+        t.kill();
+      });
     };
   }, []);
 
+  const repeated = Array(REPEAT_COUNT).fill(TEXT).join("");
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="flex flex-col items-center px-4 pt-36 pb-16 space-y-4"
-    >
-      <div className="flex flex-col justify-center items-center space-y-8">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="text-6xl font-bold text-left font-serif"
-        >
-          {t("contact.title")}
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
-          className="text-base font-sans font-light text-center"
-        >
-          {t("contact.description")}{" "}
-          <a
-            href="mailto:davide.condoluci1@gmail.com"
-            className="underline hover:no-underline"
-          >
-            davide.condoluci1@gmail.com
-          </a>
-        </motion.p>
+    <>
+      {/* Custom cursor — desktop only */}
+      <div
+        ref={cursorRef}
+        className="hidden lg:flex fixed top-0 left-0 z-[9999] pointer-events-none items-center justify-center rounded-full bg-white text-gray-950 w-24 h-24 -ml-12 -mt-12 opacity-0 transition-opacity duration-200"
+      >
+        <span className="font-sans text-sm font-light leading-tight text-center">
+          Write me
+        </span>
       </div>
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}
-        className="flex flex-col justify-center items-start w-full max-w-2xl"
-      >
-        <form className="w-full space-y-4 pb-4" onSubmit={handleSubmit}>
-          <input
-            className="appearance-none border rounded w-full py-2 px-4 leading-tight focus:outline-none font-sans font-light border-lightgray focus:border-green bg-white hover:bg-white"
-            id="inline-full-name"
-            type="text"
-            name="name"
-            placeholder={t("contact.form.name")}
-            value={formState.name}
-            onChange={handleChange}
-          />
-          <input
-            className="appearance-none border rounded w-full py-2 px-4 leading-tight focus:outline-none font-sans font-light border-lightgray focus:border-green bg-white hover:bg-white"
-            id="inline-email"
-            type="email"
-            name="email"
-            placeholder={t("contact.form.email")}
-            value={formState.email}
-            onChange={handleChange}
-          />
-          <textarea
-            className="resize-none appearance-none border rounded w-full h-48 py-2 px-4 leading-tight focus:outline-none font-sans font-light border-lightgray focus:border-green bg-white hover:bg-white"
-            id="inline-message"
-            placeholder={t("contact.form.message")}
-            name="message"
-            value={formState.message}
-            onChange={handleChange}
-          />
-          <div className="flex items-center gap-4">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className={`shadow bg-lightgray hover:bg-green text-white focus:shadow-outline focus:outline-none py-2 px-6 rounded font-sans font-medium ${
-                loading ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-              type="submit"
-              disabled={loading}
+
+      <section id="contact" className="flex flex-col text-white bg-black h-dvh">
+        {/* Marquee — centered, fills available space */}
+        <div className="flex flex-col items-center justify-center flex-1 gap-8 overflow-hidden">
+          <p
+            ref={descRef}
+            className="max-w-md px-6 font-sans text-base font-light text-center text-white shrink-0"
+          >
+            Have a project in mind, a question, or just want to collaborate?
+            Drop me a line by clicking below.
+          </p>
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=davide.condoluci1@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full overflow-hidden lg:cursor-none"
+            onMouseEnter={() => {
+              if (cursorRef.current) cursorRef.current.style.opacity = "1";
+              window.dispatchEvent(
+                new CustomEvent("custom-cursor-active", {
+                  detail: { active: true },
+                }),
+              );
+            }}
+            onMouseLeave={() => {
+              if (cursorRef.current) cursorRef.current.style.opacity = "0";
+              window.dispatchEvent(
+                new CustomEvent("custom-cursor-active", {
+                  detail: { active: false },
+                }),
+              );
+            }}
+          >
+            <p
+              ref={marqueeRef}
+              className="flex font-serif text-6xl italic font-light whitespace-nowrap w-max will-change-transform lg:text-9xl"
             >
-              {t("contact.form.send")}
-            </motion.button>
-            {success && (
-              <span className="text-sm font-sans font-italic text-green">
-                {t("contact.form.success")}
-              </span>
-            )}
-            {error && (
-              <span className="text-sm font-sans font-light italic text-red">
-                {error}
-              </span>
-            )}
-          </div>
-        </form>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeInOut", delay: 0.6 }}
-        className="flex flex-col md:flex-row lg:flex-row w-full max-w-2xl justify-start md:items-center lg:items-center space-y-2 md:space-x-2 lg:space-x-2"
-      >
-        <h2 className="font-sans font-light text-left lg:items-center md:mr-4 lg:mr-4">
-          {t("contact.stayConnected")}
-        </h2>
-        <div className="flex flex-row lg:items-center space-x-4">
-          <motion.a
-            whileHover={{ scale: 1.2 }}
-            href="https://github.com/davidecondoluci"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="/img/icons/github.svg" alt="GitHub" className="h-8" />
-          </motion.a>
-          <motion.a
-            whileHover={{ scale: 1.2 }}
-            href="https://www.linkedin.com/in/davide-condoluci/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="/img/icons/linkedin.svg" alt="LinkedIn" className="h-8" />
-          </motion.a>
-          <motion.a
-            whileHover={{ scale: 1.2 }}
-            href="https://www.instagram.com/davide_condoluci/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/img/icons/instagram.svg"
-              alt="Instagram"
-              className="h-8"
-            />
-          </motion.a>
-          <motion.a
-            whileHover={{ scale: 1.2 }}
-            href="https://x.com/davidecondoluci"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="/img/icons/x.svg" alt="X" className="h-8" />
-          </motion.a>
+              <span ref={firstCopyRef}>{repeated}</span>
+              <span aria-hidden="true">{repeated}</span>
+            </p>
+          </a>
         </div>
-      </motion.div>
-    </motion.div>
+
+        {/* Footer — anchored to bottom */}
+        <div className="px-6 py-6">
+          <div
+            ref={footerRef}
+            className="flex flex-col gap-4 lg:grid lg:items-end lg:grid-cols-3"
+          >
+            {/* Social */}
+            <div className="flex flex-col gap-4 lg:gap-6">
+              <div className="flex flex-col gap-1">
+                <span className="font-sans text-xs font-light tracking-widest uppercase text-white/60">
+                  Social
+                </span>
+                <div className="flex gap-6">
+                  <FlipLink
+                    href="https://github.com/davidecondoluci"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-sans text-base font-light"
+                  >
+                    Github
+                  </FlipLink>
+                  <FlipLink
+                    href="https://www.linkedin.com/in/davidecondoluci"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-sans text-base font-light"
+                  >
+                    Linkedin
+                  </FlipLink>
+                </div>
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="font-sans text-xs font-light tracking-widest uppercase text-white/60">
+                  Email
+                </span>
+                <FlipLink
+                  href="mailto:davide.condoluci1@gmail.com"
+                  className="font-sans text-base font-light"
+                >
+                  davide.condoluci1@gmail.com
+                </FlipLink>
+              </div>
+            </div>
+            {/* Center: copyright — desktop only */}
+            <span className="hidden font-sans text-base font-light text-center lg:block text-white/60">
+              © 2026 Davide Condoluci
+            </span>
+            {/* Right: copyright (mobile) + back-to-top */}
+            <div className="flex items-center justify-between lg:justify-end">
+              <span className="font-sans text-sm font-light text-white/60 lg:hidden">
+                © 2026 Davide Condoluci
+              </span>
+              <BackTop />
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 

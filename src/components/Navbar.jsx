@@ -1,141 +1,245 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import Logo from "../components/Logo.jsx";
-import LanguageSelector from "../components/LanguageSelector.jsx";
-import { FiMenu, FiX } from "react-icons/fi";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import gsap from "gsap";
+import FlipLink from "./FlipLink";
+
+const menuVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+  exit: { transition: { staggerChildren: 0.04, staggerDirection: -1 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] },
+  },
+  exit: { opacity: 0, y: 20, transition: { duration: 0.25 } },
+};
 
 const Navbar = () => {
-  const { t } = useTranslation();
-  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const navRef = useRef(null); // Ref per la navbar
-  const [navHeight, setNavHeight] = useState(0); // Stato per l'altezza della navbar
+  const navRef = useRef(null);
+  const [time, setTime] = useState("");
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const cvPath = "/pdf/Condoluci_Davide_cv_EN.pdf";
 
-  // Misura l'altezza della navbar quando il componente viene montato
+  // Live clock
   useEffect(() => {
-    if (navRef.current) {
-      setNavHeight(navRef.current.offsetHeight);
-    }
+    const update = () => {
+      const now = new Date();
+      setTime(
+        now.toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+        }),
+      );
+    };
+    update();
+    const id = setInterval(update, 1000);
+    return () => clearInterval(id);
   }, []);
 
-  // Aggiungi o rimuovi la classe Tailwind `overflow-hidden` al body
   useEffect(() => {
-    if (menuOpen) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
+    const nav = navRef.current;
+    if (!nav) return;
+    gsap.set(nav, { opacity: 0, y: -20 });
+    const run = () => {
+      gsap.to(nav, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" });
+    };
+    window.addEventListener("site-ready", run, { once: true });
+    return () => window.removeEventListener("site-ready", run);
+  }, []);
 
-    // Pulizia: rimuovi la classe quando il componente viene smontato
+  useEffect(() => {
+    document.body.classList.toggle("overflow-hidden", menuOpen);
+    window.dispatchEvent(
+      new CustomEvent("lenis-toggle", { detail: { stop: menuOpen } }),
+    );
     return () => {
       document.body.classList.remove("overflow-hidden");
     };
   }, [menuOpen]);
 
-  const getLinkClass = (path) => {
-    let classes = "text-gray hover:text-green";
-    if (location.pathname === path) {
-      classes += " text-green";
-    }
-    return classes;
-  };
-
-  const mobileMenuVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-    exit: { opacity: 0 },
+  const handleAnchorClick = (e, sectionId) => {
+    e.preventDefault();
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false);
   };
 
   return (
-    <div
-      className="absolute top-0 right-0 left-0 z-10 px-4 md:px-6 py-8"
-      ref={navRef}
-    >
-      <nav className="flex justify-between items-center w-full lg:w-4/5 mx-auto">
-        <motion.a whileHover={{ scale: 1.2 }} href="/">
-          <Logo />
-        </motion.a>
-        {/* Hamburger Icon */}
-        <button className="lg:hidden text-gray" onClick={toggleMenu}>
-          {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
-        </button>
-        {/* Desktop Menu */}
-        <ul className="hidden lg:flex space-x-8 items-center font-sans font-regular text-xl">
-          <li>
-            <Link to="/about" className={getLinkClass("/about")}>
-              {t("nav.about")}
-            </Link>
-          </li>
-          <li>
-            <Link to="/work" className={getLinkClass("/work")}>
-              {t("nav.work")}
-            </Link>
-          </li>
-          <li>
-            <Link to="/contact" className={getLinkClass("/contact")}>
-              {t("nav.contact")}
-            </Link>
-          </li>
-          <li>
-            <LanguageSelector />
-          </li>
-        </ul>
-      </nav>
-      {/* Mobile Menu */}
+    <>
+      {/* Navbar — mix-blend-difference always; menu bg below handles color inversion */}
+      <div
+        ref={navRef}
+        className="fixed top-0 left-0 right-0 z-50 px-6 py-6 mix-blend-difference"
+      >
+        <nav className="grid grid-cols-3 items-center w-full max-w-[1600px] mx-auto">
+          {/* Left: Name */}
+          <a
+            href="#hero"
+            onClick={(e) => handleAnchorClick(e, "hero")}
+            className="font-sans text-base font-light text-white whitespace-nowrap"
+          >
+            <span className="lg:hidden">DC</span>
+            <span className="hidden lg:inline">Davide Condoluci</span>
+          </a>
+
+          {/* Center: Live clock */}
+          <span className="font-sans text-base font-light text-center text-white tabular-nums">
+            {time}
+          </span>
+
+          {/* Right */}
+          <div className="flex items-center justify-end">
+            {/* Mobile hamburger */}
+            <button
+              className="text-white lg:hidden"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? (
+                <span
+                  className="material-symbols-outlined"
+                  style={{ fontSize: 22 }}
+                >
+                  close
+                </span>
+              ) : (
+                <span
+                  className="material-symbols-outlined"
+                  style={{ fontSize: 22 }}
+                >
+                  menu
+                </span>
+              )}
+            </button>
+
+            {/* Desktop links */}
+            <ul className="items-center hidden gap-8 font-sans text-base font-light text-white lg:flex">
+              <li>
+                <FlipLink
+                  href="#about"
+                  onClick={(e) => handleAnchorClick(e, "about")}
+                  className="font-sans text-base font-light text-white"
+                >
+                  About
+                </FlipLink>
+              </li>
+              <li>
+                <FlipLink
+                  href="#work"
+                  onClick={(e) => handleAnchorClick(e, "work")}
+                  className="font-sans text-base font-light text-white"
+                >
+                  Work
+                </FlipLink>
+              </li>
+              <li>
+                <FlipLink
+                  href="#contact"
+                  onClick={(e) => handleAnchorClick(e, "contact")}
+                  className="font-sans text-base font-light text-white"
+                >
+                  Contact
+                </FlipLink>
+              </li>
+              <li>
+                <a
+                  href={cvPath}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 pl-2 pr-4 transition-all duration-300 ease-in-out border border-white rounded-full group h-9 hover:bg-white hover:pl-1"
+                >
+                  <span className="p-1 transition-colors duration-300 bg-white rounded-full group-hover:bg-black">
+                    <span
+                      className="material-symbols-outlined block -translate-x-[200%] text-[0px] transition-all duration-300 group-hover:translate-x-0 group-hover:text-white group-hover:text-xl"
+                      style={{ lineHeight: 1 }}
+                    >
+                      arrow_outward
+                    </span>
+                  </span>
+                  <span className="font-sans text-base font-light text-white transition-colors duration-300 group-hover:text-black">
+                    Resume
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      {/* Mobile menu — outside blend-mode container */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="lg:hidden fixed left-0 w-full h-full bg-white flex flex-col items-center z-20"
-            style={{ top: `${navHeight}px` }} // Imposta il top dinamicamente
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={mobileMenuVariants}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-white lg:hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            {/* Menu Content */}
-            <ul className="relative flex flex-col items-center space-y-6 font-sans font-regular text-3xl z-10 p-4">
-              <li>
-                <Link
-                  to="/about"
-                  className={getLinkClass("/about")}
-                  onClick={toggleMenu}
+            <motion.ul
+              className="flex flex-col items-center gap-8"
+              variants={menuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <motion.li variants={itemVariants}>
+                <FlipLink
+                  href="#about"
+                  onClick={(e) => handleAnchorClick(e, "about")}
+                  className="font-sans text-4xl font-light text-black"
                 >
-                  {t("nav.about")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/work"
-                  className={getLinkClass("/work")}
-                  onClick={toggleMenu}
+                  About
+                </FlipLink>
+              </motion.li>
+              <motion.li variants={itemVariants}>
+                <FlipLink
+                  href="#work"
+                  onClick={(e) => handleAnchorClick(e, "work")}
+                  className="font-sans text-4xl font-light text-black"
                 >
-                  {t("nav.work")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className={getLinkClass("/contact")}
-                  onClick={toggleMenu}
+                  Work
+                </FlipLink>
+              </motion.li>
+              <motion.li variants={itemVariants}>
+                <FlipLink
+                  href="#contact"
+                  onClick={(e) => handleAnchorClick(e, "contact")}
+                  className="font-sans text-4xl font-light text-black"
                 >
-                  {t("nav.contact")}
-                </Link>
-              </li>
-              <li>
-                <LanguageSelector />
-              </li>
-            </ul>
+                  Contact
+                </FlipLink>
+              </motion.li>
+              <motion.li variants={itemVariants}>
+                <a
+                  href={cvPath}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center h-16 gap-3 pl-3 pr-6 transition-all duration-300 ease-in-out border border-black rounded-full group hover:bg-black hover:pl-2"
+                >
+                  <span className="flex items-center justify-center w-4 h-4 transition-colors duration-300 bg-black rounded-full shrink-0 group-hover:bg-white">
+                    <span
+                      className="material-symbols-outlined block -translate-x-[200%] text-[0px] transition-all duration-300 group-hover:translate-x-0 group-hover:text-black group-hover:text-2xl"
+                      style={{ lineHeight: 1 }}
+                    >
+                      arrow_outward
+                    </span>
+                  </span>
+                  <span className="font-sans text-4xl font-light text-black transition-colors duration-300 group-hover:text-white">
+                    Resume
+                  </span>
+                </a>
+              </motion.li>
+            </motion.ul>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 };
 
