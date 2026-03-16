@@ -3,11 +3,6 @@
     "id": "quizRoyale",
     "title": "Quiz Royale",
     "image": "/img/covers/quiz-royale.svg",
-    "screens": [
-      "/img/screens/quiz-royale/home.jpg",
-      "/img/screens/quiz-royale/topics.jpg",
-      "/img/screens/quiz-royale/game.jpg"
-    ],
     "descriptionKey": "projects.quizRoyale.description",
     "description": "Online educational video game with multiple-choice quizzes in RPG style on a website.",
     "programs": [
@@ -22,11 +17,6 @@
     "id": "champagneLeague",
     "title": "Champagne League",
     "image": "/img/covers/champagne-league.svg",
-    "screens": [
-      "/img/screens/champagne-league/site.jpg",
-      "/img/screens/champagne-league/logo.svg",
-      "/img/screens/champagne-league/insta.jpg"
-    ],
     "descriptionKey": "projects.champagneLeague.description",
     "description": "Development of the brand identity and website for a futsal tournament.",
     "programs": [
@@ -35,19 +25,12 @@
       "Javascript",
       "GSAP"
     ],
-    "website": "https://champagneleague.it",
-    "github": "https://github.com/davidecondoluci/champagne-league",
-    "pdf": "https://issuu.com/davidecondoluci/docs/cl_brand_guidelines"
+    "website": "https://champagneleague.it"
   },
   {
     "id": "filmflix",
     "title": "FilmFlix",
     "image": "/img/covers/filmflix.svg",
-    "screens": [
-      "/img/screens/filmflix/home.jpg",
-      "/img/screens/filmflix/info.jpg",
-      "/img/screens/filmflix/register.jpg"
-    ],
     "descriptionKey": "projects.filmflix.description",
     "description": "An application that allows you to search for your favorite movies and discover information about them.",
     "programs": [
@@ -58,16 +41,12 @@
       "Firebase",
       "Web API"
     ],
-    "website": "https://filmflix.davidecondoluci.com/",
-    "github": "https://github.com/davidecondoluci/movie_storage.git"
+    "website": "https://filmflix.davidecondoluci.com/"
   },
   {
     "id": "pokedex",
     "title": "Pokédex",
     "image": "/img/covers/pokedex.svg",
-    "screens": [
-      "/img/screens/pokedex/app.jpg"
-    ],
     "descriptionKey": "projects.pokedex.description",
     "description": "A web application that allows users to search and explore information about Pokémon from the Pokédex of Kanto.",
     "programs": [
@@ -76,7 +55,6 @@
       "Javascript",
       "Web API"
     ],
-    "website": "https://pokedex.davidecondoluci.com/",
-    "github": "https://github.com/davidecondoluci/pokedex.git"
+    "website": "https://pokedex.davidecondoluci.com/"
   }
 ]
