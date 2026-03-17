@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import FlipLink from "../components/FlipLink";
+import UnderlineLink from "../components/UnderlineLink";
 import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -216,34 +216,34 @@ const Contact = () => {
                   Social
                 </span>
                 <div className="flex gap-6">
-                  <FlipLink
+                  <UnderlineLink
                     href="https://github.com/davidecondoluci"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-sans text-base font-light"
                   >
                     Github
-                  </FlipLink>
-                  <FlipLink
+                  </UnderlineLink>
+                  <UnderlineLink
                     href="https://www.linkedin.com/in/davidecondoluci"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-sans text-base font-light"
                   >
                     Linkedin
-                  </FlipLink>
+                  </UnderlineLink>
                 </div>
               </div>
               <div className="flex flex-col gap-1">
                 <span className="font-sans text-xs font-light tracking-widest uppercase text-white/60">
                   Email
                 </span>
-                <FlipLink
+                <UnderlineLink
                   href="mailto:davide.condoluci1@gmail.com"
                   className="font-sans text-base font-light"
                 >
                   davide.condoluci1@gmail.com
-                </FlipLink>
+                </UnderlineLink>
               </div>
             </div>
             {/* Center: copyright — desktop only */}
