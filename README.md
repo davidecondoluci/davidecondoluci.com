@@ -1,95 +1,90 @@
-# Davide Condoluci - Personal Website  
+# davidecondoluci.com
 
-![Website Screenshot](public/img/davidecondoluci.com.jpg)  
+Personal portfolio website — built with React, Vite, and Tailwind CSS.
 
-## 📌 Overview  
-This is my personal portfolio website, showcasing my projects, skills, and professional background. Built with modern web technologies, it serves as my digital hub for work and contact.  
+🔗 **Live:** [https://davidecondoluci.com](https://davidecondoluci.com)
 
-🔗 **Live Site:** [https://davidecondoluci.com](https://davidecondoluci.com)  
+![davidecondoluci.com preview](public/img/davidecondoluci.com.jpg)
 
-## 🛠️ Technologies Used  
-- **Frontend:** React, JavaScript, HTML5, CSS3  
-- **Styling:** Tailwind CSS  
-- **Hosting:** Vercel  
-- **Tools:** ESLint, PostCSS  
+---
 
-## 🚀 Features  
-- ✅ Responsive design (mobile-friendly)
-- ✅ About Me section
-- ✅ Interactive project showcase
-- ✅ Contact form
-- ✅ Dynamic components (e.g., animated effects)
+## Tech Stack
 
-## 📂 Project Structure  
-```bash
-DAVIDECONDOLUCI.COM/
-├── public/                  # Static files (HTML, images, PDFs)
-│   ├── img/                 # Images
-│   │   ├── covers/          # Project/blog covers
-│   │   ├── icons/           # Icons (SVG, favicon)
-│   │   └── screens/         # Project screenshots
-│   ├── pdf/                 # PDF documents (CV, portfolio)
-│   └── index.html           # HTML entry point
+| Layer         | Technology                 |
+| ------------- | -------------------------- |
+| Framework     | React 18 + React Router v6 |
+| Build tool    | Vite                       |
+| Styling       | Tailwind CSS               |
+| Animations    | GSAP                       |
+| Smooth scroll | Lenis                      |
+| Icons         | Google                     |
+| Hosting       | Vercel                     |
+
+---
+
+## Project Structure
+
+```
+davidecondoluci.com/
+├── public/
+│   ├── img/
+│   │   ├── covers/          # Project cover images
+│   │   └── icons/           # Icons and favicon
+│   └── pdf/                 # CV and other documents
 │
-├── src/                     # Core source code
-│   ├── assets/fonts/        # Font files
-│   ├── components/          # Reusable React components
-│   │   ├── CodeEffect.jsx   # Dynamic text animations
-│   │   ├── Logo.jsx         # Logo component
-│   │   ├── Navbar.jsx       # Navigation bar
-│   │   └── Popup.jsx        # Modals/popups
-│   │
-│   ├── data/                # Structured data (JSON)
-│   │   ├── projects.json    # Projects list
-│   │   └── skills.json      # Skills/abilities
-│   │
-│   ├── pages/               # Main site pages
-│   │   ├── About.jsx        # About Me page
-│   │   ├── Contact.jsx      # Contact page
-│   │   ├── Home.jsx         # Homepage
-│   │   └── Work.jsx         # Projects page
-│   │
+├── src/
+│   ├── assets/fonts/        # Custom fonts
+│   ├── components/
+│   │   ├── FlipLink.jsx     # Animated flip-text link
+│   │   ├── Loader.jsx       # Page loader
+│   │   └── Navbar.jsx       # Navigation bar
+│   ├── data/
+│   │   └── projects.json    # Projects data
+│   ├── pages/
+│   │   ├── Hero.jsx         # Landing / hero section
+│   │   ├── About.jsx        # About me
+│   │   ├── Work.jsx         # Projects showcase
+│   │   └── Contact.jsx      # Contact section
+│   ├── App.jsx              # Root component & routing
 │   ├── App.css              # Global styles
-│   ├── App.jsx              # Root component
-│   └── main.jsx             # React rendering
+│   └── main.jsx             # React entry point
 │
-├── .vscode/                 # IDE configurations
-├── node_modules/            # npm dependencies
-├── .eslintrc.cjs            # ESLint config
-├── .gitignore               # Git ignored files
-├── package.json             # Dependencies and scripts
-├── package-lock.json        # Dependency versions
-├── postcss.config.js        # PostCSS config
-├── tailwind.config.js       # Tailwind config
-├── vercel.json              # Vercel deployment config
-└── README.md                # Project documentation
+├── index.html
+├── vite.config.js
+├── tailwind.config.js
+├── postcss.config.js
+├── vercel.json
+└── package.json
 ```
 
-## 🛠️ Setup & Deployment  
-1. **Clone the repository:**  
-   ```bash
-   git clone https://github.com/your-username/davidecondoluci.com.git
-   ```
-2. **Install dependencies:**  
-   ```bash
-   npm install
-   ```
-3. **Run locally:**  
-   ```bash
-   npm run dev
-   ```
-4. **Deploy to Vercel:**  
-   - Push changes to `main` branch (Vercel auto-deploys).  
+---
 
-## 📬 Contact  
-Let’s connect!  
-- ✉️ Email: [davide.condoluci1@gmail.com](mailto:davide.condoluci1@example.com)  
-- 💼 LinkedIn: [davide_condoluci](https://linkedin.com/in/davide_condoluci)  
-- 🌐 Website: [https://davidecondoluci.com](https://davidecondoluci.com)  
+## Getting Started
 
-## 📜 License  
-Open-source under the [MIT License](LICENSE).  
+```bash
+# Install dependencies
+npm install
 
---- 
+# Start dev server
+npm run dev
 
-⭐ **Star this repo if you find it useful!** Feedback is welcome.
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+---
+
+## Deployment
+
+The site is deployed on **Vercel**. Every push to the `main` branch triggers an automatic deployment.
+
+---
+
+## Contact
+
+- Email: [davide.condoluci1@gmail.com](mailto:davide.condoluci1@gmail.com)
+- LinkedIn: [linkedin.com/in/davide_condoluci](https://linkedin.com/in/davide_condoluci)
+- Website: [davidecondoluci.com](https://davidecondoluci.com)
