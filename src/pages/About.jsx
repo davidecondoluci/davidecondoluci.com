@@ -42,7 +42,7 @@ const About = () => {
                 ? "padding-left:2.4em"
                 : "";
         const accentStyle = isAccent
-          ? 'font-family:"Fraunces 72pt",serif;font-style:italic;font-weight:300'
+          ? "font-family:'Fraunces 72pt',serif;font-style:italic;font-weight:300"
           : "";
         const style = [paddingStyle, accentStyle].filter(Boolean).join(";");
         return `<span class="inline-block word${disperse}"${style ? ` style="${style}"` : ""}>${word}</span>`;

@@ -17,12 +17,20 @@ const Loader = ({ onComplete }) => {
 
     const tl = gsap.timeline({
       onComplete: () => {
-        gsap.to(loader, {
-          clipPath: "inset(0 0 100% 0)",
-          duration: 0.9,
-          ease: "power4.inOut",
+        gsap.to(bar, {
+          scaleX: 0,
+          transformOrigin: "right center",
+          duration: 0.6,
+          ease: "power3.inOut",
           onComplete: () => {
-            if (onComplete) onComplete();
+            gsap.to(loader, {
+              clipPath: "inset(0 0 100% 0)",
+              duration: 0.9,
+              ease: "power4.inOut",
+              onComplete: () => {
+                if (onComplete) onComplete();
+              },
+            });
           },
         });
       },
@@ -76,13 +84,13 @@ const Loader = ({ onComplete }) => {
       {/* Label */}
       <span
         ref={labelRef}
-        className="mt-4 font-serif text-base italic font-light text-black/60"
+        className="mt-4 font-serif text-base italic font-light md:text-2xl text-black/60"
       >
         Loading...
       </span>
 
       {/* Progress bar */}
-      <div className="absolute bottom-0 left-0 right-0 h-2 bg-black/20">
+      <div className="absolute bottom-0 left-0 right-0 h-2">
         <div
           ref={barRef}
           className="h-full origin-left bg-black"
