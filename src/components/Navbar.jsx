@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
+import { Bars2Icon, XMarkIcon, ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import FlipLink from "./FlipLink";
 
 const menuVariants = {
@@ -101,19 +102,9 @@ const Navbar = () => {
               onClick={() => setMenuOpen(!menuOpen)}
             >
               {menuOpen ? (
-                <span
-                  className="material-symbols-outlined"
-                  style={{ fontSize: 22 }}
-                >
-                  close
-                </span>
+                <XMarkIcon className="w-[22px] h-[22px]" />
               ) : (
-                <span
-                  className="material-symbols-outlined"
-                  style={{ fontSize: 22 }}
-                >
-                  menu
-                </span>
+                <Bars2Icon className="w-[22px] h-[22px]" />
               )}
             </button>
 
@@ -154,12 +145,10 @@ const Navbar = () => {
                   className="flex items-center gap-2 pl-2 pr-4 transition-all duration-300 ease-in-out border border-white rounded-full group h-9 hover:bg-white hover:pl-1"
                 >
                   <span className="p-1 transition-colors duration-300 bg-white rounded-full group-hover:bg-black">
-                    <span
-                      className="material-symbols-outlined block -translate-x-[200%] text-[0px] transition-all duration-300 group-hover:translate-x-0 group-hover:text-white group-hover:text-xl"
-                      style={{ lineHeight: 1 }}
-                    >
-                      arrow_outward
-                    </span>
+                    <ArrowUpRightIcon
+                      className="block w-5 h-5 -translate-x-[200%] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 text-white"
+                      aria-hidden="true"
+                    />
                   </span>
                   <span className="font-sans text-base font-light text-white transition-colors duration-300 group-hover:text-black">
                     Resume
@@ -223,12 +212,10 @@ const Navbar = () => {
                   className="flex items-center h-16 gap-3 pl-3 pr-6 transition-all duration-300 ease-in-out border border-black rounded-full group hover:bg-black hover:pl-2"
                 >
                   <span className="flex items-center justify-center w-4 h-4 transition-colors duration-300 bg-black rounded-full shrink-0 group-hover:bg-white">
-                    <span
-                      className="material-symbols-outlined block -translate-x-[200%] text-[0px] transition-all duration-300 group-hover:translate-x-0 group-hover:text-black group-hover:text-2xl"
-                      style={{ lineHeight: 1 }}
-                    >
-                      arrow_outward
-                    </span>
+                    <ArrowUpRightIcon
+                      className="block w-3 h-3 -translate-x-[200%] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 text-black"
+                      aria-hidden="true"
+                    />
                   </span>
                   <span className="font-sans text-4xl font-light text-black transition-colors duration-300 group-hover:text-white">
                     Resume

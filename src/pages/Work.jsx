@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import projects from "../data/projects.json";
 
 const TITLE_LINES = ["Selected", "Work"];
@@ -88,9 +88,7 @@ const Work = () => {
         ref={cursorRef}
         className="hidden lg:flex fixed top-0 left-0 z-[9999] pointer-events-none items-center justify-center rounded-full bg-black text-white w-20 h-20 -ml-7 -mt-7 opacity-0 transition-opacity duration-200"
       >
-        <span className="text-4xl material-symbols-outlined">
-          arrow_outward
-        </span>
+        <ArrowUpRightIcon className="w-9 h-9" aria-hidden="true" />
       </div>
 
       <section

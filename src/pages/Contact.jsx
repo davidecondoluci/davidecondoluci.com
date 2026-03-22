@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowUpIcon } from "@heroicons/react/24/outline";
 import UnderlineLink from "../components/UnderlineLink";
 import { motion } from "framer-motion";
 
@@ -19,9 +20,7 @@ const BackTop = () => {
       }}
       className="relative grid w-20 h-20 transition-colors duration-500 ease-out border border-white rounded-full shrink-0 group place-content-center lg:border-white/30 lg:hover:border-white"
     >
-      <span className="material-symbols-outlined pointer-events-none relative z-10 text-black lg:text-white transition-all duration-500 ease-out lg:group-hover:text-black group-hover:-translate-y-0.5 text-4xl">
-        arrow_upward
-      </span>
+      <ArrowUpIcon className="pointer-events-none relative z-10 w-9 h-9 text-black lg:text-white transition-all duration-500 ease-out lg:group-hover:text-black group-hover:-translate-y-0.5" aria-hidden="true" />
       <div className="absolute inset-0 z-0 transition-transform duration-500 ease-out scale-100 bg-white rounded-full pointer-events-none lg:scale-0 lg:group-hover:scale-100" />
 
       {/* Rotating circular text */}

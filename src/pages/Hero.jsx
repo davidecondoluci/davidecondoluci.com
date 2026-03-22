@@ -1,6 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
+import { ArrowDownIcon } from "@heroicons/react/24/outline";
 
 const AnimatedRole = ({ roles }) => {
   const [active, setActive] = useState(0);
@@ -227,12 +228,7 @@ const Hero = () => {
         className="absolute z-10 flex items-center gap-1 font-sans text-base font-light text-white -translate-x-1/2 bottom-10 left-1/2 mix-blend-difference"
       >
         Scroll for more
-        <span
-          className="material-symbols-outlined"
-          style={{ fontSize: "1.1em" }}
-        >
-          arrow_downward
-        </span>
+        <ArrowDownIcon className="w-[1.1em] h-[1.1em]" aria-hidden="true" />
       </p>
     </section>
   );
