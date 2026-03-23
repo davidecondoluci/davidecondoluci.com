@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
-import { Bars2Icon, XMarkIcon, ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import {
+  Bars2Icon,
+  XMarkIcon,
+  ArrowUpRightIcon,
+} from "@heroicons/react/24/outline";
 import FlipLink from "./FlipLink";
 
 const menuVariants = {
@@ -146,7 +150,7 @@ const Navbar = () => {
                 >
                   <span className="p-1 transition-colors duration-300 bg-white rounded-full group-hover:bg-black">
                     <ArrowUpRightIcon
-                      className="block w-5 h-5 -translate-x-[200%] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 text-white"
+                      className="block w-0 h-0 -translate-x-[200%] transition-all duration-300 group-hover:translate-x-0 group-hover:w-5 group-hover:h-5 text-white"
                       aria-hidden="true"
                     />
                   </span>
