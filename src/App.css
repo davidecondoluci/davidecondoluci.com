@@ -1,6 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Funnel Display", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces 72pt", ui-serif, Georgia, serif;
+  --color-black: #030712;
+  --color-white: #f9fafb;
+}
 
 html {
   scroll-behavior: smooth;
