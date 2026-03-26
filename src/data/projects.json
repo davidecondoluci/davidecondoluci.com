@@ -1,5 +1,20 @@
 [
   {
+    "id": "christianNapolitano",
+    "title": "Christian Napolitano Portfolio",
+    "image": "/img/covers/christian-napolitano.svg",
+    "descriptionKey": "projects.christianNapolitano.description",
+    "description": "Design and development of the personal portfolio website for Christian Napolitano.",
+    "programs": [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Javascript",
+      "GSAP"
+    ],
+    "website": "https://www.christiannapolitano.it/"
+  },
+  {
     "id": "quizRoyale",
     "title": "Quiz Royale",
     "image": "/img/covers/quiz-royale.svg",
@@ -21,6 +36,7 @@
     "description": "Development of the brand identity and website for a futsal tournament.",
     "programs": [
       "React",
+      "Vite",
       "Tailwind CSS",
       "Javascript",
       "GSAP"
@@ -35,6 +51,7 @@
     "description": "An application that allows you to search for your favorite movies and discover information about them.",
     "programs": [
       "React",
+      "Vite",
       "Tailwind CSS",
       "Javascript",
       "Framer Motion",
