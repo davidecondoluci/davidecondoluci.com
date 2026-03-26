@@ -82,7 +82,7 @@ const Navbar = () => {
         ref={navRef}
         className="fixed top-0 left-0 right-0 z-50 px-6 py-6 mix-blend-difference"
       >
-        <nav className="grid grid-cols-3 items-center w-full max-w-[1600px] mx-auto">
+        <nav className="grid grid-cols-3 items-center w-full max-w-400 mx-auto">
           {/* Left: Name */}
           <a
             href="#hero"
@@ -106,9 +106,9 @@ const Navbar = () => {
               onClick={() => setMenuOpen(!menuOpen)}
             >
               {menuOpen ? (
-                <XMarkIcon className="w-[22px] h-[22px]" />
+                <XMarkIcon className="w-5.5 h-5.5" />
               ) : (
-                <Bars2Icon className="w-[22px] h-[22px]" />
+                <Bars2Icon className="w-5.5 h-5.5" />
               )}
             </button>
 

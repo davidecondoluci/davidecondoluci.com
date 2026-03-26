@@ -49,12 +49,10 @@ const ALL_ICONS = [
   "/img/icons/tailwind.svg",
   "/img/icons/sass.svg",
   "/img/icons/bootstrap.svg",
-  "/img/icons/php.svg",
   "/img/icons/wordpress.svg",
   "/img/icons/npm.svg",
   "/img/icons/gsap.svg",
   "/img/icons/framer.svg",
-  "/img/icons/threejs.svg",
   "/img/icons/firebase.svg",
   "/img/icons/figma.svg",
   "/img/icons/illustrator.svg",
@@ -62,9 +60,7 @@ const ALL_ICONS = [
   "/img/icons/github.svg",
   "/img/icons/gitlab.svg",
   "/img/icons/mui.svg",
-  "/img/icons/alpine.svg",
   "/img/icons/filezilla.svg",
-  "/img/icons/xml.svg",
 ];
 
 const Hero = () => {
@@ -207,7 +203,7 @@ const Hero = () => {
         className="z-10 flex flex-col items-center gap-0 px-4 text-center md:flex-row md:items-baseline md:gap-4 mix-blend-difference"
       >
         <span className="font-sans text-6xl font-medium text-white md:text-9xl">
-          Frontend
+          Front-End
         </span>
         <span className="font-serif text-6xl italic font-light text-white md:text-9xl">
           Developer

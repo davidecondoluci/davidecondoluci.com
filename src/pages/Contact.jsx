@@ -53,7 +53,7 @@ const BackTop = () => {
             textLength="226"
             lengthAdjust="spacing"
             style={{ fontSize: 8 }}
-            className="uppercase transition-all duration-500 ease-out opacity-100 lg:opacity-0 lg:group-hover:opacity-100 [fill:black] lg:[fill:white] lg:group-hover:[fill:black]"
+            className="uppercase transition-all duration-500 ease-out opacity-100 lg:opacity-0 lg:group-hover:opacity-100 fill:[black] lg:fill:[white] lg:group-hover:fill:[black]"
           >
             {
               "Back to top\u00A0\u00A0·\u00A0\u00A0Back to top\u00A0\u00A0·\u00A0\u00A0"
@@ -156,7 +156,7 @@ const Contact = () => {
       {/* Custom cursor — desktop only */}
       <div
         ref={cursorRef}
-        className="hidden lg:flex fixed top-0 left-0 z-[9999] pointer-events-none items-center justify-center rounded-full bg-white text-gray-950 w-24 h-24 -ml-12 -mt-12 opacity-0 transition-opacity duration-200"
+        className="hidden lg:flex fixed top-0 left-0 z-9999 pointer-events-none items-center justify-center rounded-full bg-white text-gray-950 w-24 h-24 -ml-12 -mt-12 opacity-0 transition-opacity duration-200"
       >
         <span className="font-sans text-sm font-light leading-tight text-center">
           Write me

@@ -86,7 +86,7 @@ const Work = () => {
       {/* Custom cursor — desktop only */}
       <div
         ref={cursorRef}
-        className="hidden lg:flex fixed top-0 left-0 z-[9999] pointer-events-none items-center justify-center rounded-full bg-black text-white w-20 h-20 -ml-7 -mt-7 opacity-0 transition-opacity duration-200"
+        className="hidden lg:flex fixed top-0 left-0 z-9999 pointer-events-none items-center justify-center rounded-full bg-black text-white w-20 h-20 -ml-7 -mt-7 opacity-0 transition-opacity duration-200"
       >
         <ArrowUpRightIcon className="w-9 h-9" aria-hidden="true" />
       </div>
@@ -125,69 +125,78 @@ const Work = () => {
           ref={cardsRef}
           className="grid w-full grid-cols-1 gap-6 mx-auto md:grid-cols-5"
         >
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className={`w-full ${
-                index === 0 || index === projects.length - 1
-                  ? "md:col-span-3"
-                  : "md:col-span-2"
-              }`}
-            >
-              <a
-                href={project.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block lg:cursor-none group"
-                data-hide-cursor
-                onMouseEnter={() => {
-                  if (cursorRef.current) cursorRef.current.style.opacity = "1";
-                  window.dispatchEvent(
-                    new CustomEvent("custom-cursor-active", {
-                      detail: { active: true },
-                    }),
-                  );
-                }}
-                onMouseLeave={() => {
-                  if (cursorRef.current) cursorRef.current.style.opacity = "0";
-                  window.dispatchEvent(
-                    new CustomEvent("custom-cursor-active", {
-                      detail: { active: false },
-                    }),
-                  );
-                }}
-              >
-                <div className="relative overflow-hidden rounded-lg aspect-square md:aspect-auto md:h-96">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="object-cover w-full h-full"
-                  />
-                  {/* Tags always visible on mobile, hover-only on desktop */}
-                  <div className="absolute inset-0 flex flex-col justify-start p-5 opacity-100 lg:bg-black/20 lg:backdrop-blur-sm lg:opacity-0 lg:transition-opacity lg:duration-300 lg:group-hover:opacity-100">
-                    <div className="flex flex-wrap gap-2">
-                      {project.programs.map((prog, pi) => (
-                        <span
-                          key={pi}
-                          className="px-2 py-1 font-sans text-sm font-light text-white rounded-lg bg-white/20 backdrop-blur-md"
-                        >
-                          {prog}
-                        </span>
-                      ))}
+          {projects.map((project, index) => {
+            const total = projects.length;
+            const isLastAlone = total % 2 !== 0 && index === total - 1;
+            const rowIndex = Math.floor(index / 2);
+            const posInRow = index % 2;
+            let spanClass;
+            if (isLastAlone) {
+              spanClass = "md:col-span-3";
+            } else if (rowIndex % 2 === 0) {
+              spanClass = posInRow === 0 ? "md:col-span-3" : "md:col-span-2";
+            } else {
+              spanClass = posInRow === 0 ? "md:col-span-2" : "md:col-span-3";
+            }
+            return (
+              <div key={index} className={`w-full ${spanClass}`}>
+                <a
+                  href={project.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block lg:cursor-none group"
+                  data-hide-cursor
+                  onMouseEnter={() => {
+                    if (cursorRef.current)
+                      cursorRef.current.style.opacity = "1";
+                    window.dispatchEvent(
+                      new CustomEvent("custom-cursor-active", {
+                        detail: { active: true },
+                      }),
+                    );
+                  }}
+                  onMouseLeave={() => {
+                    if (cursorRef.current)
+                      cursorRef.current.style.opacity = "0";
+                    window.dispatchEvent(
+                      new CustomEvent("custom-cursor-active", {
+                        detail: { active: false },
+                      }),
+                    );
+                  }}
+                >
+                  <div className="relative overflow-hidden rounded-lg aspect-square md:aspect-auto md:h-128">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="object-cover w-full h-full"
+                    />
+                    {/* Tags always visible on mobile, hover-only on desktop */}
+                    <div className="absolute inset-0 flex flex-col justify-start p-5 opacity-100 lg:bg-black/20 lg:backdrop-blur-sm lg:opacity-0 lg:transition-opacity lg:duration-300 lg:group-hover:opacity-100">
+                      <div className="flex flex-wrap gap-2">
+                        {project.programs.map((prog, pi) => (
+                          <span
+                            key={pi}
+                            className="px-2 py-1 font-sans text-sm font-light text-white rounded-lg bg-white/20 backdrop-blur-md"
+                          >
+                            {prog}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
+                </a>
+                <div className="mt-4 space-y-2">
+                  <h3 className="font-serif text-2xl italic font-light lg:text-4xl">
+                    {project.title}
+                  </h3>
+                  <p className="font-sans text-base font-light text-black/40">
+                    {project.description}
+                  </p>
                 </div>
-              </a>
-              <div className="mt-4 space-y-2">
-                <h3 className="font-serif text-2xl italic font-light lg:text-4xl">
-                  {project.title}
-                </h3>
-                <p className="font-sans text-base font-light text-black/40">
-                  {project.description}
-                </p>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
     </>

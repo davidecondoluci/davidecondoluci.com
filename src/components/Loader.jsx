@@ -71,7 +71,7 @@ const Loader = ({ onComplete }) => {
   return (
     <div
       ref={loaderRef}
-      className="fixed inset-0 z-[999999] flex flex-col items-center justify-center bg-white"
+      className="fixed inset-0 z-999999 flex flex-col items-center justify-center bg-white"
     >
       {/* Percentage */}
       <span

@@ -86,7 +86,7 @@ const App = () => {
       {/* Custom dot cursor — desktop only */}
       <div
         ref={cursorRef}
-        className="hidden lg:block fixed top-0 left-0 z-[99999] pointer-events-none w-4 h-4 rounded-full bg-white mix-blend-difference -translate-x-1/2 -translate-y-1/2"
+        className="hidden lg:block fixed top-0 left-0 z-99999 pointer-events-none w-4 h-4 rounded-full bg-white mix-blend-difference -translate-x-1/2 -translate-y-1/2"
         style={{ willChange: "transform" }}
       />
       <Navbar />

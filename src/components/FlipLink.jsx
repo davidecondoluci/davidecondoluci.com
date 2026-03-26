@@ -14,7 +14,7 @@ const FlipLink = ({ children, href, onClick, target, rel, className = "" }) => {
       onClick={onClick}
       target={target}
       rel={rel}
-      className={`relative block overflow-hidden whitespace-nowrap leading-2 ${className}`}
+      className={`relative block overflow-hidden whitespace-nowrap leading-[1.2] ${className}`}
     >
       <div>
         {letters.map((l, i) => (
