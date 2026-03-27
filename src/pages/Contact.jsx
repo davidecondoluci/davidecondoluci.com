@@ -49,11 +49,10 @@ const BackTop = () => {
         <text>
           <textPath
             href="#backTopCircle"
-            fill="white"
             textLength="226"
             lengthAdjust="spacing"
             style={{ fontSize: 8 }}
-            className="uppercase transition-all duration-500 ease-out opacity-100 lg:opacity-0 lg:group-hover:opacity-100 fill:[black] lg:fill:[white] lg:group-hover:fill:[black]"
+            className="uppercase transition-all duration-500 ease-out opacity-100 lg:opacity-0 lg:group-hover:opacity-100 fill-black lg:fill-white lg:group-hover:fill-black"
           >
             {
               "Back to top\u00A0\u00A0·\u00A0\u00A0Back to top\u00A0\u00A0·\u00A0\u00A0"

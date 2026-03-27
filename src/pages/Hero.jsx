@@ -154,9 +154,26 @@ const Hero = () => {
 
     container.addEventListener("mousemove", onMouseMove);
     container.addEventListener("touchstart", onTouchStart, { passive: true });
+
+    // Auto-spawn multiple icons on mobile devices, every 2 seconds
+    let autoSpawnInterval;
+    if (!window.matchMedia("(pointer: fine)").matches) {
+      autoSpawnInterval = setInterval(() => {
+        const rect = container.getBoundingClientRect();
+        // How many icons per interval
+        const iconsPerInterval = 4;
+        for (let i = 0; i < iconsPerInterval; i++) {
+          const randomX = Math.random() * rect.width;
+          const randomY = Math.random() * rect.height;
+          spawnIcon(randomX, randomY);
+        }
+      }, 2000); // interval 2 seconds
+    }
+
     return () => {
       container.removeEventListener("mousemove", onMouseMove);
       container.removeEventListener("touchstart", onTouchStart);
+      if (autoSpawnInterval) clearInterval(autoSpawnInterval);
     };
   }, []);
 
