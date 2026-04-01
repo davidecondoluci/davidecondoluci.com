@@ -103,8 +103,7 @@ const Work = () => {
           {TITLE_LINES.map((line, li) => (
             <li
               key={li}
-              className="flex overflow-hidden font-sans font-medium leading-none"
-              style={{ fontSize: "clamp(86px, 18vw, 300px)" }}
+              className="flex overflow-hidden font-sans font-medium leading-none text-[18vw]"
             >
               {line.split("").map((char, i) => (
                 <span key={i} className="relative inline-block work-letter">

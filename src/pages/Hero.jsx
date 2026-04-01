@@ -219,10 +219,10 @@ const Hero = () => {
         ref={heroTitleRef}
         className="z-10 flex flex-col items-center gap-0 px-4 text-center md:flex-row md:items-baseline md:gap-4 mix-blend-difference"
       >
-        <span className="font-sans text-6xl font-medium text-white md:text-9xl">
+        <span className="font-sans text-[18vw] font-medium leading-none text-white md:text-[9vw]">
           Front-End
         </span>
-        <span className="font-serif text-6xl italic font-light text-white md:text-9xl">
+        <span className="font-serif text-[18vw] italic font-light leading-none text-white md:text-[9vw]">
           Developer
         </span>
       </h1>

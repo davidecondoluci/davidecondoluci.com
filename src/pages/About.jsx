@@ -41,11 +41,13 @@ const About = () => {
               : disperse === 3
                 ? "padding-left:2.4em"
                 : "";
-        const accentStyle = isAccent
-          ? "font-family:'Fraunces 72pt',serif;font-style:italic;font-weight:300"
-          : "";
-        const style = [paddingStyle, accentStyle].filter(Boolean).join(";");
-        return `<span class="inline-block word${disperse}"${style ? ` style="${style}"` : ""}>${word}</span>`;
+        const style = paddingStyle || "";
+        const trailingPunct = word.match(/[^a-zA-Z]+$/)?.[0] ?? "";
+        const wordText = trailingPunct ? word.slice(0, -trailingPunct.length) : word;
+        const inner = isAccent
+          ? `<span style="font-family:'Fraunces 72pt',serif;font-style:italic;font-weight:300">${wordText}</span>${trailingPunct}`
+          : word;
+        return `<span class="inline-block word${disperse}"${style ? ` style="${style}"` : ""}>${inner}</span>`;
       })
       .join(" ");
 

@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 gsap.registerPlugin(ScrollTrigger);
 
 const REPEAT_COUNT = 6;
-const TEXT = "Get in touch · ";
+const TEXT = " Get in touch · ";
 
 const BackTop = () => {
   return (
@@ -18,7 +18,7 @@ const BackTop = () => {
         e.preventDefault();
         document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
       }}
-      className="relative grid w-20 h-20 transition-colors duration-500 ease-out border border-white rounded-full shrink-0 group place-content-center lg:border-white/30 lg:hover:border-white"
+      className="relative grid w-20 h-20 transition-colors duration-500 ease-out border border-white rounded-full shrink-0 group place-content-center lg:border-white/40 lg:hover:border-white"
     >
       <ArrowUpIcon
         className="pointer-events-none relative z-10 w-9 h-9 text-black lg:text-white transition-all duration-500 ease-out lg:group-hover:text-black group-hover:-translate-y-0.5"
@@ -167,9 +167,10 @@ const Contact = () => {
         <div className="flex flex-col items-center justify-center flex-1 gap-8 overflow-hidden">
           <p
             ref={descRef}
-            className="max-w-md px-6 font-sans text-base font-light text-center text-white shrink-0"
+            className="font-sans text-base font-light text-center text-white shrink-0"
           >
             Have a project in mind, a question, or just want to collaborate?
+            <br />
             Drop me a line by clicking below.
           </p>
           <a
@@ -196,7 +197,7 @@ const Contact = () => {
           >
             <p
               ref={marqueeRef}
-              className="flex font-serif text-6xl italic font-light whitespace-nowrap w-max will-change-transform lg:text-9xl"
+              className="flex font-serif text-[18vw] leading-none italic font-light whitespace-nowrap w-max will-change-transform"
             >
               <span ref={firstCopyRef}>{repeated}</span>
               <span aria-hidden="true">{repeated}</span>
