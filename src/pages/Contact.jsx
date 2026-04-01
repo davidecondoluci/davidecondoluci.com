@@ -4,11 +4,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpIcon } from "@heroicons/react/24/outline";
 import UnderlineLink from "../components/UnderlineLink";
 import { motion } from "framer-motion";
+import Marquee from "react-fast-marquee";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const REPEAT_COUNT = 6;
-const TEXT = " Get in touch · ";
 
 const BackTop = () => {
   return (
@@ -65,30 +64,9 @@ const BackTop = () => {
 };
 
 const Contact = () => {
-  const marqueeRef = useRef(null);
-  const firstCopyRef = useRef(null);
   const cursorRef = useRef(null);
   const descRef = useRef(null);
   const footerRef = useRef(null);
-
-  useEffect(() => {
-    const el = marqueeRef.current;
-    const first = firstCopyRef.current;
-    if (!el || !first) return;
-
-    let tween;
-    document.fonts.ready.then(() => {
-      const singleWidth = first.getBoundingClientRect().width;
-      tween = gsap.to(el, {
-        x: -singleWidth,
-        ease: "none",
-        duration: 24,
-        repeat: -1,
-      });
-    });
-
-    return () => tween?.kill();
-  }, []);
 
   useEffect(() => {
     if (!window.matchMedia("(pointer: fine)").matches) return;
@@ -148,7 +126,6 @@ const Contact = () => {
     };
   }, []);
 
-  const repeated = Array(REPEAT_COUNT).fill(TEXT).join("");
 
   return (
     <>
@@ -195,13 +172,9 @@ const Contact = () => {
               );
             }}
           >
-            <p
-              ref={marqueeRef}
-              className="flex font-serif text-[18vw] leading-none italic font-light whitespace-nowrap w-max will-change-transform"
-            >
-              <span ref={firstCopyRef}>{repeated}</span>
-              <span aria-hidden="true">{repeated}</span>
-            </p>
+            <Marquee speed={80} autoFill className="font-serif text-[18vw] leading-none italic font-light">
+              Get in touch&nbsp;·&nbsp;
+            </Marquee>
           </a>
         </div>
 
