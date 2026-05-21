@@ -47,24 +47,92 @@ const ALL_ICONS = [
   "/img/icons/next.svg",
   "/img/icons/vite.svg",
   "/img/icons/tailwind.svg",
-  "/img/icons/sass.svg",
-  "/img/icons/bootstrap.svg",
   "/img/icons/wordpress.svg",
-  "/img/icons/npm.svg",
   "/img/icons/gsap.svg",
   "/img/icons/framer.svg",
   "/img/icons/firebase.svg",
   "/img/icons/figma.svg",
-  "/img/icons/illustrator.svg",
-  "/img/icons/vscode.svg",
   "/img/icons/github.svg",
-  "/img/icons/gitlab.svg",
   "/img/icons/mui.svg",
-  "/img/icons/filezilla.svg",
 ];
 
-const Hero = () => {
+const OrbitIcons = () => {
   const containerRef = useRef(null);
+  const iconsRef = useRef([]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const iconEls = iconsRef.current.filter(Boolean);
+    const count = iconEls.length;
+    if (!container || count === 0) return;
+
+    const progress = { value: 0 };
+
+    const updatePositions = () => {
+      const { width, height } = container.getBoundingClientRect();
+      const isMobile = width < 768;
+      const rx = width * (isMobile ? 0.50 : 0.42);
+      const ry = isMobile ? Math.min(height * 0.36, rx) : height * 0.35;
+      const cx = width / 2;
+      const cy = height / 2;
+
+      iconEls.forEach((el, i) => {
+        const baseAngle = (i / count) * Math.PI * 2;
+        const angle = baseAngle + progress.value * Math.PI * 2;
+        const x = cx + rx * Math.cos(angle) - el.offsetWidth / 2;
+        const y = cy + ry * Math.sin(angle) - el.offsetHeight / 2;
+        gsap.set(el, { x, y });
+      });
+    };
+
+    updatePositions();
+
+    // Entrance — simple fade, no scale pop
+    gsap.fromTo(
+      iconEls,
+      { opacity: 0 },
+      { opacity: 1, duration: 1, ease: "power2.out", stagger: { each: 0.06, from: "random" } }
+    );
+
+    const tween = gsap.to(progress, {
+      value: 1,
+      duration: 45,
+      ease: "none",
+      repeat: -1,
+      onUpdate: updatePositions,
+    });
+
+    window.addEventListener("resize", updatePositions);
+    return () => {
+      tween.kill();
+      window.removeEventListener("resize", updatePositions);
+    };
+  }, []);
+
+  return (
+    <div ref={containerRef} className="absolute inset-0 z-0 pointer-events-none">
+      {ALL_ICONS.map((src, i) => (
+        <div
+          key={src}
+          ref={(el) => (iconsRef.current[i] = el)}
+          style={{ position: "absolute", top: 0, left: 0 }}
+        >
+          <img
+            src={src}
+            alt=""
+            style={{
+              width: "clamp(52px, 6vw, 80px)",
+              height: "clamp(52px, 6vw, 80px)",
+              objectFit: "contain",
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const Hero = () => {
   const heroTitleRef = useRef(null);
   const heroRolesRef = useRef(null);
   const heroScrollRef = useRef(null);
@@ -76,106 +144,6 @@ const Hero = () => {
     "Runner",
     "Fashion Lover",
   ];
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const icons = ALL_ICONS;
-    let incr = 0,
-      oldIncr = 0,
-      firstMove = true,
-      indexImg = 0;
-    const resetDist = window.innerWidth / 15;
-
-    function spawnIcon(x, y) {
-      const img = document.createElement("img");
-      img.src = icons[indexImg];
-      img.style.cssText =
-        "width:clamp(40px,7vw,80px);height:clamp(40px,7vw,80px);object-fit:contain;position:absolute;top:0;left:0;z-index:5;pointer-events:none;";
-      container.appendChild(img);
-
-      const tl = gsap.timeline({
-        onComplete: () => {
-          if (container.contains(img)) container.removeChild(img);
-          tl.kill();
-        },
-      });
-
-      tl.fromTo(
-        img,
-        {
-          x,
-          y,
-          yPercent: -50 + (Math.random() - 0.5) * 10,
-          xPercent: -50 + (Math.random() - 0.5) * 80,
-          rotation: (Math.random() - 0.5) * 20,
-          scaleX: 1.3,
-          scaleY: 1.3,
-        },
-        {
-          scaleX: 1,
-          scaleY: 1,
-          ease: "elastic.out(2, 0.6)",
-          duration: 0.6,
-        },
-      ).to(img, {
-        duration: 0.3,
-        scale: 0.5,
-        delay: 0.1,
-        ease: "back.in(1.5)",
-      });
-
-      indexImg = (indexImg + 1) % icons.length;
-    }
-
-    function onMouseMove(e) {
-      const val = e.clientX;
-      if (firstMove) {
-        firstMove = false;
-        oldIncr = val;
-        return;
-      }
-      incr += Math.abs(val - oldIncr);
-      oldIncr = val;
-      if (incr > resetDist) {
-        incr = 0;
-        spawnIcon(e.clientX, e.clientY - container.getBoundingClientRect().top);
-      }
-    }
-
-    function onTouchStart(e) {
-      const touch = e.touches[0];
-      spawnIcon(
-        touch.clientX,
-        touch.clientY - container.getBoundingClientRect().top,
-      );
-    }
-
-    container.addEventListener("mousemove", onMouseMove);
-    container.addEventListener("touchstart", onTouchStart, { passive: true });
-
-    // Auto-spawn multiple icons on mobile devices, every 2 seconds
-    let autoSpawnInterval;
-    if (!window.matchMedia("(pointer: fine)").matches) {
-      autoSpawnInterval = setInterval(() => {
-        const rect = container.getBoundingClientRect();
-        // How many icons per interval
-        const iconsPerInterval = 4;
-        for (let i = 0; i < iconsPerInterval; i++) {
-          const randomX = Math.random() * rect.width;
-          const randomY = Math.random() * rect.height;
-          spawnIcon(randomX, randomY);
-        }
-      }, 2000); // interval 2 seconds
-    }
-
-    return () => {
-      container.removeEventListener("mousemove", onMouseMove);
-      container.removeEventListener("touchstart", onTouchStart);
-      if (autoSpawnInterval) clearInterval(autoSpawnInterval);
-    };
-  }, []);
 
   useEffect(() => {
     const titleEl = heroTitleRef.current;
@@ -212,9 +180,9 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      ref={containerRef}
       className="relative flex flex-col items-center justify-center overflow-hidden text-center select-none h-dvh"
     >
+      <OrbitIcons />
       <h1
         ref={heroTitleRef}
         className="z-10 flex flex-col items-center gap-0 px-4 text-center md:flex-row md:items-baseline md:gap-4 mix-blend-difference"

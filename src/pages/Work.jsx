@@ -86,7 +86,7 @@ const Work = () => {
       {/* Custom cursor — desktop only */}
       <div
         ref={cursorRef}
-        className="hidden lg:flex fixed top-0 left-0 z-9999 pointer-events-none items-center justify-center rounded-full bg-black text-white w-20 h-20 -ml-7 -mt-7 opacity-0 transition-opacity duration-200"
+        className="hidden lg:flex fixed top-0 left-0 z-9999 pointer-events-none items-center justify-center rounded-full bg-black text-white w-20 h-20 -ml-10 -mt-10 opacity-0 transition-opacity duration-200"
       >
         <ArrowUpRightIcon className="w-9 h-9" aria-hidden="true" />
       </div>
@@ -131,7 +131,7 @@ const Work = () => {
             const posInRow = index % 2;
             let spanClass;
             if (isLastAlone) {
-              spanClass = "md:col-span-3";
+              spanClass = "md:col-span-5";
             } else if (rowIndex % 2 === 0) {
               spanClass = posInRow === 0 ? "md:col-span-3" : "md:col-span-2";
             } else {

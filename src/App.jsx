@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,28 +8,22 @@ import Hero from "./pages/Hero";
 import About from "./pages/About";
 import Work from "./pages/Work";
 import Contact from "./pages/Contact";
-import Loader from "./components/Loader";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
   const cursorRef = useRef(null);
-  const cursorWrapperRef = cursorRef;
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const handler = (e) => {
-      if (cursorWrapperRef.current) {
-        cursorWrapperRef.current.style.visibility = e.detail.active
-          ? "hidden"
-          : "";
+      if (cursorRef.current) {
+        cursorRef.current.style.visibility = e.detail.active ? "hidden" : "";
       }
     };
     window.addEventListener("custom-cursor-active", handler);
     return () => window.removeEventListener("custom-cursor-active", handler);
   }, []);
 
-  // Lenis smooth scroll — synced with GSAP ticker for ScrollTrigger compatibility
   useEffect(() => {
     const lenis = new Lenis();
     lenis.on("scroll", ScrollTrigger.update);
@@ -48,45 +42,50 @@ const App = () => {
     };
   }, []);
 
-  // Custom dot cursor — pointer devices only
   useEffect(() => {
     if (!window.matchMedia("(pointer: fine)").matches) return;
     const cursor = cursorRef.current;
     if (!cursor) return;
+
+    document.body.style.cursor = "none";
+    const hide = () => { document.body.style.cursor = "none"; };
+    window.addEventListener("focus", hide);
+
+    // GSAP owns all transform properties — no direct style.transform writes
+    gsap.set(cursor, { xPercent: -50, yPercent: -50 });
+
     const onMove = (e) => {
-      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      gsap.set(cursor, { x: e.clientX, y: e.clientY });
     };
     window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
-  }, []);
 
-  useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
-    document.body.style.cursor = "none";
-    const hideSystemCursor = () => {
-      document.body.style.cursor = "none";
+    const onHover = (e) => {
+      const interactive = !!e.target.closest("a, button");
+      gsap.to(cursor, { scale: interactive ? 2.5 : 1, duration: 0.2, ease: "power2.out" });
     };
-    window.addEventListener("focus", hideSystemCursor);
+    document.addEventListener("mouseover", onHover);
+
     return () => {
-      window.removeEventListener("focus", hideSystemCursor);
+      window.removeEventListener("focus", hide);
+      window.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseover", onHover);
       document.body.style.cursor = "";
     };
   }, []);
 
+  // Dispatch site-ready immediately (no loader)
+  useEffect(() => {
+    const id = requestAnimationFrame(() => {
+      window.dispatchEvent(new CustomEvent("site-ready"));
+    });
+    return () => cancelAnimationFrame(id);
+  }, []);
+
   return (
     <div className="w-full bg-white text-gray">
-      {loading && (
-        <Loader
-          onComplete={() => {
-            setLoading(false);
-            window.dispatchEvent(new CustomEvent("site-ready"));
-          }}
-        />
-      )}
-      {/* Custom dot cursor — desktop only */}
       <div
         ref={cursorRef}
-        className="hidden lg:block fixed top-0 left-0 z-99999 pointer-events-none w-4 h-4 rounded-full bg-white mix-blend-difference -translate-x-1/2 -translate-y-1/2"
+        className="hidden lg:block fixed top-0 left-0 z-99999 pointer-events-none w-4 h-4 rounded-full bg-white mix-blend-difference"
         style={{ willChange: "transform" }}
       />
       <Navbar />
