@@ -24,63 +24,41 @@ const About = () => {
     const paragraph = paragraphRef.current;
     if (!paragraph) return;
 
-    const text = ABOUT_TEXT;
-
-    paragraph.innerHTML = text
-      .trim()
+    paragraph.innerHTML = ABOUT_TEXT.trim()
       .split(/\s+/)
       .map((word) => {
         const clean = word.replace(/[^a-zA-Z]/g, "").toLowerCase();
         const isAccent = ACCENT_WORDS.has(clean);
-        const disperse = Math.floor(Math.random() * 4);
-        const paddingStyle =
-          disperse === 1
-            ? "padding-left:0.8em"
-            : disperse === 2
-              ? "padding-right:1.6em"
-              : disperse === 3
-                ? "padding-left:2.4em"
-                : "";
-        const style = paddingStyle || "";
         const trailingPunct = word.match(/[^a-zA-Z]+$/)?.[0] ?? "";
         const wordText = trailingPunct ? word.slice(0, -trailingPunct.length) : word;
         const inner = isAccent
           ? `<span style="font-family:'Fraunces 72pt',serif;font-style:italic;font-weight:300">${wordText}</span>${trailingPunct}`
           : word;
-        return `<span class="inline-block word${disperse}"${style ? ` style="${style}"` : ""}>${inner}</span>`;
+        return `<span class="inline-block">${inner}</span>`;
       })
       .join(" ");
 
-    const tweens = [];
+    const words = Array.from(paragraph.querySelectorAll("span.inline-block"));
+    gsap.set(words, { opacity: 0, y: 18 });
 
-    paragraph.querySelectorAll(".word1, .word2, .word3").forEach((el) => {
-      let fromX = 0;
-      if (el.classList.contains("word1")) fromX = "-0.8em";
-      else if (el.classList.contains("word2")) fromX = "1.6em";
-      else if (el.classList.contains("word3")) fromX = "-2.4em";
-
-      tweens.push(
-        gsap.fromTo(
-          el,
-          { x: fromX },
-          {
-            x: 0,
-            ease: "none",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              end: "bottom 60%",
-              scrub: 0.2,
-            },
-          },
-        ),
-      );
-    });
+    const tweens = words.map((el) =>
+      gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 90%",
+          end: "top 70%",
+          scrub: 0.4,
+        },
+      }),
+    );
 
     return () => {
-      tweens.forEach((tween) => {
-        tween.scrollTrigger?.kill();
-        tween.kill();
+      tweens.forEach((t) => {
+        t.scrollTrigger?.kill();
+        t.kill();
       });
     };
   }, []);
@@ -136,7 +114,7 @@ const About = () => {
         <div className="w-full lg:w-[50vw] lg:pr-8">
           <p
             ref={paragraphRef}
-            className="font-sans font-light leading-tight tracking-tight text-[clamp(18px,5vw,48px)] text-center lg:text-left"
+            className="font-sans font-light leading-tight tracking-tight text-[clamp(18px,5vw,48px)] text-left"
           />
         </div>
 

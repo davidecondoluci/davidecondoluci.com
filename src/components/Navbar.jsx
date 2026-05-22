@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
 import {
@@ -27,26 +28,28 @@ const itemVariants = {
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
-  const [time, setTime] = useState("");
+  const dotSpacerRef = useRef(null);
+  const [dotStyle, setDotStyle] = useState(null);
 
   const cvPath = "/pdf/Condoluci_Davide_cv_EN.pdf";
 
-  // Live clock
-  useEffect(() => {
-    const update = () => {
-      const now = new Date();
-      setTime(
-        now.toLocaleTimeString("en-US", {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: true,
-        }),
-      );
-    };
-    update();
-    const id = setInterval(update, 1000);
-    return () => clearInterval(id);
+  // Misura la posizione dello spacer e piazza il dot portal sopra
+  const updateDotPos = useCallback(() => {
+    if (!dotSpacerRef.current) return;
+    const r = dotSpacerRef.current.getBoundingClientRect();
+    setDotStyle({ top: r.top, left: r.left, width: r.width, height: r.height });
   }, []);
+
+  useEffect(() => {
+    // Aspetta la fine dell'animazione di entrata (0.8s) prima di misurare
+    const onReady = () => setTimeout(updateDotPos, 900);
+    window.addEventListener("site-ready", onReady, { once: true });
+    window.addEventListener("resize", updateDotPos);
+    return () => {
+      window.removeEventListener("site-ready", onReady);
+      window.removeEventListener("resize", updateDotPos);
+    };
+  }, [updateDotPos]);
 
   useEffect(() => {
     const nav = navRef.current;
@@ -77,7 +80,23 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Navbar — mix-blend-difference always; menu bg below handles color inversion */}
+      {/* Dot verde — fuori dal container mix-blend via portal */}
+      {dotStyle &&
+        createPortal(
+          <span
+            aria-hidden="true"
+            className="pointer-events-none"
+            style={{ position: "fixed", zIndex: 51, ...dotStyle }}
+          >
+            <span className="relative flex h-full w-full">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-full w-full bg-green-500" />
+            </span>
+          </span>,
+          document.body,
+        )}
+
+      {/* Navbar — mix-blend-difference sul container, il dot è escluso via portal */}
       <div
         ref={navRef}
         className="fixed top-0 left-0 right-0 z-50 px-6 py-6 mix-blend-difference"
@@ -93,10 +112,17 @@ const Navbar = () => {
             <span className="hidden lg:inline">Davide Condoluci</span>
           </a>
 
-          {/* Center: Live clock */}
-          <span className="font-sans text-base font-light text-center text-white tabular-nums">
-            {time}
-          </span>
+          {/* Center: spacer dot (invisibile, segnaposto per il portal) + testo */}
+          <div className="flex items-center justify-center gap-2">
+            <span
+              ref={dotSpacerRef}
+              className="h-2 w-2 shrink-0 invisible"
+              aria-hidden="true"
+            />
+            <span className="font-sans text-base font-light text-white whitespace-nowrap">
+              Open to collaborate
+            </span>
+          </div>
 
           {/* Right */}
           <div className="flex items-center justify-end">
@@ -164,7 +190,7 @@ const Navbar = () => {
         </nav>
       </div>
 
-      {/* Mobile menu — outside blend-mode container */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div

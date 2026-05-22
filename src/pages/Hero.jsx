@@ -54,10 +54,100 @@ const ALL_ICONS = [
   "/img/icons/figma.svg",
   "/img/icons/github.svg",
   "/img/icons/mui.svg",
+  "/img/icons/typescript.svg",
 ];
 
-const Hero = () => {
+const ScatteredIcons = () => {
   const containerRef = useRef(null);
+  const iconsRef = useRef([]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const iconEls = iconsRef.current.filter(Boolean);
+    if (!container || iconEls.length === 0) return;
+
+    const { width, height } = container.getBoundingClientRect();
+    const iconSize = Math.min(70, Math.max(40, width * 0.05));
+    const edgePad = iconSize * 1.0;
+    const minDist = iconSize * 2.6;
+    const maxAttempts = 150;
+    const positions = [];
+
+    // Zona centrale riservata al titolo
+    const zx1 = width * 0.18;
+    const zx2 = width * 0.82;
+    const zy1 = height * 0.33;
+    const zy2 = height * 0.67;
+
+    iconEls.forEach((el) => {
+      let x, y, attempts = 0;
+      do {
+        x = edgePad + Math.random() * (width - 2 * edgePad - iconSize);
+        y = edgePad + Math.random() * (height - 2 * edgePad - iconSize);
+        attempts++;
+      } while (
+        attempts < maxAttempts &&
+        (
+          positions.some((p) => Math.hypot(p.x - x, p.y - y) < minDist) ||
+          (
+            x + iconSize / 2 > zx1 && x + iconSize / 2 < zx2 &&
+            y + iconSize / 2 > zy1 && y + iconSize / 2 < zy2
+          )
+        )
+      );
+
+      positions.push({ x, y });
+      gsap.set(el, { x, y, opacity: 0, scale: 0.6 });
+    });
+
+    // Entrance
+    gsap.to(iconEls, {
+      opacity: 1,
+      scale: 1,
+      duration: 0.9,
+      ease: "back.out(1.4)",
+      stagger: { each: 0.07, from: "random" },
+    });
+
+    // Floating
+    iconEls.forEach((el) => {
+      const floatAmt = 7 + Math.random() * 7;
+      gsap.to(el, {
+        y: `+=${floatAmt}`,
+        duration: 2.2 + Math.random() * 1.8,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        delay: Math.random() * 2,
+      });
+    });
+
+    return () => gsap.killTweensOf(iconEls);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="absolute inset-0 z-0 pointer-events-none">
+      {ALL_ICONS.map((src, i) => (
+        <img
+          key={src}
+          ref={(el) => (iconsRef.current[i] = el)}
+          src={src}
+          alt=""
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "clamp(40px, 5vw, 70px)",
+            height: "clamp(40px, 5vw, 70px)",
+            objectFit: "contain",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+const Hero = () => {
   const heroTitleRef = useRef(null);
   const heroRolesRef = useRef(null);
   const heroScrollRef = useRef(null);
@@ -71,101 +161,11 @@ const Hero = () => {
   ];
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    let incr = 0,
-      oldIncr = 0,
-      firstMove = true,
-      indexImg = 0;
-    const resetDist = window.innerWidth / 15;
-
-    function spawnIcon(x, y) {
-      const img = document.createElement("img");
-      img.src = ALL_ICONS[indexImg];
-      img.style.cssText =
-        "width:clamp(40px,7vw,80px);height:clamp(40px,7vw,80px);object-fit:contain;position:absolute;top:0;left:0;z-index:5;pointer-events:none;";
-      container.appendChild(img);
-
-      const tl = gsap.timeline({
-        onComplete: () => {
-          if (container.contains(img)) container.removeChild(img);
-          tl.kill();
-        },
-      });
-
-      tl.fromTo(
-        img,
-        {
-          x,
-          y,
-          yPercent: -50 + (Math.random() - 0.5) * 10,
-          xPercent: -50 + (Math.random() - 0.5) * 80,
-          rotation: (Math.random() - 0.5) * 20,
-          scaleX: 1.3,
-          scaleY: 1.3,
-        },
-        { scaleX: 1, scaleY: 1, ease: "elastic.out(2, 0.6)", duration: 0.6 },
-      ).to(img, {
-        duration: 0.3,
-        scale: 0.5,
-        delay: 0.1,
-        ease: "back.in(1.5)",
-      });
-
-      indexImg = (indexImg + 1) % ALL_ICONS.length;
-    }
-
-    function onMouseMove(e) {
-      const val = e.clientX;
-      if (firstMove) {
-        firstMove = false;
-        oldIncr = val;
-        return;
-      }
-      incr += Math.abs(val - oldIncr);
-      oldIncr = val;
-      if (incr > resetDist) {
-        incr = 0;
-        spawnIcon(e.clientX, e.clientY - container.getBoundingClientRect().top);
-      }
-    }
-
-    function onTouchStart(e) {
-      const touch = e.touches[0];
-      spawnIcon(
-        touch.clientX,
-        touch.clientY - container.getBoundingClientRect().top,
-      );
-    }
-
-    container.addEventListener("mousemove", onMouseMove);
-    container.addEventListener("touchstart", onTouchStart, { passive: true });
-
-    let autoSpawnInterval;
-    if (!window.matchMedia("(pointer: fine)").matches) {
-      autoSpawnInterval = setInterval(() => {
-        const rect = container.getBoundingClientRect();
-        for (let i = 0; i < 4; i++) {
-          spawnIcon(Math.random() * rect.width, Math.random() * rect.height);
-        }
-      }, 2000);
-    }
-
-    return () => {
-      container.removeEventListener("mousemove", onMouseMove);
-      container.removeEventListener("touchstart", onTouchStart);
-      if (autoSpawnInterval) clearInterval(autoSpawnInterval);
-    };
-  }, []);
-
-  useEffect(() => {
     const titleEl = heroTitleRef.current;
     const rolesEl = heroRolesRef.current;
     const scrollEl = heroScrollRef.current;
     if (!titleEl || !rolesEl || !scrollEl) return;
 
-    // Hide immediately so nothing flashes before the loader finishes
     gsap.set([Array.from(titleEl.children), rolesEl, scrollEl], {
       opacity: 0,
     });
@@ -194,9 +194,9 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      ref={containerRef}
       className="relative flex flex-col items-center justify-center overflow-hidden text-center select-none h-dvh"
     >
+      <ScatteredIcons />
       <h1
         ref={heroTitleRef}
         className="z-10 flex flex-col items-center gap-0 px-4 text-center md:flex-row md:items-baseline md:gap-4 mix-blend-difference"
@@ -209,7 +209,6 @@ const Hero = () => {
         </span>
       </h1>
 
-      {/* Animated roles */}
       <div
         ref={heroRolesRef}
         className="relative z-10 flex flex-col items-center px-4 mt-4 font-sans text-2xl font-light text-white md:text-4xl mix-blend-difference"
