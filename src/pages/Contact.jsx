@@ -98,7 +98,7 @@ const Contact = () => {
         {/* Footer — anchored to bottom */}
         <div className="px-6 py-6">
           <div className="flex flex-col gap-4 lg:grid lg:items-end lg:grid-cols-3">
-            {/* Left: social */}
+            {/* Social */}
             <div className="flex flex-col gap-1">
               <span className="font-sans text-xs font-light tracking-widest uppercase text-white/60">
                 Social
@@ -128,23 +128,23 @@ const Contact = () => {
               © 2026 Davide Condoluci
             </span>
 
-            {/* Right: email (+ copyright on mobile) */}
-            <div className="flex items-center justify-between lg:justify-end">
-              <span className="font-sans text-sm font-light text-white/60 lg:hidden">
-                © 2026 Davide Condoluci
+            {/* Email */}
+            <div className="flex flex-col gap-1 lg:items-end">
+              <span className="font-sans text-xs font-light tracking-widest uppercase text-white/60">
+                Email
               </span>
-              <div className="flex flex-col gap-1">
-                <span className="font-sans text-xs font-light tracking-widest uppercase text-white/60">
-                  Email
-                </span>
-                <UnderlineLink
-                  href="mailto:davide.condoluci1@gmail.com"
-                  className="font-sans text-base font-light"
-                >
-                  davide.condoluci1@gmail.com
-                </UnderlineLink>
-              </div>
+              <UnderlineLink
+                href="mailto:davide.condoluci1@gmail.com"
+                className="font-sans text-base font-light"
+              >
+                davide.condoluci1@gmail.com
+              </UnderlineLink>
             </div>
+
+            {/* Copyright — mobile only */}
+            <span className="font-sans text-sm font-light text-white/60 lg:hidden">
+              © 2026 Davide Condoluci
+            </span>
           </div>
         </div>
       </section>
