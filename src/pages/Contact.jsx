@@ -99,7 +99,7 @@ const Contact = () => {
         <div className="px-6 py-6">
           <div className="flex flex-col gap-4 lg:grid lg:items-end lg:grid-cols-3">
             {/* Social */}
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <span className="font-sans text-xs font-light tracking-widest uppercase text-white/60">
                 Social
               </span>

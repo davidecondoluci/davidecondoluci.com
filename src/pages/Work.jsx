@@ -1,7 +1,8 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
-import projects from "../data/projects.json";
+import projects from "../data/work.json";
+import WorkModal from "../components/WorkModal";
 
 const TITLE_LINES = ["Selected", "Work"];
 
@@ -9,6 +10,7 @@ const Work = () => {
   const titleRef = useRef(null);
   const cursorRef = useRef(null);
   const cardsRef = useRef(null);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     const ul = titleRef.current;
@@ -125,25 +127,24 @@ const Work = () => {
           className="grid w-full grid-cols-1 gap-6 mx-auto md:grid-cols-5"
         >
           {projects.map((project, index) => {
-            const total = projects.length;
-            const isLastAlone = total % 2 !== 0 && index === total - 1;
-            const rowIndex = Math.floor(index / 2);
-            const posInRow = index % 2;
             let spanClass;
-            if (isLastAlone) {
+            if (index === 0) {
               spanClass = "md:col-span-5";
-            } else if (rowIndex % 2 === 0) {
-              spanClass = posInRow === 0 ? "md:col-span-3" : "md:col-span-2";
             } else {
-              spanClass = posInRow === 0 ? "md:col-span-2" : "md:col-span-3";
+              const adj = index - 1;
+              const rowIndex = Math.floor(adj / 2);
+              const posInRow = adj % 2;
+              if (rowIndex % 2 === 0) {
+                spanClass = posInRow === 0 ? "md:col-span-3" : "md:col-span-2";
+              } else {
+                spanClass = posInRow === 0 ? "md:col-span-2" : "md:col-span-3";
+              }
             }
             return (
               <div key={index} className={`w-full ${spanClass}`}>
-                <a
-                  href={project.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block lg:cursor-none group"
+                <button
+                  onClick={() => setSelectedProject(project)}
+                  className="block w-full text-left lg:cursor-none group"
                   data-hide-cursor
                   onMouseEnter={() => {
                     if (cursorRef.current)
@@ -164,7 +165,7 @@ const Work = () => {
                     );
                   }}
                 >
-                  <div className="relative overflow-hidden rounded-lg aspect-square md:aspect-auto md:h-128">
+                  <div className="relative overflow-hidden rounded-xl aspect-square md:aspect-auto md:h-128">
                     <img
                       src={project.image}
                       alt={project.title}
@@ -176,7 +177,7 @@ const Work = () => {
                         {project.programs.map((prog, pi) => (
                           <span
                             key={pi}
-                            className="px-2 py-1 font-sans text-sm font-light text-white rounded-lg bg-white/20 backdrop-blur-md"
+                            className="px-2 py-1 font-sans text-sm font-light text-white rounded-md bg-white/20 backdrop-blur-md"
                           >
                             {prog}
                           </span>
@@ -184,8 +185,8 @@ const Work = () => {
                       </div>
                     </div>
                   </div>
-                </a>
-                <div className="mt-4 space-y-2">
+                </button>
+                <div className="flex flex-col mt-4 gap-2">
                   <h3 className="font-serif text-2xl italic font-light lg:text-4xl">
                     {project.title}
                   </h3>
@@ -198,6 +199,13 @@ const Work = () => {
           })}
         </div>
       </section>
+
+      {selectedProject && (
+        <WorkModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </>
   );
 };

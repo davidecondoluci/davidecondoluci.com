@@ -1,6 +1,5 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
-import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
 import {
   Bars2Icon,
@@ -9,31 +8,16 @@ import {
 } from "@heroicons/react/24/outline";
 import FlipLink from "./FlipLink";
 
-const menuVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
-  exit: { transition: { staggerChildren: 0.04, staggerDirection: -1 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] },
-  },
-  exit: { opacity: 0, y: 20, transition: { duration: 0.25 } },
-};
-
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
   const dotSpacerRef = useRef(null);
+  const menuRef = useRef(null);
+  const isAnimatingRef = useRef(false);
   const [dotStyle, setDotStyle] = useState(null);
 
   const cvPath = "/pdf/Condoluci_Davide_cv_EN.pdf";
 
-  // Misura la posizione dello spacer e piazza il dot portal sopra
   const updateDotPos = useCallback(() => {
     if (!dotSpacerRef.current) return;
     const r = dotSpacerRef.current.getBoundingClientRect();
@@ -41,7 +25,6 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    // Aspetta la fine dell'animazione di entrata (0.8s) prima di misurare
     const onReady = () => setTimeout(updateDotPos, 900);
     window.addEventListener("site-ready", onReady, { once: true });
     window.addEventListener("resize", updateDotPos);
@@ -72,10 +55,55 @@ const Navbar = () => {
     };
   }, [menuOpen]);
 
+  // Animate in when menu mounts
+  useEffect(() => {
+    if (!menuOpen || !menuRef.current) return;
+    isAnimatingRef.current = false;
+    const items = Array.from(menuRef.current.querySelectorAll("li"));
+    gsap.set(menuRef.current, { opacity: 0, y: -10 });
+    gsap.set(items, { opacity: 0, y: 30 });
+    const tl = gsap.timeline();
+    tl.to(menuRef.current, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" })
+      .to(items, { opacity: 1, y: 0, duration: 0.55, stagger: 0.08, ease: "power2.out" }, "-=0.15");
+  }, [menuOpen]);
+
+  const animateClose = (onDone) => {
+    if (isAnimatingRef.current || !menuRef.current) {
+      onDone();
+      return;
+    }
+    isAnimatingRef.current = true;
+    const items = Array.from(menuRef.current.querySelectorAll("li"));
+    const tl = gsap.timeline({
+      onComplete: () => {
+        isAnimatingRef.current = false;
+        onDone();
+      },
+    });
+    tl.to([...items].reverse(), {
+      opacity: 0,
+      y: 20,
+      duration: 0.2,
+      stagger: 0.03,
+      ease: "power2.in",
+    }).to(menuRef.current, { opacity: 0, y: -10, duration: 0.25 }, "-=0.1");
+  };
+
+  const handleToggleMenu = () => {
+    if (isAnimatingRef.current) return;
+    if (menuOpen) {
+      animateClose(() => setMenuOpen(false));
+    } else {
+      setMenuOpen(true);
+    }
+  };
+
   const handleAnchorClick = (e, sectionId) => {
     e.preventDefault();
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
-    setMenuOpen(false);
+    if (menuOpen) {
+      animateClose(() => setMenuOpen(false));
+    }
   };
 
   return (
@@ -99,7 +127,7 @@ const Navbar = () => {
       {/* Navbar — mix-blend-difference sul container, il dot è escluso via portal */}
       <div
         ref={navRef}
-        className="fixed top-0 left-0 right-0 z-50 px-6 py-6 mix-blend-difference"
+        className="fixed top-0 left-0 right-0 z-50 p-6 mix-blend-difference"
       >
         <nav className="grid grid-cols-3 items-center w-full max-w-400 mx-auto">
           {/* Left: Name */}
@@ -112,7 +140,7 @@ const Navbar = () => {
             <span className="hidden lg:inline">Davide Condoluci</span>
           </a>
 
-          {/* Center: spacer dot (invisibile, segnaposto per il portal) + testo */}
+          {/* Center: spacer dot + testo */}
           <div className="flex items-center justify-center gap-2">
             <span
               ref={dotSpacerRef}
@@ -129,12 +157,12 @@ const Navbar = () => {
             {/* Mobile hamburger */}
             <button
               className="text-white lg:hidden"
-              onClick={() => setMenuOpen(!menuOpen)}
+              onClick={handleToggleMenu}
             >
               {menuOpen ? (
-                <XMarkIcon className="w-5.5 h-5.5" />
+                <XMarkIcon className="w-6 h-6" />
               ) : (
-                <Bars2Icon className="w-5.5 h-5.5" />
+                <Bars2Icon className="w-6 h-6" />
               )}
             </button>
 
@@ -176,7 +204,7 @@ const Navbar = () => {
                 >
                   <span className="p-1 transition-colors duration-300 bg-white rounded-full group-hover:bg-black">
                     <ArrowUpRightIcon
-                      className="block w-0 h-0 -translate-x-[200%] transition-all duration-300 group-hover:translate-x-0 group-hover:w-5 group-hover:h-5 text-white"
+                      className="block w-0 h-0 translate-x-[200%] transition-all duration-300 group-hover:translate-x-0 group-hover:w-5 group-hover:h-5 text-white"
                       aria-hidden="true"
                     />
                   </span>
@@ -191,71 +219,60 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-white lg:hidden"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            <motion.ul
-              className="flex flex-col items-center gap-8"
-              variants={menuVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              <motion.li variants={itemVariants}>
-                <FlipLink
-                  href="#about"
-                  onClick={(e) => handleAnchorClick(e, "about")}
-                  className="font-sans text-4xl font-light text-black"
-                >
-                  About
-                </FlipLink>
-              </motion.li>
-              <motion.li variants={itemVariants}>
-                <FlipLink
-                  href="#work"
-                  onClick={(e) => handleAnchorClick(e, "work")}
-                  className="font-sans text-4xl font-light text-black"
-                >
-                  Work
-                </FlipLink>
-              </motion.li>
-              <motion.li variants={itemVariants}>
-                <FlipLink
-                  href="#contact"
-                  onClick={(e) => handleAnchorClick(e, "contact")}
-                  className="font-sans text-4xl font-light text-black"
-                >
-                  Contact
-                </FlipLink>
-              </motion.li>
-              <motion.li variants={itemVariants}>
-                <a
-                  href={cvPath}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center h-16 gap-3 pl-3 pr-6 transition-all duration-300 ease-in-out border border-black rounded-full group hover:bg-black hover:pl-2"
-                >
-                  <span className="flex items-center justify-center w-4 h-4 transition-colors duration-300 bg-black rounded-full shrink-0 group-hover:bg-white">
-                    <ArrowUpRightIcon
-                      className="block w-3 h-3 -translate-x-[200%] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 text-black"
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <span className="font-sans text-4xl font-light text-black transition-colors duration-300 group-hover:text-white">
-                    Resume
-                  </span>
-                </a>
-              </motion.li>
-            </motion.ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {menuOpen && (
+        <div
+          ref={menuRef}
+          className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-white lg:hidden"
+        >
+          <ul className="flex flex-col items-center gap-8">
+            <li>
+              <FlipLink
+                href="#about"
+                onClick={(e) => handleAnchorClick(e, "about")}
+                className="font-sans text-4xl font-light text-black"
+              >
+                About
+              </FlipLink>
+            </li>
+            <li>
+              <FlipLink
+                href="#work"
+                onClick={(e) => handleAnchorClick(e, "work")}
+                className="font-sans text-4xl font-light text-black"
+              >
+                Work
+              </FlipLink>
+            </li>
+            <li>
+              <FlipLink
+                href="#contact"
+                onClick={(e) => handleAnchorClick(e, "contact")}
+                className="font-sans text-4xl font-light text-black"
+              >
+                Contact
+              </FlipLink>
+            </li>
+            <li>
+              <a
+                href={cvPath}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center h-16 gap-4 pl-4 pr-6 transition-all duration-300 ease-in-out border border-black rounded-full group hover:bg-black hover:pl-3"
+              >
+                <span className="flex items-center justify-center w-4 h-4 transition-colors duration-300 bg-black rounded-full shrink-0 group-hover:bg-white">
+                  <ArrowUpRightIcon
+                    className="block w-3 h-3 -translate-x-[200%] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 text-black"
+                    aria-hidden="true"
+                  />
+                </span>
+                <span className="font-sans text-4xl font-light text-black transition-colors duration-300 group-hover:text-white">
+                  Resume
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
     </>
   );
 };

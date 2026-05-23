@@ -1,15 +1,28 @@
-import { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowDownIcon } from "@heroicons/react/24/outline";
 
 const AnimatedRole = ({ roles }) => {
-  const [active, setActive] = useState(0);
+  const activeRef = useRef(0);
+  const spansRef = useRef([]);
 
   useEffect(() => {
+    spansRef.current.forEach((el, i) => {
+      if (el) gsap.set(el, { opacity: i === 0 ? 1 : 0, scale: i === 0 ? 1 : 0 });
+    });
+
     const id = setInterval(() => {
-      setActive((prev) => (prev + 1) % roles.length);
+      const prev = activeRef.current;
+      const next = (prev + 1) % roles.length;
+      activeRef.current = next;
+
+      const prevEl = spansRef.current[prev];
+      const nextEl = spansRef.current[next];
+      if (prevEl) gsap.to(prevEl, { opacity: 0, scale: 0, duration: 0.35, ease: "power2.inOut" });
+      if (nextEl) gsap.to(nextEl, { opacity: 1, scale: 1, duration: 0.35, ease: "power2.inOut" });
     }, 3000);
+
     return () => clearInterval(id);
   }, [roles]);
 
@@ -21,19 +34,13 @@ const AnimatedRole = ({ roles }) => {
         {longest}
       </span>
       {roles.map((role, i) => (
-        <motion.span
+        <span
           key={role}
-          initial={false}
-          animate={i === active ? "active" : "inactive"}
-          variants={{
-            active: { opacity: 1, scale: 1 },
-            inactive: { opacity: 0, scale: 0 },
-          }}
-          transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+          ref={(el) => (spansRef.current[i] = el)}
           className="absolute inset-0 flex items-center justify-center whitespace-nowrap"
         >
           {role}
-        </motion.span>
+        </span>
       ))}
     </span>
   );
@@ -66,63 +73,93 @@ const ScatteredIcons = () => {
     const iconEls = iconsRef.current.filter(Boolean);
     if (!container || iconEls.length === 0) return;
 
-    const { width, height } = container.getBoundingClientRect();
-    const iconSize = Math.min(70, Math.max(40, width * 0.05));
-    const edgePad = iconSize * 1.0;
-    const minDist = iconSize * 2.6;
-    const maxAttempts = 150;
-    const positions = [];
+    let cancelled = false;
+    let pauseTrigger = null;
 
-    // Zona centrale riservata al titolo
-    const zx1 = width * 0.18;
-    const zx2 = width * 0.82;
-    const zy1 = height * 0.33;
-    const zy2 = height * 0.67;
+    requestAnimationFrame(() => {
+      if (cancelled) return;
 
-    iconEls.forEach((el) => {
-      let x, y, attempts = 0;
-      do {
-        x = edgePad + Math.random() * (width - 2 * edgePad - iconSize);
-        y = edgePad + Math.random() * (height - 2 * edgePad - iconSize);
-        attempts++;
-      } while (
-        attempts < maxAttempts &&
-        (
-          positions.some((p) => Math.hypot(p.x - x, p.y - y) < minDist) ||
-          (
-            x + iconSize / 2 > zx1 && x + iconSize / 2 < zx2 &&
-            y + iconSize / 2 > zy1 && y + iconSize / 2 < zy2
-          )
-        )
-      );
+      const { width, height } = container.getBoundingClientRect();
+      const iconSize = Math.min(70, Math.max(40, width * 0.05));
+      const edgePad = iconSize;
+      const positions = [];
 
-      positions.push({ x, y });
-      gsap.set(el, { x, y, opacity: 0, scale: 0.6 });
-    });
+      const zx1 = width * 0.17, zx2 = width * 0.83;
+      const zy1 = height * 0.32, zy2 = height * 0.68;
 
-    // Entrance
-    gsap.to(iconEls, {
-      opacity: 1,
-      scale: 1,
-      duration: 0.9,
-      ease: "back.out(1.4)",
-      stagger: { each: 0.07, from: "random" },
-    });
+      const inCenter = (cx, cy) =>
+        cx > zx1 && cx < zx2 && cy > zy1 && cy < zy2;
 
-    // Floating
-    iconEls.forEach((el) => {
-      const floatAmt = 7 + Math.random() * 7;
-      gsap.to(el, {
-        y: `+=${floatAmt}`,
-        duration: 2.2 + Math.random() * 1.8,
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1,
-        delay: Math.random() * 2,
+      const findPos = (minD) => {
+        for (let i = 0; i < 300; i++) {
+          const x = edgePad + Math.random() * (width - 2 * edgePad - iconSize);
+          const y = edgePad + Math.random() * (height - 2 * edgePad - iconSize);
+          const cx = x + iconSize / 2, cy = y + iconSize / 2;
+          if (!inCenter(cx, cy) && !positions.some((p) => Math.hypot(p.x - x, p.y - y) < minD)) {
+            return { x, y };
+          }
+        }
+        return null;
+      };
+
+      const placed = [];
+
+      iconEls.forEach((el) => {
+        const pos =
+          findPos(iconSize * 2.0) ??
+          findPos(iconSize * 1.4) ??
+          findPos(iconSize * 1.05);
+
+        if (pos) {
+          positions.push(pos);
+          gsap.set(el, { x: pos.x, y: pos.y, opacity: 0, scale: 0.6 });
+          placed.push(el);
+        } else {
+          gsap.set(el, { opacity: 0, scale: 0 });
+        }
+      });
+
+      gsap.to(placed, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.9,
+        ease: "back.out(1.4)",
+        stagger: { each: 0.07, from: "random" },
+      });
+
+      placed.forEach((el) => {
+        const floatAmt = 7 + Math.random() * 7;
+        gsap.to(el, {
+          y: `+=${floatAmt}`,
+          duration: 2.2 + Math.random() * 1.8,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+          delay: Math.random() * 2,
+        });
+      });
+
+      // Pause floating tweens when hero is off-screen to free up CPU
+      pauseTrigger = ScrollTrigger.create({
+        trigger: container,
+        start: "top bottom",
+        end: "bottom top",
+        onToggle: (self) => {
+          placed.forEach((el) => {
+            gsap.getTweensOf(el).forEach((t) => {
+              if (self.isActive) t.resume();
+              else t.pause();
+            });
+          });
+        },
       });
     });
 
-    return () => gsap.killTweensOf(iconEls);
+    return () => {
+      cancelled = true;
+      gsap.killTweensOf(iconEls);
+      pauseTrigger?.kill();
+    };
   }, []);
 
   return (
@@ -199,7 +236,7 @@ const Hero = () => {
       <ScatteredIcons />
       <h1
         ref={heroTitleRef}
-        className="z-10 flex flex-col items-center gap-0 px-4 text-center md:flex-row md:items-baseline md:gap-4 mix-blend-difference"
+        className="z-10 flex flex-col items-center px-4 text-center md:flex-row md:items-baseline md:gap-4 mix-blend-difference"
       >
         <span className="font-sans text-[18vw] font-medium leading-none text-white md:text-[9vw]">
           Front-End
@@ -219,7 +256,7 @@ const Hero = () => {
 
       <p
         ref={heroScrollRef}
-        className="absolute z-10 flex items-center gap-1 font-sans text-base font-light text-white -translate-x-1/2 bottom-10 left-1/2 mix-blend-difference"
+        className="absolute z-10 flex items-center gap-2 font-sans text-base font-light text-white -translate-x-1/2 bottom-10 left-1/2 mix-blend-difference"
       >
         Scroll for more
         <ArrowDownIcon className="w-[1.1em] h-[1.1em]" aria-hidden="true" />
