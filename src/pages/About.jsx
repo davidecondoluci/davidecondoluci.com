@@ -2,8 +2,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const ACCENT_WORDS = new Set([
   "minimal",
   "functionality",
@@ -41,25 +39,22 @@ const About = () => {
     const words = Array.from(paragraph.querySelectorAll("span.inline-block"));
     gsap.set(words, { opacity: 0, y: 18 });
 
-    const tweens = words.map((el) =>
-      gsap.to(el, {
-        opacity: 1,
-        y: 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 90%",
-          end: "top 70%",
-          scrub: 0.4,
-        },
-      }),
-    );
+    const tween = gsap.to(words, {
+      opacity: 1,
+      y: 0,
+      ease: "none",
+      stagger: { each: 0.015 },
+      scrollTrigger: {
+        trigger: paragraph,
+        start: "top 85%",
+        end: "bottom 60%",
+        scrub: 0.6,
+      },
+    });
 
     return () => {
-      tweens.forEach((t) => {
-        t.scrollTrigger?.kill();
-        t.kill();
-      });
+      tween.scrollTrigger?.kill();
+      tween.kill();
     };
   }, []);
 
