@@ -16,10 +16,10 @@
     "website": "https://www.christiannapolitano.it/",
     "github": "https://github.com/davidecondoluci/christian-napolitano-portfolio",
     "gallery": [
-      "/img/work/christian-napolitano-portfolio/christian-napolitano-portfolio-home.jpg",
-      "/img/work/christian-napolitano-portfolio/christian-napolitano-portfolio-work.jpg",
-      "/img/work/christian-napolitano-portfolio/christian-napolitano-portfolio-work-info.jpg",
-      "/img/work/christian-napolitano-portfolio/christian-napolitano-portfolio-info.jpg"
+      "/img/work/christian-napolitano-portfolio/christian-napolitano-portfolio-home.webp",
+      "/img/work/christian-napolitano-portfolio/christian-napolitano-portfolio-work.webp",
+      "/img/work/christian-napolitano-portfolio/christian-napolitano-portfolio-work-info.webp",
+      "/img/work/christian-napolitano-portfolio/christian-napolitano-portfolio-info.webp"
     ]
   },
   {
@@ -38,10 +38,10 @@
     "website": "https://quizroyale.davidecondoluci.com/",
     "github": "https://github.com/davidecondoluci/quiz-royale",
     "gallery": [
-      "/img/work/quiz-royale/quiz-royale-home.jpg",
-      "/img/work/quiz-royale/quiz-royale-topic.jpg",
-      "/img/work/quiz-royale/quiz-royale-game.jpg",
-      "/img/work/quiz-royale/quiz-royale-game-over.jpg"
+      "/img/work/quiz-royale/quiz-royale-home.webp",
+      "/img/work/quiz-royale/quiz-royale-topic.webp",
+      "/img/work/quiz-royale/quiz-royale-game.webp",
+      "/img/work/quiz-royale/quiz-royale-game-over.webp"
     ]
   },
   {
@@ -61,12 +61,12 @@
     "website": "https://champagneleague.it",
     "github": "https://github.com/davidecondoluci/champagne-league",
     "gallery": [
-      "/img/work/champagne-league/champagne-league-home.jpg",
-      "/img/work/champagne-league/champagne-league-premi.jpg",
-      "/img/work/champagne-league/champagne-league-partner.jpg",
-      "/img/work/champagne-league/champagne-league-iscriviti.jpg",
-      "/img/work/champagne-league/champagne-league-storia.jpg",
-      "/img/work/champagne-league/champagne-league-divise.jpg"
+      "/img/work/champagne-league/champagne-league-home.webp",
+      "/img/work/champagne-league/champagne-league-premi.webp",
+      "/img/work/champagne-league/champagne-league-partner.webp",
+      "/img/work/champagne-league/champagne-league-iscriviti.webp",
+      "/img/work/champagne-league/champagne-league-storia.webp",
+      "/img/work/champagne-league/champagne-league-divise.webp"
     ]
   },
   {
@@ -88,11 +88,11 @@
     "website": "https://filmflix.davidecondoluci.com/",
     "github": "https://github.com/davidecondoluci/filmflix",
     "gallery": [
-      "/img/work/filmflix/filmflix-home.jpg",
-      "/img/work/filmflix/filmflix-archive.jpg",
-      "/img/work/filmflix/filmflix-film-info.jpg",
-      "/img/work/filmflix/filmflix-login.jpg",
-      "/img/work/filmflix/filmflix-wishlist.jpg"
+      "/img/work/filmflix/filmflix-home.webp",
+      "/img/work/filmflix/filmflix-archive.webp",
+      "/img/work/filmflix/filmflix-film-info.webp",
+      "/img/work/filmflix/filmflix-login.webp",
+      "/img/work/filmflix/filmflix-wishlist.webp"
     ]
   },
   {
@@ -111,8 +111,8 @@
     "website": "https://pokedex.davidecondoluci.com/",
     "github": "https://github.com/davidecondoluci/pokedex",
     "gallery": [
-      "/img/work/pokedex/pokedex-all.jpg",
-      "/img/work/pokedex/pokedex-type.jpg"
+      "/img/work/pokedex/pokedex-all.webp",
+      "/img/work/pokedex/pokedex-type.webp"
     ]
   }
 ]
