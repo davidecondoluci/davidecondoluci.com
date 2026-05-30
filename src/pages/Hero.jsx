@@ -62,6 +62,7 @@ const ALL_ICONS = [
   "/img/icons/github.svg",
   "/img/icons/mui.svg",
   "/img/icons/typescript.svg",
+  "/img/icons/supabase.svg",
 ];
 
 const ScatteredIcons = () => {
@@ -80,20 +81,29 @@ const ScatteredIcons = () => {
       if (cancelled) return;
 
       const { width, height } = container.getBoundingClientRect();
-      const iconSize = Math.min(70, Math.max(40, width * 0.05));
-      const edgePad = iconSize;
+      const isMobile = width < 768;
+      // Smaller icons on mobile so they fit in the strips above/below the text
+      const iconSize = isMobile ? 36 : Math.min(70, Math.max(40, width * 0.05));
+      const sidePad = iconSize;
+      const topPad = iconSize;
+      // Extra clearance at bottom to avoid the "Scroll for more" label
+      const bottomPad = isMobile ? 100 : iconSize;
       const positions = [];
 
-      const zx1 = width * 0.17, zx2 = width * 0.83;
-      const zy1 = height * 0.32, zy2 = height * 0.68;
+      // On mobile the title is stacked and spans full width — widen exclusion zone
+      // so icons land only in the top/bottom strips, not on the text
+      const zx1 = isMobile ? width * 0.03 : width * 0.17;
+      const zx2 = isMobile ? width * 0.97 : width * 0.83;
+      const zy1 = isMobile ? height * 0.20 : height * 0.32;
+      const zy2 = isMobile ? height * 0.74 : height * 0.68;
 
       const inCenter = (cx, cy) =>
         cx > zx1 && cx < zx2 && cy > zy1 && cy < zy2;
 
       const findPos = (minD) => {
         for (let i = 0; i < 300; i++) {
-          const x = edgePad + Math.random() * (width - 2 * edgePad - iconSize);
-          const y = edgePad + Math.random() * (height - 2 * edgePad - iconSize);
+          const x = sidePad + Math.random() * (width - sidePad * 2 - iconSize);
+          const y = topPad + Math.random() * (height - topPad - bottomPad - iconSize);
           const cx = x + iconSize / 2, cy = y + iconSize / 2;
           if (!inCenter(cx, cy) && !positions.some((p) => Math.hypot(p.x - x, p.y - y) < minD)) {
             return { x, y };
@@ -105,6 +115,11 @@ const ScatteredIcons = () => {
       const placed = [];
 
       iconEls.forEach((el) => {
+        if (isMobile) {
+          el.style.width = `${iconSize}px`;
+          el.style.height = `${iconSize}px`;
+        }
+
         const pos =
           findPos(iconSize * 2.0) ??
           findPos(iconSize * 1.4) ??
