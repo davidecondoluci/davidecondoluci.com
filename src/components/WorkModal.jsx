@@ -125,6 +125,7 @@ const WorkModal = ({ project, onClose }) => {
                 src={gallery[0]}
                 alt={`${project.title} 1`}
                 className="w-full h-auto block"
+                decoding="async"
               />
             </div>
             {gallery.length > 1 && (
@@ -141,6 +142,8 @@ const WorkModal = ({ project, onClose }) => {
                         src={img}
                         alt={`${project.title} ${i + 2}`}
                         className="w-full h-auto block"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                   );
