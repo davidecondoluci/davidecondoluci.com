@@ -28,7 +28,9 @@ const About = () => {
         const clean = word.replace(/[^a-zA-Z]/g, "").toLowerCase();
         const isAccent = ACCENT_WORDS.has(clean);
         const trailingPunct = word.match(/[^a-zA-Z]+$/)?.[0] ?? "";
-        const wordText = trailingPunct ? word.slice(0, -trailingPunct.length) : word;
+        const wordText = trailingPunct
+          ? word.slice(0, -trailingPunct.length)
+          : word;
         const inner = isAccent
           ? `<span style="font-family:'Fraunces 72pt',serif;font-style:italic;font-weight:300">${wordText}</span>${trailingPunct}`
           : word;
@@ -99,7 +101,7 @@ const About = () => {
           <img
             src="/img/photo.jpg"
             alt="Davide Condoluci"
-            className="object-cover object-center w-full h-full"
+            className="object-cover object-top w-full h-full"
           />
         </div>
       </div>
@@ -122,7 +124,7 @@ const About = () => {
             <img
               src="/img/photo.jpg"
               alt="Davide Condoluci"
-              className="object-cover object-center w-full h-full"
+              className="object-cover object-top w-full h-full"
             />
           </div>
         </div>
