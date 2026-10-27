@@ -65,7 +65,7 @@ const ALL_ICONS = [
   "/img/icons/supabase.svg",
 ];
 
-const ScatteredIcons = () => {
+const ScatteredIcons = ({ textRefs, scrollRef }) => {
   const containerRef = useRef(null);
   const iconsRef = useRef([]);
 
@@ -85,17 +85,34 @@ const ScatteredIcons = () => {
       // Smaller icons on mobile so they fit in the strips above/below the text
       const iconSize = isMobile ? 36 : Math.min(70, Math.max(40, width * 0.05));
       const sidePad = iconSize;
-      const topPad = iconSize;
+      let topPad = iconSize;
       // Extra clearance at bottom to avoid the "Scroll for more" label
-      const bottomPad = isMobile ? 100 : iconSize;
+      let bottomPad = isMobile ? 100 : iconSize;
       const positions = [];
 
       // On mobile the title is stacked and spans full width — widen exclusion zone
       // so icons land only in the top/bottom strips, not on the text
       const zx1 = isMobile ? width * 0.03 : width * 0.17;
       const zx2 = isMobile ? width * 0.97 : width * 0.83;
-      const zy1 = isMobile ? height * 0.20 : height * 0.32;
-      const zy2 = isMobile ? height * 0.74 : height * 0.68;
+      let zy1 = isMobile ? height * 0.20 : height * 0.32;
+      let zy2 = isMobile ? height * 0.74 : height * 0.68;
+
+      // On mobile, measure the real text block so the strips fill all the free
+      // space between navbar / text / "Scroll for more" instead of fixed percentages
+      const textEls = textRefs?.map((r) => r.current).filter(Boolean) ?? [];
+      if (isMobile && textEls.length) {
+        const cRect = container.getBoundingClientRect();
+        const rects = textEls.map((el) => el.getBoundingClientRect());
+        // inCenter() checks the icon centre, so add half icon to the clearance
+        const gap = iconSize / 2 + 20;
+        zy1 = Math.min(...rects.map((r) => r.top)) - cRect.top - gap;
+        zy2 = Math.max(...rects.map((r) => r.bottom)) - cRect.top + gap;
+        topPad = 80; // fixed navbar height + small margin
+        const scrollEl = scrollRef?.current;
+        if (scrollEl) {
+          bottomPad = cRect.bottom - scrollEl.getBoundingClientRect().top + 16;
+        }
+      }
 
       const inCenter = (cx, cy) =>
         cx > zx1 && cx < zx2 && cy > zy1 && cy < zy2;
@@ -248,7 +265,10 @@ const Hero = () => {
       id="hero"
       className="relative flex flex-col items-center justify-center overflow-hidden text-center select-none h-dvh"
     >
-      <ScatteredIcons />
+      <ScatteredIcons
+        textRefs={[heroTitleRef, heroRolesRef]}
+        scrollRef={heroScrollRef}
+      />
       <h1
         ref={heroTitleRef}
         className="z-10 flex flex-col items-center px-4 text-center md:flex-row md:items-baseline md:gap-4 mix-blend-difference"
