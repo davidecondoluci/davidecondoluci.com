@@ -263,7 +263,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative flex flex-col items-center justify-center overflow-hidden text-center select-none h-dvh"
+      className="relative flex flex-col items-center justify-center overflow-hidden text-center select-none h-svh"
     >
       <ScatteredIcons
         textRefs={[heroTitleRef, heroRolesRef]}
