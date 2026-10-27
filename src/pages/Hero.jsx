@@ -46,13 +46,20 @@ const AnimatedRole = ({ roles }) => {
   );
 };
 
+// Safari/WebKit (and every iOS browser) rasterizes SVG blur filters at low
+// resolution, so the filter-based Vite logo gets a PNG fallback there only
+const isWebKit =
+  typeof navigator !== "undefined" &&
+  /AppleWebKit/.test(navigator.userAgent) &&
+  !/Chrome|Chromium|Edg|Android/.test(navigator.userAgent);
+
 const ALL_ICONS = [
   "/img/icons/html.svg",
   "/img/icons/css.svg",
   "/img/icons/javascript.svg",
   "/img/icons/react.svg",
   "/img/icons/next.svg",
-  "/img/icons/vite.svg",
+  isWebKit ? "/img/icons/vite.png" : "/img/icons/vite.svg",
   "/img/icons/tailwind.svg",
   "/img/icons/wordpress.svg",
   "/img/icons/gsap.svg",
